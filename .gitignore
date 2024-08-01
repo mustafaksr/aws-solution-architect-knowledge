@@ -3,5 +3,6 @@ Day1-aws-technical-essentials/implementation/terraform.tfstate
 Day1-aws-technical-essentials/implementation/terraform.tfstate.backup
 Day1-aws-technical-essentials/implementation/.terraform
 Day1-aws-technical-essentials/implementation/FlaskApp-Employee-Directory-Application
-
+Day1-aws-technical-essentials/implementation/.terraform.tfstate.lock.info
+Day1-aws-technical-essentials/implementation/key.pem
 

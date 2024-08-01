@@ -2,46 +2,79 @@ provider "aws" {
   region = var.aws_region
 }
 
-# Create a VPC
-resource "aws_vpc" "app_vpc" {
-  cidr_block = "10.0.0.0/16"
+# Reference the default VPC
+data "aws_vpc" "default" {
+  default = true
 }
 
-# Create subnets
-resource "aws_subnet" "public_subnet" {
-  vpc_id                  = aws_vpc.app_vpc.id
-  cidr_block              = "10.0.1.0/24"
-  map_public_ip_on_launch = true
+#key pair
+#ssh-keygen -t rsa -b 4096 -f ~/.ssh/my-aws-key
+resource "aws_key_pair" "my_key_pair" {
+  key_name   = "my-aws-key"
+  public_key = file("~/.ssh/my-aws-key.pub")
 }
 
-# Create an Internet Gateway
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.app_vpc.id
-}
-
-# Create a Route Table
-resource "aws_route_table" "public_route_table" {
-  vpc_id = aws_vpc.app_vpc.id
-
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+# Reference the default subnets in us-east-2a and us-east-2b
+data "aws_subnet" "default_subnet_a" {
+  filter {
+    name   = "availabilityZone"
+    values = ["us-east-2a"]
   }
+  
+  filter {
+    name   = "defaultForAz"
+    values = ["true"]
+  }
+  
+  vpc_id = data.aws_vpc.default.id
 }
 
-# Associate Route Table with Subnet
-resource "aws_route_table_association" "public_subnet_association" {
-  subnet_id      = aws_subnet.public_subnet.id
-  route_table_id = aws_route_table.public_route_table.id
+data "aws_subnet" "default_subnet_b" {
+  filter {
+    name   = "availabilityZone"
+    values = ["us-east-2b"]
+  }
+  
+  filter {
+    name   = "defaultForAz"
+    values = ["true"]
+  }
+  
+  vpc_id = data.aws_vpc.default.id
 }
 
-# Create Security Group
+# Create Security Group in the default VPC
 resource "aws_security_group" "web_security_group" {
-  vpc_id = aws_vpc.app_vpc.id
+  vpc_id = data.aws_vpc.default.id
 
+#http
   ingress {
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+#mysql
+ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+#streamlit
+ingress {
+    from_port   = 8501
+    to_port     = 8501
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+#https
+    ingress {
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -61,50 +94,34 @@ resource "aws_security_group" "web_security_group" {
   }
 }
 
-resource "aws_subnet" "public_subnet_a" {
-  vpc_id                  = aws_vpc.app_vpc.id
-  cidr_block              = "10.0.3.0/24"
-  availability_zone       = "us-east-2a" # Specify AZ
-  map_public_ip_on_launch = true
-}
-
-resource "aws_subnet" "public_subnet_b" {
-  vpc_id                  = aws_vpc.app_vpc.id
-  cidr_block              = "10.0.2.0/24"
-  availability_zone       = "us-east-2b" # Specify AZ
-  map_public_ip_on_launch = true
-}
-
-
-# Create RDS Subnet Group
+# Use existing default subnets for RDS Subnet Group
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = "app-db-subnet-group"
-  subnet_ids = [
-    aws_subnet.public_subnet_a.id,
-    aws_subnet.public_subnet_b.id
-  ]
+  subnet_ids = [data.aws_subnet.default_subnet_a.id, data.aws_subnet.default_subnet_b.id]
+
+  
+
+
 }
 
-# Create RDS Instance
+# Create RDS Instance in the default subnets
 resource "aws_db_instance" "app_db" {
   allocated_storage      = 20
   engine                 = "mysql"
   instance_class         = "db.t3.micro"
-  db_name                = "employee_db"
+  db_name                = "employees"
   username               = "admin"
   password               = var.db_instance_master_password
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
   vpc_security_group_ids = [aws_security_group.web_security_group.id]
-  skip_final_snapshot = true # Set this to false to ensure a snapshot is taken
-
+  skip_final_snapshot    = true
+  publicly_accessible = true
 }
 
 # Create S3 Buckets
 resource "aws_s3_bucket" "photo_bucket" {
   bucket = var.photo_bucket_name
-
 }
-
 
 # Create DynamoDB Table
 resource "aws_dynamodb_table" "employees" {
@@ -139,66 +156,191 @@ resource "aws_iam_role_policy_attachment" "instance_role_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 }
 
+# Attach SSM Parameter Store Permissions Policy
+resource "aws_iam_role_policy_attachment" "instance_role_ssm_policy_attachment" {
+  role       = aws_iam_role.instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+}
+
 # Create IAM Instance Profile
 resource "aws_iam_instance_profile" "instance_role_profile" {
   name = "instance-role-profile"
   role = aws_iam_role.instance_role.name
 }
 
+
+resource "aws_ssm_parameter" "db_host" {
+  name  = "/myapp/db_host"
+  type  = "String"
+  value = aws_db_instance.app_db.address
+}
+
+resource "aws_ssm_parameter" "db_password" {
+  name  = "/myapp/db_password"
+  type  = "SecureString"
+  value = var.db_instance_master_password
+}
+
+resource "aws_ssm_parameter" "photo_bucket_name_ssm" {
+  name  = "/myapp/photo_bucket_name_ssm"
+  type  = "String"
+  value = var.photo_bucket_name
+  
+}
+
+
 # Create EC2 Instance for RDS App
 resource "aws_instance" "rds_app_instance" {
-  ami                    = "ami-0a31f06d64a91614b" 
+  ami                    = "ami-003932de22c285676" 
   instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.public_subnet_a.id
+  subnet_id              = data.aws_subnet.default_subnet_a.id
   vpc_security_group_ids = [aws_security_group.web_security_group.id]
   iam_instance_profile   = aws_iam_instance_profile.instance_role_profile.name
+  key_name      = aws_key_pair.my_key_pair.key_name
+  
+  depends_on = [aws_db_instance.app_db] 
+    tags = {
+    Name = "SQL"            # This is the display name
+  }
+user_data = <<-EOF
+#!/bin/bash -ex
 
-  depends_on = [aws_db_instance.app_db] # Add dependency on RDS instance
+# Update and install dependencies
+sudo apt-get update
+sudo apt-get install -y python3-pip python3-dev nginx awscli  mariadb-client
 
-  user_data = <<-EOF
-              #!/bin/bash -ex
+# Install Streamlit and MySQL connector
+pip3 install streamlit mysql-connector-python
 
-              # Set environment variables
-              export SUB_PHOTOS_BUCKET="${var.photo_bucket_name}"
-              export SUB_DATABASE_HOST="${aws_db_instance.app_db.address}"
-              export SUB_DATABASE_USER="admin"
-              export SUB_DATABASE_PASSWORD="${var.db_instance_master_password}"
+# Create Streamlit app
+cat <<'EOL' > /home/ubuntu/app.py
+import streamlit as st
+import mysql.connector
+import pandas as pd
+import os
 
-              wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/DEV-AWS-MO-GCNv2/FlaskApp.zip
-              unzip FlaskApp.zip
-              cd FlaskApp/
-              ./install_launch.sh
-              EOF
+# Fetching environment variables
+db_host = os.getenv('DATABASE_HOST')
+db_user = os.getenv('DATABASE_USER')
+db_password = os.getenv('DATABASE_PASSWORD')
+db_name = "example_db"  # Replace with your actual database name
+
+# Create a connection to the database
+def create_connection():
+    connection = mysql.connector.connect(
+        host=db_host,
+        user=db_user,
+        password=db_password,
+        database=db_name
+    )
+    return connection
+
+# Query to fetch data
+def fetch_data(query):
+    conn = create_connection()
+    df = pd.read_sql(query, conn)
+    conn.close()
+    return df
+
+# Function to insert new data
+def insert_data(name, age, email):
+    conn = create_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute("INSERT INTO example_table (name, age, email) VALUES (%s, %s, %s)", (name, age, email))
+        conn.commit()
+        st.success("Data inserted successfully!")
+    except Exception as e:
+        conn.rollback()
+        st.error(f"An error occurred: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+# Streamlit app
+st.title("MySQL Data Viewer and Inserter")
+
+# Query section
+query = st.text_area("Enter SQL Query:", "SELECT * FROM example_table LIMIT 10")  # Replace with your actual table
+if st.button("Execute Query"):
+    try:
+        data = fetch_data(query)
+        st.write(data)
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+
+# Form to add new data
+with st.form(key='insert_form'):
+    st.subheader("Add New Row")
+    name = st.text_input("Name")
+    age = st.number_input("Age", min_value=0)
+    email = st.text_input("Email")
+    submit_button = st.form_submit_button("Add Data")
+    
+    if submit_button:
+        if name and email:
+            insert_data(name, age, email)
+        else:
+            st.error("Please fill in all fields.")
+
+EOL
+
+# Fetch parameters from AWS Systems Manager Parameter Store
+export SUB_PHOTOS_BUCKET=$(aws ssm get-parameter --name "/myapp/photo_bucket_name_ssm" --query "Parameter.Value" --region us-east-2 --output text)
+export DATABASE_HOST=$(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region us-east-2 --output text)
+export DATABASE_PASSWORD=$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region us-east-2 --output text)
+export DATABASE_USER="admin"
+
+# Create example database and table, and insert sample data
+mysql -h $DATABASE_HOST -u $DATABASE_USER -p$DATABASE_PASSWORD -e "
+CREATE DATABASE IF NOT EXISTS example_db;
+USE example_db;
+
+CREATE TABLE IF NOT EXISTS example_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    email VARCHAR(100)
+);
+
+INSERT INTO example_table (name, age, email) VALUES 
+('Alice Johnson', 30, 'alice.johnson@example.com'),
+('Bob Smith', 25, 'bob.smith@example.com'),
+('Carol Brown', 40, 'carol.brown@example.com');
+"
+
+# Configure Nginx
+echo 'server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://localhost:8501;  # Default port for Streamlit
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+}' | sudo tee /etc/nginx/sites-available/streamlit > /dev/null
+
+
+# Enable Nginx configuration
+sudo ln -sf /etc/nginx/sites-available/streamlit /etc/nginx/sites-enabled/
+
+sudo systemctl restart nginx
+
+# Run Streamlit app
+streamlit run /home/ubuntu/app.py --server.port 8501 &
+EOF
+
 }
 
 
-# Create EC2 Instance for DynamoDB App
-resource "aws_instance" "dynamo_app_instance" {
-  ami                    = "ami-0a31f06d64a91614b" 
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.public_subnet_a.id
-  vpc_security_group_ids = [aws_security_group.web_security_group.id]
-  iam_instance_profile   = aws_iam_instance_profile.instance_role_profile.name
+output "host_db" {
 
-  depends_on = [aws_db_instance.app_db] # Add dependency on RDS instance
-
-  user_data = <<-EOF
-
-              # Set environment variables
-
-              export SUB_PHOTOS_BUCKET="${var.photo_bucket_name}"
-
-              #!/bin/bash -ex
-              wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/DEV-AWS-MO-GCNv2/FlaskApp.zip
-              unzip FlaskApp.zip
-              cd FlaskApp/
-              ./install_launch_dynamo.sh
-              EOF
+  value = aws_db_instance.app_db.address
+  
 }
-
-
-
-
 
 
 
