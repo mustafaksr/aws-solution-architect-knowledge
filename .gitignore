@@ -6,3 +6,10 @@ Day1-aws-technical-essentials/implementation/FlaskApp-Employee-Directory-Applica
 Day1-aws-technical-essentials/implementation/.terraform.tfstate.lock.info
 Day1-aws-technical-essentials/implementation/key.pem
 
+Day2-aws-iam-compute-storage/implementation/.terraform.lock.hcl
+Day2-aws-iam-compute-storage/implementation/terraform.tfstate
+Day2-aws-iam-compute-storage/implementation/terraform.tfstate.backup
+Day2-aws-iam-compute-storage/implementation/.terraform
+Day2-aws-iam-compute-storage/implementation/FlaskApp-Employee-Directory-Application
+Day2-aws-iam-compute-storage/implementation/.terraform.tfstate.lock.info
+Day2-aws-iam-compute-storage/implementation/key.pem

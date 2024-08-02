@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket = "terraform-state-day2-sf48er9gytr"  # Replace with your S3 bucket name
+    region = "us-east-2"         # Replace with your AWS region
+    key    = "terraform/state/terraform.tfstate" # Organizes the state file under this path
+    encrypt        = true                     # Enable server-side encryption of the state file
+  }
+}
+
 provider "aws" {
   region = var.aws_region
 }
@@ -118,9 +127,12 @@ resource "aws_db_instance" "app_db" {
   publicly_accessible = true
 }
 
-# Create S3 Buckets
-resource "aws_s3_bucket" "photo_bucket" {
-  bucket = var.photo_bucket_name
+resource "aws_s3_bucket" "output_bucket" {
+  bucket = var.output_bucket_name  # New S3 bucket
+  
+  versioning { #ignore Argument is deprecated warning.
+    enabled = true
+  }
 }
 
 # Create DynamoDB Table
@@ -175,17 +187,16 @@ resource "aws_ssm_parameter" "db_host" {
   value = aws_db_instance.app_db.address
 }
 
+resource "aws_ssm_parameter" "output_bucket" {
+  name  = "/myapp/output_bucket"
+  type  = "String"
+  value = var.output_bucket_name
+}
+
 resource "aws_ssm_parameter" "db_password" {
   name  = "/myapp/db_password"
   type  = "SecureString"
   value = var.db_instance_master_password
-}
-
-resource "aws_ssm_parameter" "photo_bucket_name_ssm" {
-  name  = "/myapp/photo_bucket_name_ssm"
-  type  = "String"
-  value = var.photo_bucket_name
-  
 }
 
 
@@ -210,7 +221,7 @@ sudo apt-get update
 sudo apt-get install -y python3-pip python3-dev nginx awscli  mariadb-client
 
 # Install Streamlit and MySQL connector
-pip3 install streamlit mysql-connector-python
+pip3 install streamlit mysql-connector-python boto3
 
 # Create Streamlit app
 cat <<'EOL' > /home/ubuntu/app.py
@@ -218,12 +229,17 @@ import streamlit as st
 import mysql.connector
 import pandas as pd
 import os
+import boto3
+from io import StringIO
 
 # Fetching environment variables
 db_host = os.getenv('DATABASE_HOST')
 db_user = os.getenv('DATABASE_USER')
 db_password = os.getenv('DATABASE_PASSWORD')
 db_name = "example_db"  # Replace with your actual database name
+s3_bucket_name = os.getenv('OUTPUT_BUCKET_NAME')  # Add an environment variable for the S3 bucket name
+
+
 
 # Create a connection to the database
 def create_connection():
@@ -257,6 +273,14 @@ def insert_data(name, age, email):
         cursor.close()
         conn.close()
 
+# Function to save DataFrame to S3 as CSV
+def save_to_s3(df, filename, bucket_name):
+    csv_buffer = StringIO()
+    df.to_csv(csv_buffer, index=False)
+    s3_resource = boto3.resource('s3')
+    s3_resource.Object(bucket_name, filename).put(Body=csv_buffer.getvalue())
+    st.success(f"File '{filename}' saved to S3 bucket '{bucket_name}'")
+
 # Streamlit app
 st.title("MySQL Data Viewer and Inserter")
 
@@ -282,14 +306,24 @@ with st.form(key='insert_form'):
             insert_data(name, age, email)
         else:
             st.error("Please fill in all fields.")
+# Save button
+if st.button("Save as CSV"):
+    data = fetch_data("SELECT * FROM example_table")
+    filename = "output.csv"
+    if filename:
+        s3_bucket_name = "output-bucket-streamlit-fs57ef"
+        save_to_s3(data, filename, s3_bucket_name)
+    else:
+        st.error("Please enter a valid filename.")
+
 
 EOL
 
 # Fetch parameters from AWS Systems Manager Parameter Store
-export SUB_PHOTOS_BUCKET=$(aws ssm get-parameter --name "/myapp/photo_bucket_name_ssm" --query "Parameter.Value" --region us-east-2 --output text)
 export DATABASE_HOST=$(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region us-east-2 --output text)
 export DATABASE_PASSWORD=$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region us-east-2 --output text)
 export DATABASE_USER=admin
+export OUTPUT_BUCKET_NAME=$(aws ssm get-parameter --name "/myapp/output_bucket" --query "Parameter.Value" --region us-east-2 --output text)
 
 # Create example database and table, and insert sample data
 mysql -h $(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region us-east-2 --output text) -u admin -p$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region us-east-2 --output text) -e "
@@ -335,6 +369,26 @@ EOF
 
 }
 
+# Define a new EBS volume
+resource "aws_ebs_volume" "additional_volume" {
+  availability_zone = data.aws_subnet.default_subnet_a.availability_zone  # Match the availability zone of the EC2 instance
+  size              = 10  # Size in GB
+  tags = {
+    Name = "Additional-Volume"
+  }
+  depends_on = [aws_instance.rds_app_instance] 
+}
+
+# Attach the EBS volume to the EC2 instance
+resource "aws_volume_attachment" "ebs_attachment" {
+  device_name = "/dev/sdf"  # Device name can vary (e.g., /dev/sdf, /dev/xvdf, etc.)
+  volume_id   = aws_ebs_volume.additional_volume.id
+  instance_id = aws_instance.rds_app_instance.id
+  force_detach = true  # Detach any existing volume before attaching the new one
+
+  depends_on = [aws_instance.rds_app_instance] 
+
+}
 
 output "host_db" {
 
