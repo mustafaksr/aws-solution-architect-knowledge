@@ -1,31 +1,67 @@
-# AWS SOLUTION ARCHITECT KNOWLEDGE READINESS PATH LEARNING 
+# AWS Solution Architect Knowledge Readiness Path Learning
 
-## 1. Day 1 - AWS Technical Essentials
+## Overview
+This repository is designed to support the AWS Solutions Architect - Knowledge Badge Readiness Path. It combines summaries and insights from a structured 15-day AWS learning journey with practical implementations. The learning plan is tailored for Solutions Architects and Solution-Design Engineers, focusing on designing and managing resilient, secure, and highly available cloud-based solutions using AWS.
 
-Notes of Day 1 - [AWS Technical Essentials](Day1-aws-technical-essentials/README)
+The repository includes practical implementations of the learning path, focusing on Terraform-based infrastructure setups and Streamlit app deployments. These implementations illustrate the application of AWS concepts in real-world scenarios
 
-Implementation of Day 1 - [terraform streamlit app deployment](Day1-aws-technical-essentials/implementation/)
-- RDS connected EC2 for Streamlit app.
+### Learning Plan
+About the Learning Path:
+The AWS Knowledge Badge Readiness Path helps individuals build comprehensive knowledge in designing applications and large distributed systems on AWS. It includes domain-specific content, such as courses, knowledge checks, and a knowledge badge assessment. The path is structured to guide learners through various AWS services and best practices, but it also allows for flexibility in choosing content that best fits individual learning needs.
 
+[View the AWS Solution Architect Knowledge Badge Readiness Path on Notion](https://helix-minnow-e03.notion.site/9e06c208efcc4f59aaf5549210ae52c7?v=0633597eaccf46fea83dbdc762aa9b9d)
 
-## 2. Day 2 - AWS Compute Services Overview
-
-Notes of Day 2 - [AWS Compute Services Overview](Day2-aws-iam-compute-storage/README)
-
-Implementation of Day 2 - [terraform streamlit app deployment](Day2-aws-iam-compute-storage/implementation/)
-- used s3 bucket for terraform remote state for previous app.
-- added ebs pd to ec2.
+<iframe src="https://helix-minnow-e03.notion.site/9e06c208efcc4f59aaf5549210ae52c7?v=0633597eaccf46fea83dbdc762aa9b9d" width="800" height="600" frameborder="0" allowfullscreen></iframe>
 
 
-## 2. Day 3 - AWS S3-EBS-Databases
+## Day 1 - AWS Technical Essentials
 
-Notes of Day 3 - [AWS S3-EBS-Databases](Day3-EBS-Databases/README)
+### Notes
+- [AWS Technical Essentials](Day1-aws-technical-essentials/README)
 
-Implementation of Day 3 rds - [terraform streamlit app deployment](Day3-EBS-Databases/implementation-RDS/)
-- previous rds - ec2 streamlit app.
+### Implementation
+- [Terraform Streamlit App Deployment](Day1-aws-technical-essentials/implementation/)
+  - Deployed a Streamlit application on an EC2 instance with an RDS database connection.
+---
 
-Implementation of Day 3 Dynamodb - [terraform streamlit app deployment](Day3-EBS-Databases/implementation-DynamoDB/)
-- DynamoDB - ec2 simple inventory streamlit app(3 text fields).
+## Day 2 - AWS Compute Services Overview
 
-Implementation of Day 3 Dynamodb - [terraform streamlit app deployment](Day3-EBS-Databases/implementation-DynamoDB/)
-- DocumentDB - ec2 - s3 simple inventory streamlit app(2 text fields and 1 image field).
+### Notes
+- [AWS Compute Services Overview](Day2-aws-iam-compute-storage/README)
+
+### Implementation
+- [Terraform Streamlit App Deployment](Day2-aws-iam-compute-storage/implementation/)
+  - Configured an S3 bucket to store Terraform remote state for the previously deployed app.
+  - Added Elastic Block Store (EBS) for persistent storage to the EC2 instance.
+---
+
+## Day 3 - AWS S3, EBS, and Databases
+
+### Notes
+- [AWS S3, EBS, and Databases](Day3-EBS-Databases/README)
+
+### Implementation
+- [RDS Deployment](Day3-EBS-Databases/implementation-RDS/)
+  - Integrated an RDS instance with the existing EC2 Streamlit app.
+
+- [DynamoDB Deployment](Day3-EBS-Databases/implementation-DynamoDB/)
+  - Deployed a simple inventory Streamlit app on EC2 using DynamoDB for storage, featuring three text fields.
+
+- [DocumentDB Deployment](Day3-EBS-Databases/implementation-DynamoDB/)
+  - Developed a Streamlit app hosted on EC2, connected to DocumentDB and S3. The app supports two text fields and one image field.
+---
+
+## Day 4 - Dynamodb-ElastiCache
+
+### Notes
+- [Dynamodb-ElastiCache](Day4-Dynamodb-ElastiCache/README)
+
+### Implementation
+- [MongoDB Deployment with EC2](Day4-Dynamodb-ElastiCache/implementation-2xEC2-MongoDB-Streamlit/)
+  - Set up two EC2 instances: one for MongoDB server and another for the Streamlit application.
+
+- [ElastiCache Deployment](Day4-Dynamodb-ElastiCache/implementation-Elasticache/)
+  - Implemented an application using ElastiCache to enhance performance and scalability.
+
+
+
