@@ -10,7 +10,7 @@ Implementation of Day 1 - [terraform streamlit app deployment](Day1-aws-technica
 
 ## 2. Day 2 - AWS Compute Services Overview
 
-Notes of Day 1 - [AWS Compute Services Overview](Day2-aws-iam-compute-storage/README)
+Notes of Day 2 - [AWS Compute Services Overview](Day2-aws-iam-compute-storage/README)
 
 Implementation of Day 2 - [terraform streamlit app deployment](Day2-aws-iam-compute-storage/implementation/)
 - used s3 bucket for terraform remote state for previous app.
@@ -19,7 +19,7 @@ Implementation of Day 2 - [terraform streamlit app deployment](Day2-aws-iam-comp
 
 ## 2. Day 3 - AWS S3-EBS-Databases
 
-Notes of Day 1 - [AWS S3-EBS-Databases](Day3-EBS-Databases/README)
+Notes of Day 3 - [AWS S3-EBS-Databases](Day3-EBS-Databases/README)
 
 Implementation of Day 3 rds - [terraform streamlit app deployment](Day3-EBS-Databases/implementation-RDS/)
 - previous rds - ec2 streamlit app.
