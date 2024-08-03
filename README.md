@@ -11,8 +11,6 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 [View the AWS Solution Architect Knowledge Badge Readiness Path on Notion](https://helix-minnow-e03.notion.site/9e06c208efcc4f59aaf5549210ae52c7?v=0633597eaccf46fea83dbdc762aa9b9d)
 
-<iframe src="https://helix-minnow-e03.notion.site/9e06c208efcc4f59aaf5549210ae52c7?v=0633597eaccf46fea83dbdc762aa9b9d" width="800" height="600" frameborder="0" allowfullscreen></iframe>
-
 
 ## Day 1 - AWS Technical Essentials
 
