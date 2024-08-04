@@ -15,7 +15,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 ## Day 1 - AWS Technical Essentials
 
 ### Notes
-- [AWS Technical Essentials](Day1-aws-technical-essentials/README)
+- [AWS Technical Essentials](Day1-aws-technical-essentials/README.md)
 
 ### Implementation
 - [Terraform Streamlit App Deployment](Day1-aws-technical-essentials/implementation/)
@@ -25,7 +25,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 ## Day 2 - AWS Compute Services Overview
 
 ### Notes
-- [AWS Compute Services Overview](Day2-aws-iam-compute-storage/README)
+- [AWS Compute Services Overview](Day2-aws-iam-compute-storage/README.md)
 
 ### Implementation
 - [Terraform Streamlit App Deployment](Day2-aws-iam-compute-storage/implementation/)
@@ -36,7 +36,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 ## Day 3 - AWS S3, EBS, and Databases
 
 ### Notes
-- [AWS S3, EBS, and Databases](Day3-EBS-Databases/README)
+- [AWS S3, EBS, and Databases](Day3-EBS-Databases/README.md)
 
 ### Implementation
 - [RDS Deployment](Day3-EBS-Databases/implementation-RDS/)
@@ -52,7 +52,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 ## Day 4 - Dynamodb-ElastiCache
 
 ### Notes
-- [Dynamodb-ElastiCache](Day4-Dynamodb-ElastiCache/README)
+- [Dynamodb-ElastiCache](Day4-Dynamodb-ElastiCache/README.md)
 
 ### Implementation
 - [MongoDB Deployment with EC2](Day4-Dynamodb-ElastiCache/implementation-2xEC2-MongoDB-Streamlit/)
@@ -70,7 +70,7 @@ Certainly! Here’s how you can update your main README to include Day 5:
 ## Day 5 - AWS Networking Basics
 
 ### Notes
-- [AWS Networking Basics](Day5-AWS-Network/README)
+- [AWS Networking Basics](Day5-AWS-Network/README.md)
 
 ### Implementation
 - [Network Connectivity Deployment](Day5-AWS-Network/implementation-network/)
