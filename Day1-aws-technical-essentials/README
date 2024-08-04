@@ -582,4 +582,3 @@ Here’s a summary of what you learned about Traffic Routing with Elastic Load B
   - **Auto Scaling Groups**: Specify where instances are deployed and their types (On-Demand or Spot Instances).
   - **Scaling Policies**: Manage when to scale based on metrics and alarms from CloudWatch. Types include Simple, Step, and Target Tracking Scaling Policies.
 
-##### 1.1.6.6.
