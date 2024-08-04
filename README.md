@@ -63,3 +63,19 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 
 
+Certainly! Here’s how you can update your main README to include Day 5:
+
+---
+
+## Day 5 - AWS Networking Basics
+
+### Notes
+- [AWS Networking Basics](Day5-AWS-Network/README)
+
+### Implementation
+- [Network Connectivity Deployment](Day5-AWS-Network/implementation-network/)
+  - Deployed a Virtual Private Cloud (VPC) with multiple subnets using Terraform.
+  - Configured public and private subnets, route tables, and NAT Gateway.
+  - Validated network connectivity between instances and tested internet access via NAT Gateway.
+
+---
