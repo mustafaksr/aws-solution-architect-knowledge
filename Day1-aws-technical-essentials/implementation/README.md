@@ -15,6 +15,7 @@ aws ls #aws mb s3://test-bucket-create-sd4gsge8 && aws rb s3://test-bucket-creat
 ```
 terraform init
 terraform plan
+terraform graph | dot -Tpng > graph.png
 terraform apply
 terraform destroy
 

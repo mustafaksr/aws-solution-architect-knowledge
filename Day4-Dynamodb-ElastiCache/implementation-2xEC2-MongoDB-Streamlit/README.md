@@ -20,6 +20,7 @@ terraform
 ```bash
 terraform init
 terraform plan
+terraform graph | dot -Tpng > graph.png
 terraform apply
 terraform destroy
 

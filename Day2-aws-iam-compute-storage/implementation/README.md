@@ -28,6 +28,7 @@ sudo cat /var/log/cloud-init-output.log # all log
 ```
 terraform init
 terraform plan
+terraform graph | dot -Tpng > graph.png
 terraform apply
 terraform destroy
 
