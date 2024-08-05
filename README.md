@@ -79,3 +79,29 @@ Certainly! Here’s how you can update your main README to include Day 5:
   - Validated network connectivity between instances and tested internet access via NAT Gateway.
 
 ---
+
+## Day 6 - Mastering AWS API & Network Connectivity
+
+### Notes
+- [AWS API Gateway and Network Connectivity](Day6-API-NetworkConnectivity-SecurityGroups/README.md)
+
+### Implementations
+- [EC2 API Deployment](Day6-API-NetworkConnectivity-SecurityGroups/implementations/implementation-api/)
+  - Deployed an external API on EC2, integrating routes for predictions and documentation.
+  - Utilized Docker for containerization and Nginx to expose the API externally.
+  - Tested API functionality with /, /docs, and /predict routes.
+
+- [AWS Network Integration](Day6-API-NetworkConnectivity-SecurityGroups/implementations/implementation-difference-nacl-securitygroups/)
+  - Enhanced network setup with public-private connectivity using Terraform.
+  - Implemented AWS Security Groups and Network ACLs, tested HTTP accessibility for EC2 instances.
+
+- [Previous AWS Network Integration](Day6-API-NetworkConnectivity-SecurityGroups/implementations/implementation-network-gateways/)
+  - Deployed a Virtual Private Cloud (VPC) with multiple subnets using Terraform.
+  - Configured public and private subnets, route tables, and NAT Gateway.
+  - Validated network connectivity between instances and tested internet access via NAT Gateway.
+
+
+
+
+
+---
