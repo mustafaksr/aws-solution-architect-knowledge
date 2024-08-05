@@ -76,7 +76,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 ---
 
-## Day 6 - Mastering AWS API & Network Connectivity
+## Day 6 - AWS API & Network Connectivity
 
 ### Notes
 - [AWS API Gateway and Network Connectivity](Day6-API-NetworkConnectivity-SecurityGroups/README.md)
