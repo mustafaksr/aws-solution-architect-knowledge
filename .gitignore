@@ -5,3 +5,4 @@ terraform.tfstate.backup
 FlaskApp-Employee-Directory-Application
 .terraform.tfstate.lock.info
 key.pem
+terraform.tfstate

@@ -1,0 +1,6 @@
+flask==3.0.3
+scikit-learn==1.2.1
+gunicorn
+flask-swagger-ui
+pandas==2.2.2
+numpy==1.23.5
