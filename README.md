@@ -61,10 +61,6 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 - [ElastiCache Deployment](Day4-Dynamodb-ElastiCache/implementation-Elasticache/)
   - Implemented an application using ElastiCache to enhance performance and scalability.
 
-
-
-Certainly! Here’s how you can update your main README to include Day 5:
-
 ---
 
 ## Day 5 - AWS Networking Basics
@@ -99,9 +95,5 @@ Certainly! Here’s how you can update your main README to include Day 5:
   - Deployed a Virtual Private Cloud (VPC) with multiple subnets using Terraform.
   - Configured public and private subnets, route tables, and NAT Gateway.
   - Validated network connectivity between instances and tested internet access via NAT Gateway.
-
-
-
-
 
 ---
