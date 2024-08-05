@@ -393,7 +393,9 @@ Here’s a step-by-step guide to test connectivity between the various component
 **3.2. Test from Private EC2 Instances**
 
 1. **SSH into a Private EC2 Instance (from a public instance):**
-   - Use SSH forwarding to access a private EC2 instance.
+   - Use EC2 instance connect with endpoint.
+   - You need to create endpoint manually
+   - Click create Endpoint, Select EC2 Instance Connect Endpoint ,  select correct vpc and subnet, then click create. 
 
 2. **Check Internet Connectivity:**
    - Test access to an external website:
@@ -423,14 +425,6 @@ Here’s a step-by-step guide to test connectivity between the various component
 By following these instructions, you can verify the connectivity and proper functioning of your AWS infrastructure.
 
 ### RESULTS
-
-Creaate EC2 Instance Connect Endpoint for private vms to connect web-based ssh from Endpoints.
-- Select VPC
-- Select Private Subnet
-- Click Create 
-- Select Connect using EC2 Instance Connect Endpoint from EC2 Instance Connect
-- Select Endpoint
-- Click Connect
 
 ```bash
 ### From public-vm-1 to others.
