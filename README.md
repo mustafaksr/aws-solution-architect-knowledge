@@ -96,4 +96,20 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
   - Configured public and private subnets, route tables, and NAT Gateway.
   - Validated network connectivity between instances and tested internet access via NAT Gateway.
 
+## Day 7 - AWS Networking & Lambda Implementations
+
+### Notes
+- [AWS Network Monitoring & Troubleshooting and Lambda Foundations](Day7-NetworkMon-Lambda/README.md)
+
+### Implementations
+- [Image Resizer with AWS Lambda](Day7-NetworkMon-Lambda/implementations/lambda-s3-image-resizer/)
+  - Developed a serverless image resizer using AWS Lambda and S3.
+  - Images are uploaded to an S3 bucket, processed with a Python-based Lambda function using Pillow, and saved to another S3 bucket.
+  - Deployed the infrastructure using Terraform.
+
+- [EC2 Abuse Monitoring](Day7-NetworkMon-Lambda/implementations/monitoring-lambda-sns-not-tested/)
+  - Implemented a monitoring solution to detect and respond to abusive EC2 usage.
+  - A Lambda function, triggered by CloudWatch, stops EC2 instances showing suspicious behavior.
+  - Deployed the necessary resources using Terraform.
+
 ---
