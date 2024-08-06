@@ -8,3 +8,4 @@ key.pem
 terraform.tfstate
 lambda_package
 venv
+.vscode
