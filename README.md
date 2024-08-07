@@ -113,3 +113,26 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
   - Deployed the necessary resources using Terraform.
 
 ---
+
+
+## Day 8 - Scaling and Architecting Serverless Applications on AWS
+
+### Notes
+- [Architecting Serverless Applications & Scaling Considerations](Day8-Architecting-Scaling-Serverless/README.md)
+
+### Implementations
+- [Lambda Image Resizer with Auto-Scaling](Day8-Architecting-Scaling-Serverless/implementations/lambda-s3-image-resizer-autoscale/)
+  - Enhanced the image resizer Lambda function from Day 7 by implementing auto-scaling.
+  - Input images (.jpg) are uploaded to an S3 bucket, resized using a Python-based Lambda function with Pillow, and saved to another S3 bucket.
+  - Deployed the infrastructure using Terraform.
+
+- [Serverless Deployment with AWS App Runner](Day8-Architecting-Scaling-Serverless/implementations/app-runner-ecr/)
+  - Built and deployed a Docker image for an EJS-templating web app to AWS App Runner.
+  - Tagged the image, pushed it to an ECR repository, and deployed it to App Runner for a serverless deployment.
+
+- [API Gateway Integration](Day8-Architecting-Scaling-Serverless/implementations/lambda-apigateway/)
+  - Developed a Node.js Express API, deployed it using AWS Lambda, and integrated it with AWS API Gateway.
+  - Created a simple, scalable serverless API solution.
+
+
+  ---
