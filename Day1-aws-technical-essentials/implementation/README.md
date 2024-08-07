@@ -1,4 +1,4 @@
-```
+```bash
 #install aws cli 
 sudo apt install python3-pip -y
 pip3 install awscli --upgrade --user
@@ -12,7 +12,7 @@ aws configure
 aws ls #aws mb s3://test-bucket-create-sd4gsge8 && aws rb s3://test-bucket-create-sd4gsge8
 ```
 
-```
+```hcl
 terraform init
 terraform plan
 terraform graph | dot -Tpng > graph.png
