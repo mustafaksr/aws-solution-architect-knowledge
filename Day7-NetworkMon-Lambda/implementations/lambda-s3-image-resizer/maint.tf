@@ -4,7 +4,7 @@ provider "aws" {
 
 # Create input S3 bucket
 resource "aws_s3_bucket" "input_bucket" {
-  bucket        = var.ınput_bucket
+  bucket        = var.input_bucket
   force_destroy = true
 }
 

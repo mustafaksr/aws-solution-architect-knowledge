@@ -5,7 +5,7 @@ variable "aws_region" {
 
 }
 
-variable "ınput_bucket" {
+variable "input_bucket" {
   type        = string
   description = "your input bucket name"
   default     = "input-bucket-54s546gs4e84h"
