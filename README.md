@@ -96,6 +96,8 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
   - Configured public and private subnets, route tables, and NAT Gateway.
   - Validated network connectivity between instances and tested internet access via NAT Gateway.
 
+---
+
 ## Day 7 - AWS Networking & Lambda Implementations
 
 ### Notes
@@ -136,3 +138,27 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 
   ---
+
+
+## Day 9 - Database Migration, S3 Cost Optimization, and EBS Management
+
+### Notes
+- [Database Migration with AWS SCT and DMS](Day9-DBMigration-S3-EBS/README.md#1-introduction-to-database-migration)
+- [Amazon S3 Cost Optimization](Day9-DBMigration-S3-EBS/README.md#2-amazon-simple-storage-service-amazon-s3-cost-optimization)
+- [Amazon EBS Cost Optimization](Day9-DBMigration-S3-EBS/README.md#3-deep-dive-amazon-elastic-block-store-amazon-ebs-cost-optimization)
+
+### Implementations
+- [EBS Cost Optimization](Day9-DBMigration-S3-EBS/implementations/ebs-cost-optimization/)
+  - Configured Terraform to manage EBS volumes with daily snapshot policies and cost monitoring.
+  - Analyzed and optimized EBS volume types and snapshot costs using AWS Compute Optimizer.
+
+- [MongoDB Database Migration](Day9-DBMigration-S3-EBS/implementations/ec2-mongodb-database-migration/)
+  - Deployed an EC2 instance for MongoDB, migrated on-premises databases, and validated the setup with test queries.
+
+- [RDS Database Migration](Day9-DBMigration-S3-EBS/implementations/rds-database-migration/)
+  - Utilized Terraform to deploy RDS instances and migrated databases from on-premises to RDS, ensuring a smooth transition.
+
+- [S3 Lifecycle Management](Day9-DBMigration-S3-EBS/implementations/s3-lifecycle-retention/)
+  - Implemented S3 lifecycle policies to manage storage costs effectively, transitioning objects to different storage classes based on age and access patterns.
+
+---
