@@ -529,7 +529,7 @@
 
 ##### 1.1.6.4. Selecting between ELB types
 
-Here’s a summary of what you learned about Traffic Routing with Elastic Load Balancing (ELB) in AWS, formatted as markdown:
+
 
 ### Traffic Routing with Elastic Load Balancing
 

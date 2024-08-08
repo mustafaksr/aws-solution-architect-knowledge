@@ -261,7 +261,6 @@ Services in the Image:
 
 #### 1.2.1 File storage: Amazon FSx for Windows File Server
 
-Here’s a summary of Amazon FSx for Windows File Server:
 
 - **Fully Managed Windows File Server**: Provides a fully managed, reliable, and scalable Windows file server with native Windows file system support and integration with Microsoft Active Directory.
   
@@ -279,7 +278,7 @@ Here’s a summary of Amazon FSx for Windows File Server:
 
 - **Migration and Integration**: Facilitates migration using AWS DataSync and integrates seamlessly with existing Windows applications and workloads. Ideal for use cases like home directories, business applications, media workflows, and data analytics.
 
-This summary highlights the core features and benefits of Amazon FSx for Windows File Server.
+input
 
 #### 1.2.1 File storage: Amazon FSx for NetApp ONTAP
 
@@ -571,7 +570,7 @@ This summary highlights the core features and benefits of Amazon FSx for Windows
 
 - **Managed Failback**: After disaster recovery, CloudEndure updates and restores on-premises systems to their operational state and manages the failback process.
 
-#### 1.5.1 Summary of the AWS Storage Portfolio
+#### 1.5.1 AWS Storage Portfolio
 
 ![aws-storage-protfolio](images/aws-storage-portf.png)
 

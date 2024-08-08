@@ -138,7 +138,7 @@
 
 These services cover a range of needs from high-speed transfers, real-time data streaming, to integration with existing systems and tools.
 
-Here's a summary of AWS Cloud Data Migration Services:
+
 
 **Offline Data Transfer Services**
 
@@ -676,7 +676,7 @@ What is the total cost estimate for the new application?
 
 ##### 1.2.12.3 CloudEndure Disaster Recovery and AWS Application Migration Service
 
-Here's a summary of what you learned about CloudEndure Disaster Recovery and AWS Application Migration Service:
+input
 
 **CloudEndure Disaster Recovery:**
 - **Minimizes Downtime and Data Loss**: Provides fast, reliable recovery for physical, virtual, and cloud-based servers into AWS.
