@@ -162,3 +162,21 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
   - Implemented S3 lifecycle policies to manage storage costs effectively, transitioning objects to different storage classes based on age and access patterns.
 
 ---
+
+
+## Day 10 - Deep into AWS Storage Gateway, Step Functions, and AWS Backup
+
+### Notes
+- [AWS Storage Gateway Deep Dive: Volume Gateway](Day10-StorageGateway-StepFn-AWS-Backup/README.md)
+- [AWS Storage Gateway Deep Dive: Amazon S3 File Gateway](Day10-StorageGateway-StepFn-AWS-Backup/README.md)
+- [Introduction to AWS Step Functions](Day10-StorageGateway-StepFn-AWS-Backup/README.md)
+- [AWS Backup Primer](Day10-StorageGateway-StepFn-AWS-Backup/README.md)
+
+### Implementations
+- [Step Functions ETL Process](Day10-StorageGateway-StepFn-AWS-Backup/implementations/step-function/)
+  - Designed and deployed an AWS Step Function to manage an ETL (Extract, Transform, Load) process.
+  - Implemented a step function to extract data from a JSON file, transform it (e.g., convert to uppercase), and load the transformed data into an S3 bucket.
+  - Streamlined data processing tasks by automating the workflow.
+
+
+---
