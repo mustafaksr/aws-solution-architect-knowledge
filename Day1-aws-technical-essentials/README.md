@@ -1,8 +1,8 @@
-## 1. Day 1 - AWS Technical Essentials
+# 1. Day 1 - AWS Technical Essentials
 
-### 1.1. Introduction to AWS
+## 1.0. Introduction to AWS
 
-#### 1.1.1.1. What is AWS?
+## 1.1. What is AWS?
 
 - **Cloud computing** is the on-demand delivery of IT resources with pay-as-you-go pricing.
 - **Deployment models** include on-premises, cloud, and hybrid, each offering varying levels of control and flexibility.
@@ -13,7 +13,7 @@
 - Cloud computing through AWS increases **speed and agility** by reducing setup times from weeks to minutes.
 - **Global reach** is easily achieved with AWS, allowing applications to be deployed in multiple regions quickly.
 
-#### 1.1.1.2. AWS Global Infrastructure
+## 1.2. AWS Global Infrastructure
 
 - **AWS Global Infrastructure** consists of Regions, Availability Zones (AZs), and Edge Locations that form the physical foundation for AWS services.
 - **Regions** are geographic areas around the world where AWS hosts data centers. Each Region is independent and isolated from others, with unique Region codes (e.g., `us-east-1` for N. Virginia).
@@ -23,7 +23,7 @@
 - **High Availability & Resiliency** are achieved by replicating workloads across multiple AZs, ensuring that if one AZ fails, another can handle the traffic.
 - **Edge Locations** are global sites where content is cached to reduce latency for end-users. Amazon CloudFront uses these locations to deliver content quickly and efficiently.
 
-#### 1.1.1.3. Interacting With AWS
+## 1.3. Interacting With AWS
 
 - **Every action in AWS** is an API call that is authenticated and authorized, whether through the AWS Management Console, AWS CLI, or AWS SDKs.
 - **AWS Management Console** allows you to manage cloud resources via a web-based interface, making it easy to create and manage resources, especially for beginners.
@@ -31,7 +31,7 @@
 - **AWS CLI** is a unified command-line tool to manage AWS services programmatically, enabling automation through scripts and handling multiple services from a single interface.
 - **AWS SDKs** allow developers to integrate AWS services into their applications using popular programming languages like Python, Java, and more.
 - **Example Usage**: The AWS CLI can list S3 buckets, and AWS SDKs can interact with services programmatically, such as using Boto3 in Python to manage EC2 instances.
-#### 1.1.1.4. Security and the AWS Shared Responsibility Model
+## 1.4. Security and the AWS Shared Responsibility Model
 
 - **Shared Responsibility Model**: Security in the AWS Cloud is a shared responsibility between AWS and the customer, divided into "security of the cloud" (AWS's responsibility) and "security in the cloud" (customer's responsibility).
 
@@ -49,7 +49,7 @@
 
 - **Compliance and Control**: Customers must align AWS service usage with their IT environment's security standards, laws, and regulations, maintaining full control and responsibility over their data and content.
 
-#### 1.1.1.5. Protecting the AWS Root User
+## 1.5. Protecting the AWS Root User
 
 - The AWS root user is the initial identity created with an AWS account, having full access to all AWS services and resources.
 - The root user credentials include an email/password combination for AWS Management Console access and access keys for programmatic access via AWS CLI/API.
@@ -61,7 +61,7 @@
   - Use IAM users for regular administrative and everyday tasks.
 - MFA enhances security by requiring two or more authentication methods, such as a password and a one-time passcode from a device.
 - AWS supports various MFA devices, including virtual MFA apps (e.g., Google Authenticator), hardware TOTP tokens, and FIDO security keys.
-#### 1.1.1.6. AWS Identity and Access Management
+## 1.1.6. AWS Identity and Access Management
 
 - **Authentication vs. Authorization**: Authentication confirms the user’s identity, while authorization grants permissions to access AWS resources.
 - **IAM Overview**: IAM helps manage access to AWS accounts and resources, enabling granular control over who can do what in the AWS environment.
@@ -72,7 +72,7 @@
 
 <hr style="height: 5px; background-color: white; border: none;">
 
-### 1.1.2. AWS Compute 
+## 1.2. AWS Compute 
 
 #### 1.1.2.1. Compute as a Service
 
@@ -198,7 +198,7 @@
 
 <hr style="height: 5px; background-color: white; border: none;">
 
-### 1.1.3. AWS Networking
+## 1.3. AWS Networking
 
 ##### 1.1.3.1. Introduction to Networking
 
@@ -267,9 +267,9 @@
 
 <hr style="height: 5px; background-color: white; border: none;">
 
-### 1.1.4. AWS Storage
+## 1.4. AWS Storage
 
-##### 1.1.4.1. Storage Types
+### 1.4.1. Storage Types
 
 - **File Storage**
   - Stores data as files in a hierarchical structure with folders and subfolders.
@@ -288,9 +288,9 @@
   - Well-suited for data archiving, backup and recovery, and storing rich media due to its scalability and cost-effectiveness.
 
 
-##### 1.1.4.2. Amazon Elastic File System (Amazon EFS)
+### 1.4.2. Amazon Elastic File System (Amazon EFS)
 
-### Amazon Elastic File System (Amazon EFS)
+#### Amazon Elastic File System (Amazon EFS)
 - **Automatic Scaling**: EFS automatically grows and shrinks as files are added or removed, eliminating the need for manual capacity management.
 - **No Provisioning Needed**: Users don't need to provision or manage storage capacity and performance; EFS handles it automatically.
 - **High Connectivity**: Supports connecting tens, hundreds, or even thousands of compute instances simultaneously with consistent performance.
@@ -298,7 +298,7 @@
 - **Pay-as-You-Go**: Charges are based on the amount of storage used, with no minimum fees or setup costs.
 - **Easy Setup**: Provides a simple web interface for quick creation and configuration of file systems.
 
-### Amazon FSx
+#### Amazon FSx
 - **Managed Services**: Fully managed file systems offering reliability, security, and scalability.
 - **Variety of File Systems**: Includes Lustre, NetApp ONTAP, OpenZFS, and Windows File Server, catering to different needs and performance profiles.
 - **FSx for NetApp ONTAP**: Combines NetApp’s features with AWS scalability, suitable for existing ONTAP deployments and accessible from multiple operating systems.
@@ -306,7 +306,7 @@
 - **FSx for Windows File Server**: Delivers a native Windows file system with SMB protocol support, simplifying file server management for Windows applications.
 - **FSx for Lustre**: Optimized for high-performance storage with high throughput and IOPS, integrating with Amazon S3 for scalable data processing.
 
-##### 1.1.4.3. Block Storage with Amazon EC2 Instance Store and Amazon EBS
+### 1.4.3. Block Storage with Amazon EC2 Instance Store and Amazon EBS
 
 - **Amazon EC2 Instance Store**:
   - Provides temporary block-level storage directly attached to the host computer.
@@ -335,7 +335,7 @@
 
 
 
-##### 1.1.4.4. Object Storage with Amazon S3
+#### 1.4.4. Object Storage with Amazon S3
 
 - **Amazon S3 Overview**: Amazon Simple Storage Service (Amazon S3) is an object storage service that allows you to store and retrieve data from anywhere on the web. Unlike Amazon EBS, S3 is a standalone storage solution not tied to compute resources.
 
@@ -472,10 +472,10 @@
 | Amazon QLDB                                                | Ledger          | Systems of record, supply chain, registrations, banking transactions|
 
 
-##### 1.1.6. Monitoring, Load Balancing, and Scaling 
+### 1.4.3. Monitoring, Load Balancing, and Scaling 
 
 
-##### 1.1.6.1.
+#### 1.4.3.1. Monitoring
 
 - **Purpose of Monitoring**: Collects and analyzes data about the operational health and usage of AWS resources to address questions about performance, availability, capacity, and alerts.
 - **Metrics and Statistics**: Metrics are data points collected from AWS resources, such as CPU utilization or network performance. Analyzing these metrics helps in understanding resource health and performance trends.
@@ -491,7 +491,7 @@
   - **Create Cost-Effective Solutions**: Optimize resource allocation by identifying underused resources and adjusting them to reduce costs.
 
 
-##### 1.1.6.2. Amazon CloudWatch
+##### 1.4.3.1.1 Amazon CloudWatch
 
 - **Monitoring and Observability**: Amazon CloudWatch is a service that collects and analyzes resource data to provide insights into application performance and operational health.
 - **Key Features**:
@@ -506,7 +506,7 @@
 - **Integration and Security**: Works with AWS Identity and Access Management (IAM) for access control and integrates with other AWS services for automated and scalable monitoring solutions.
 
 
-##### 1.1.6.3. Solution Optimization
+#### 1.4.3.2 Load Balancing - Solution Optimization
 
 - **Availability Metrics**: Availability is expressed as a percentage of uptime, with more nines indicating higher availability. For example:
   - 99% availability means 3.65 days of downtime per year.
@@ -527,11 +527,8 @@
   - **Active-Active**: Both instances are active, allowing for better scalability but requires handling session data across servers, which is more complex for stateful applications.
 
 
-##### 1.1.6.4. Selecting between ELB types
 
-
-
-### Traffic Routing with Elastic Load Balancing
+#### 1.4.3.4 Selecting between ELB types - Traffic Routing with Elastic Load Balancing
 
 - **Load Balancing Concept**: Distributes incoming application traffic across multiple EC2 instances to ensure even load distribution and high availability.
 - **ELB Types**:
@@ -556,7 +553,7 @@
 | **User Authentication**       | Yes                 | No                  | No                           |
 
 
-##### 1.1.6.5. Amazon EC2 Auto Scaling
+#### 1.4.3.5. Amazon EC2 Auto Scaling
 
 - **Capacity Issues**: Auto Scaling addresses capacity issues by adding or removing servers to handle varying traffic loads, improving system availability and performance.
 

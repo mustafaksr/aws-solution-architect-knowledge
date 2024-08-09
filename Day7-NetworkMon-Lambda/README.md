@@ -1,6 +1,7 @@
-# 1. AWS Network – Monitoring and Troubleshooting
+# 7. Day7-NetworkMon-Lambda
+## 7.1. AWS Network – Monitoring and Troubleshooting
 
-## 1.1. Introduction
+### 7.1.1. Introduction
 
 - **Account Structure and Network Strategy**: Importance of having a well-defined account structure and network strategy for proactive monitoring, troubleshooting, and forensic analysis.
 - **Network Monitoring**: Essential for ensuring the availability, uptime, operation, and performance of networks, whether on-premises, in AWS, or hybrid.
@@ -16,7 +17,7 @@
 - **Monitoring Tools and Services**: Overview of the various tools and services available within AWS for network monitoring and troubleshooting.
 
 
-## 1.2. Develop Secure, Reliable, and High Performing Networks
+### 7.1.2. Develop Secure, Reliable, and High Performing Networks
 
 
 - **Network Monitoring Definition**: Involves monitoring the performance and fault tolerance of networking components like switches, routers, firewalls, servers, and VMs.
@@ -48,7 +49,7 @@
 - **Application Performance Optimization**: Ensures optimal application performance by monitoring API communication and network factors.
 
 
-## 1.3. Monitoring for Troubleshooting
+### 7.1.3. Monitoring for Troubleshooting
 
 - **Importance of Monitoring**: Monitoring is crucial for network troubleshooting, helping to identify, diagnose, and resolve issues within a network by tracking key metrics.
 - **Benchmark Normal Traffic**: Establish what constitutes normal traffic to differentiate between expected increases (e.g., media attention) and potential attacks.
@@ -68,7 +69,7 @@
 - **Incident Response**: Utilize monitoring dashboards during incidents to diagnose and respond to issues, updating KPIs and thresholds as necessary.
 
 
-## 1.4. How Security Applies
+### 7.1.4. How Security Applies
 
 1. **Importance of Network Security Monitoring**:
    - Network security monitoring focuses on securing the network by detecting suspicious behavior and unauthorized changes.
@@ -105,7 +106,7 @@
 
 
 
-## 1.5. Fundamentals of Tools and Services
+### 7.1.5. Fundamentals of Tools and Services
 
 - **AWS Monitoring and Logging**: Essential for maintaining reliability, availability, and performance of AWS and on-premises resources by tracking service usage and network traffic.
 - **Working Backwards**: A best practice in AWS to identify critical metrics based on customer experience, setting targets, measurement approaches, priorities, and building alarms and notifications.
@@ -122,7 +123,7 @@
 - **Throughput vs. Bandwidth**: Bandwidth is the maximum data capacity of a medium, while throughput is the actual data transmitted, crucial for network performance forecasting and planning.
 
 
-## 1.6. Monitoring Your Network with Amazon CloudWatch 
+### 7.1.6. Monitoring Your Network with Amazon CloudWatch 
 
 - **Monitoring Importance**: Essential for maintaining reliability, availability, and performance of AWS networks and solutions.
 - **CloudWatch Metrics**: Metrics provide snapshots of resource and application performance, enabling trend analysis and baseline establishment.
@@ -142,7 +143,7 @@
 - **Shared Responsibility Model**: Understand that additional configuration is needed to fully leverage CloudWatch metrics in alignment with AWS’s shared responsibility model.
 
 
-## 1.7. Monitoring Your Network with Amazon CloudWatch - 2 
+### 7.1.7. Monitoring Your Network with Amazon CloudWatch - 2 
 
 - **Scenario 1: Identifying HTTP 503 Errors**:
   - The application team reported intermittent issues with a legacy application hosted on two EC2 instances behind a Classic Load Balancer (CLB).
@@ -174,7 +175,7 @@
   - The next lesson introduces the AWS Systems Manager Agent (SSM Agent) tool for further network management.
 
 
-## 1.8. AWS Systems Manager Agent (SSM Agent)
+### 7.1.8. AWS Systems Manager Agent (SSM Agent)
 
 - **AWS Systems Manager (SSM)**: An AWS service for managing and controlling infrastructure across AWS resources.
 - **SSM Agent**: Amazon software installed on Amazon EC2 instances, on-premises servers, or virtual machines (VMs) for resource management.
@@ -203,7 +204,7 @@
 
 
 
-## 1.9.
+### 7.1.9. CloudWatch Dashboards
 
 - **CloudWatch Dashboards**: Customizable home pages in CloudWatch that allow monitoring of resources across multiple Regions and accounts.
 - **Customizable Views**: Create single or multiple dashboards with various metrics and alarms, tailored for different operational needs.
@@ -223,9 +224,10 @@
 - **Cost Considerations**: Queries and data processing in CloudWatch Logs Insights may incur charges based on the amount of data queried.
 
 
-## 1.10. Amazon CloudWatch Alarms
+### 7.1. Amazon CloudWatch Alarms
 
-## Amazon CloudWatch Alarms Summary
+
+### 7.1.1. Amazon CloudWatch Alarms Summary
 
 - **Purpose of CloudWatch Alarms**: 
   - CloudWatch alarms help monitor CloudWatch metrics by setting thresholds that trigger actions like sending notifications or auto-remediations when metrics exceed or fall below specified values.
@@ -280,7 +282,7 @@
 
 
 
-## 1.11. VPC Flow Logs
+### 7.1.2. VPC Flow Logs
 
 - **Definition**: VPC Flow Logs capture information about IP traffic going to and from network interfaces within an Amazon VPC.
 - **Purpose**: They provide visibility for monitoring network aspects and offer a history of network traffic flows.
@@ -321,7 +323,7 @@ vpc flow log:
 ![VPC FLOW LOG](images/image_vpc_flowlogs.png)
 
 
-## 1.12. AWS VPC Traffic Mirroring Summary
+### 7.1.13. AWS VPC Traffic Mirroring Summary
 
 
 1. **Purpose of Traffic Mirroring**:
@@ -383,7 +385,7 @@ vpc flow log:
 
 
 
-## 1.13. VPC Traffic Mirroring and Open-Source Tools
+### 7.1.4. VPC Traffic Mirroring and Open-Source Tools
 
 1. **Network Traffic Monitoring**:
    - **Zeek**: Open-source network security monitor for intrusion detection and network traffic analysis.
@@ -411,7 +413,7 @@ vpc flow log:
    - Both Zeek and Suricata integrate with VPC Traffic Mirroring for enhanced network monitoring and security.
 
 
-## 1.14. VPC Reachability Analyzer Summary
+### 7.1.5. VPC Reachability Analyzer Summary
 
 1. **Purpose**: The VPC Reachability Analyzer helps troubleshoot network connectivity issues within Amazon VPCs by verifying configurations and connectivity between source and destination resources.
 
@@ -486,7 +488,7 @@ vpc flow log:
 
 
 
-## 1.15. AWS Transit Gateway Network Manager Overview
+### 7.1.6. AWS Transit Gateway Network Manager Overview
 
 1. **Centralized Network Management**: AWS Transit Gateway Network Manager allows centralized management of networks built around transit gateways, providing a global view of the network.
 
@@ -522,10 +524,10 @@ vpc flow log:
 
 
 
-# 2. Getting Started with AWS CloudFormation
+## 7.2. Getting Started with AWS CloudFormation
 
 
-## 2.1. CloudFormation Basics Summary
+### 7.2.1. CloudFormation Basics Summary
 
 1. **Infrastructure as Code**: CloudFormation allows you to model AWS and third-party resources using a structured text format (YAML or JSON) called a CloudFormation template.
 
@@ -559,7 +561,7 @@ vpc flow log:
 
 
 
-## 2.1. Basic Technical Concepts of CloudFormation
+### 7.2.2. Basic Technical Concepts of CloudFormation
 
 1. **Resources**:
    - Entities created within AWS (e.g., Amazon S3 buckets, Amazon EC2 instances, Amazon SQS queues).
@@ -581,7 +583,7 @@ vpc flow log:
 6. **Outputs**:
    - Values from the stack that can be accessed via the console or programmatically after stack creation.
 
-### Creating CloudFormation Stacks using the AWS Management Console
+#### 7.2.2.1 Creating CloudFormation Stacks using the AWS Management Console
 
 1. **Open the Console**:
    - Search for and select CloudFormation in the AWS Management Console.
@@ -612,7 +614,7 @@ vpc flow log:
 
 ![cloud formations console](images/cloud_formation_console.png)
 
-### Creating CloudFormation Stacks using the AWS CLI
+### 7.2.3 Creating CloudFormation Stacks using the AWS CLI
 
 1. **Use the AWS CLI**:
    - Run the `aws cloudformation create-stack` command with the stack name and template location (local file or S3).
@@ -623,9 +625,9 @@ vpc flow log:
 ![cloud formations cli](images/cloud_formation_cli.png)
 
 
-# 3. AWS Well-Architected Considerations for Financial Services
+## 7.3. AWS Well-Architected Considerations for Financial Services
 
-## 3.1. Introduction
+### 7.3.1. Introduction
 
 - **AWS Well-Architected Framework Overview**:
   - Helps understand pros and cons of decisions made on AWS.
@@ -667,7 +669,7 @@ vpc flow log:
   - Defines workload, applies AWS Well-Architected lenses or custom lenses, and generates an improvement plan.
   - Offers mechanisms to track and measure progress.
 
-## 3.2.Financial Services Industry (FSI) Lens
+### 7.3.2.Financial Services Industry (FSI) Lens
 
 1. **Purpose of AWS Well-Architected Lenses**:
    - AWS Well-Architected Lenses extend the AWS Well-Architected Framework to address specific industry and technology domains.
@@ -707,7 +709,7 @@ vpc flow log:
 9. **Next Steps**:
    - The next lesson will include a simulated example of an FSI Lens review process.
 
-## 3.3.Example: AWS Financial Services Industry (FSI) Lens Review
+### 7.3.3.Example: AWS Financial Services Industry (FSI) Lens Review
 
 1. **Review Purpose**:
    - Conducted a review using the FSI Lens for a business-critical financial data workload, following a previous base Well-Architected Framework Review.
@@ -739,11 +741,10 @@ vpc flow log:
 
 
 
-# 4. AWS Lambda Foundations
+## 7.4. AWS Lambda Foundations
 
 
-
-## 4.1 Introduction
+### 7.4.1 Introduction
 
 - **Serverless Computing**: Allows developers to focus on writing code without managing underlying infrastructure, as AWS handles all operational tasks like scaling, monitoring, and maintaining servers.
 
@@ -765,7 +766,7 @@ vpc flow log:
 
 
 
-## 4.2. How AWS Lambda Works
+### 7.4.2. How AWS Lambda Works
 
 - **Event-driven architecture**: AWS Lambda operates based on events that trigger functions to execute the code within.
 - **Invocation models**:
@@ -808,7 +809,7 @@ vpc flow log:
 
 
 
-## 4.3. AWS Lambda Function Permissions
+### 7.4.3. AWS Lambda Function Permissions
 
 - **Lambda Function Permissions** involve two key aspects:
   - **Permission to Invoke**: Controlled via an IAM resource-based policy.
@@ -847,7 +848,7 @@ vpc flow log:
   - Enables secure, private access to Lambda APIs without needing public IPs or external connections.
 
 
-## 4.4. Authoring AWS Lambda Functions
+### 7.4.4. Authoring AWS Lambda Functions
 
 
 - **Lambda Programming Model**: You can use your own code with AWS Lambda, adapting it to a serverless architecture without significant rewrites. Lambda supports various programming languages like Node.js, Python, Java, Go, C#, Ruby, and PowerShell.
@@ -886,7 +887,7 @@ vpc flow log:
 - **Automation with AWS SAM**: Utilize AWS Serverless Application Model (AWS SAM) to automate the deployment of serverless applications. SAM CLI can assist in testing, debugging, and validating Lambda functions locally before deploying them to the cloud.
 
 
-## 4.5. Configuring Your Lambda Functions
+### 7.4.5. Configuring Your Lambda Functions
 
 - **Memory Configuration:**
   - AWS Lambda allows up to 10 GB of memory allocation per function.
@@ -933,7 +934,7 @@ vpc flow log:
 
 
 
-## 4.6. Deploying and Testing Serverless Applications
+### 7.4.6. Deploying and Testing Serverless Applications
 
 - **Server-Based vs. Serverless Deployment**: Server-based deployments are like moving into a prebuilt house, where the infrastructure is predefined, while serverless deployments are akin to designing and building a house from scratch using detailed specifications.
 
@@ -969,7 +970,7 @@ vpc flow log:
 
 
 
-## 4.7. Monitoring and Troubleshooting
+### 7.4.7. Monitoring and Troubleshooting
 
 - **AWS Lambda Monitoring**:
   - **Amazon CloudWatch Integration**: AWS Lambda automatically monitors functions and reports metrics via CloudWatch.

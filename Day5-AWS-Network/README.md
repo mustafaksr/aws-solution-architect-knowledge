@@ -1,6 +1,7 @@
-## 1.1. AWS Networking Basics
+# 5. Day5-AWS-Network
+## 5.1. AWS Networking Basics
 
-### 1.1.1 AWS Networking Services
+### 5.1.1 AWS Networking Services
 
 1. **AWS Network Foundations:**
    - **Amazon VPC**: Provides isolated cloud resources in a virtual network.
@@ -47,7 +48,7 @@
     - The shared responsibility model ensures that while your network is agile, security measures are enforced to protect data as it traverses your network.
 
 
-### 1.1.2 AWS Networkk Deep Dive
+### 5.1.2 AWS Networkk Deep Dive
 
 ![network-services](images/network-services.png)
 
@@ -101,7 +102,7 @@
 8. **Shared Responsibility Model:**
    - AWS provides security "of" the cloud, while customers are responsible for security "in" the cloud, necessitating a well-thought-out security strategy leveraging AWS tools.
 
-### 1.1.3 Networking Concepts
+### 5.1.3 Networking Concepts
 
 ![network-services](images/network-types.png)
 
@@ -145,7 +146,7 @@ Network security protocols ensure that data traffic on your network is secure. T
 8. **Access and Storage**: Data access in AWS is configured using network attached storage (NAS) and storage area networks (SANs), ensuring high-speed, isolated networks for data integrity and security.
 
 
-### 1.1.4 AWS Implementation
+### 5.1.4 AWS Implementation
 
 1. **Logical Framework of Networking:** Understanding AWS networking begins with recognizing how data flows between devices within both local and global networks.
 
@@ -224,7 +225,7 @@ Network security protocols ensure that data traffic on your network is secure. T
 
 
 
-### 1.1.5 Amazon VPC Basics
+### 5.1.5 Amazon VPC Basics
 
 - AWS networking services connect workloads to on-premises environments, customers, and partners across a global high-speed network.
 - The AWS global infrastructure is designed for high availability, consisting of multiple Regions, Availability Zones, Local Zones, and edge locations.
@@ -274,7 +275,7 @@ A **NAT gateway** is a Network Address Translation (NAT) service. You can use a 
 
 
 
-## 1.2. Subnets, Gateways, and Route Tables Explained
+## 5.2. Subnets, Gateways, and Route Tables Explained
 
 Here’s an explanation of AWS Subnets, Gateways, and Route Tables using markdown tables and conceptual illustrations:
 
@@ -405,9 +406,9 @@ VPC
 ```
 
 
-## 1.3. Configuring and Deploying VPCs with Multiple Subnets
+## 5.3. Configuring and Deploying VPCs with Multiple Subnets
 
-### 1.3.1 AWS Virtual Private Cloud (VPC)
+### 5.3.1 AWS Virtual Private Cloud (VPC)
 
 1. **Definition**: An Amazon VPC is a virtual network in the AWS Cloud, akin to a virtual data center. It allows users to define a network boundary around AWS resources and services.
 
@@ -453,7 +454,7 @@ VPC
 12. **Resource Deployment**: Both VPC types support deployment of resources within the defined network boundaries of the AWS region.
 
 
-### 1.3.2 Deploying a Basic Amazon VPC
+### 5.3.2 Deploying a Basic Amazon VPC
 
 1. **Region Scope**: An Amazon VPC is confined to a single AWS Region. The choice of Region affects costs and latency. Verify that required AWS services are available in the selected Region.
 
@@ -487,7 +488,7 @@ VPC
 
 16. **Public Subnet Routing**: Ensure that public subnets have routes configured to the internet gateway for internet connectivity. Update the subnet's route table accordingly.
 
-### 1.3.3 AWS Security Features
+### 5.3.3 AWS Security Features
 
 #### Network ACLs (Access Control Lists)
 - **Definition**: Network ACLs act as firewalls for controlling traffic entering or leaving a subnet in a VPC.
@@ -530,7 +531,7 @@ VPC
 | **VPC Flow Logs**                                         | Records IP traffic information for network interfaces in your VPC, useful for diagnosing network problems and spotting security issues.                           |
 
 
-### 1.3.4 Adding High Availability in AWS
+### 5.3.4 Adding High Availability in AWS
 
 
 1. **Custom Amazon VPC**: High availability can be achieved by creating a Multi-AZ design with two subnets, each in a separate Availability Zone.
@@ -557,9 +558,9 @@ VPC
 By implementing these strategies, you can enhance the high availability, fault-tolerance, and scalability of your AWS resources and applications.
 
 
-## 1.4. Introduction – Multi-Tier Architecture
+## 5.4. Introduction – Multi-Tier Architecture
 
-### 1.4.1 Production-Ready: Multi-Tier Architecture for an Amazon VPC
+### 5.4.1 Production-Ready: Multi-Tier Architecture for an Amazon VPC
 
 1. **Security as a Shared Responsibility**:
    - Security is no longer solely the security team's job; it's everyone's responsibility in the modern continuous integration and deployment environment. 

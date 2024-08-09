@@ -1,7 +1,8 @@
-# 1. Introduction to Database Migration
+# 9. Day9-DBMigration-S3-EBS
+## 9.1. Introduction to Database Migration
 
 
-##  1.1.Envisioning and assessing migration (AWS SCT)
+### 9. 1.1.Envisioning and assessing migration (AWS SCT)
 
 - **Planning is Crucial:** Understand the scope of work based on database schema, data volumes, data types, resources, and stakeholders. Utilize integrated tools to support the project plan and automate migration.
 - **Initial Assessment:** Assess the current environment, evaluate risks, and create a business case. Identify subject matter experts, stakeholders, and plan capacity for the target system.
@@ -13,7 +14,7 @@
 - **Detailed Migration Report:** AWS SCT generates a detailed report listing migration objects requiring manual intervention, recommendations on handling unsupported features, and export options for tracking progress in a spreadsheet.
 
 
-##  1.2. Converting database schemas (AWS SCT)
+### 9. 1.2. Converting database schemas (AWS SCT)
 
 - **Database Object Conversion**: Involves converting tables, indexes, constraints, foreign keys, triggers, and stored procedures from the source database engine to the target engine. Does not include migrating actual data records.
 
@@ -47,7 +48,7 @@
 - **Next Steps**: After converting database schemas, AWS SCT can assist with converting application code and completing the data migration process.
 
 
-##  1.3. Converting applications (AWS SCT)
+### 9. 1.3. Converting applications (AWS SCT)
 
 - **Application Conversion Definition**
   - Porting application code written in languages like Java or C to a new target database.
@@ -80,7 +81,7 @@
   - Proceed with other steps in the database migration process.
 
 
-##  1.4. Converting scripts (AWS SCT)
+### 9. 1.4. Converting scripts (AWS SCT)
 
 - **Script Conversion Purpose**: Focuses on converting batch scripts used for ETL processes, database maintenance, disaster recovery, and other processes to ensure compatibility with the new database engine.
 - **AWS SCT Role**: AWS Schema Conversion Tool (SCT) is used to convert database scripts from Oracle, Microsoft, and Teradata to PostgreSQL-derived databases, including Amazon Aurora and Amazon Redshift.
@@ -95,7 +96,7 @@
 - **Next Steps**: Post-conversion, the emphasis shifts to actual data migration, utilizing AWS DMS to complete the transition.
 
 
-##  1.5. Integrating with third-party applications
+### 9. 1.5. Integrating with third-party applications
 
 - **Role of Third-Party Applications in Migration**: Third-party applications often rely on databases that must be supported during migration or may access migrated databases.
   
@@ -114,7 +115,7 @@
 - **Next Steps**: After planning and preparation, proceed to data transfer using AWS DMS and supporting modernized applications.
 
 
-##  1.6. Migrating data (AWS DMS)
+### 9. 1.6. Migrating data (AWS DMS)
 
 
 - **Data Migration Overview**: The process of moving data records from a source to a target database, typically required during database migration. It can be challenging, especially with large data volumes or complex data types (e.g., LOBs, spatial data).
@@ -146,7 +147,7 @@
 
 - **Post-Migration Steps**: After migrating schema and data, critical steps include testing, switching over production systems, and proper documentation.
 
-##  1.7. Functionally testing entire system
+### 9. 1.7. Functionally testing entire system
 
 1. **Confirm Migration Success**: Ensure the migration of schema, data, and applications to the target database has been completed as planned.
 
@@ -181,7 +182,7 @@
 16. **Review and Sign Off**: Have business stakeholders review the results and provide sign-off to confirm the system is functioning as expected.
 
 
-##  1.8. Tuning Performance
+### 9. 1.8. Tuning Performance
 
 1. **Understand Performance Criteria**:
    - Identify specific performance criteria for your application, such as response times or throughput, based on functional testing requirements.
@@ -233,7 +234,7 @@
 
 
 
-##  1.9. Integrating and deploying (AWS DMS)
+### 9. 1.9. Integrating and deploying (AWS DMS)
 
 1. **Minimize Downtime**: Aim for minimal downtime during the switch to the new database system. This can involve careful planning to ensure the migration fits within specified time windows and may be done in phases.
 
@@ -277,7 +278,7 @@
 
 16. **Integration with Other Systems**: Ensure that the new database integrates properly with other systems and applications in your environment.
 
-##  1.10. Training and transferring knowledge
+### 9. 1.10. Training and transferring knowledge
  
 1. **Assess Training Needs**: Identify the need for training on the new database engine, AWS, and AWS RDS based on your team's familiarity with these technologies.
 
@@ -311,7 +312,7 @@
 
 16. **Review and Adjust Training Programs**: Regularly review the effectiveness of training programs and make adjustments based on feedback and evolving needs.
 
-##  1.11. Documenting and Controlling Versions
+### 9. 1.11. Documenting and Controlling Versions
 
 1. **Importance of Documentation**: 
    - Essential for system deployment and operations.
@@ -367,9 +368,9 @@
     - Integrate with other AWS services and tools for a cohesive infrastructure management strategy.
 
 
-##  1.12. Planning for Support in Post-Production
+### 9. 1.12. Planning for Support in Post-Production
 
-### Planning for Support in Post-Production
+#### 9.Planning for Support in Post-Production
 
 1. **Assess Post-Migration Support Needs:**
    - Determine the types of support your application will require once migration is complete.
@@ -421,10 +422,10 @@
 
 
 
-# 2. Amazon Simple Storage Service (Amazon S3) Cost Optimization
+## 9.2. Amazon Simple Storage Service (Amazon S3) Cost Optimization
 
 
-##  2.1. Introduction to optimizing Amazon S3 costs
+### 9. 2.1. Introduction to optimizing Amazon S3 costs
 
 
 1. **Cost Optimization Overview**:
@@ -466,7 +467,7 @@
    - **AWS Cost and Usage Reports**: Detailed billing and usage reports.
 
 
-##  2.2. Storage Class Analysis
+### 9. 2.2. Storage Class Analysis
 
 - **Purpose**: Amazon S3 Storage Class Analysis helps monitor access patterns to optimize data storage costs by transitioning data to appropriate storage classes.
 - **Data Access Patterns**: It aids in understanding which data is accessed frequently (hot) versus infrequently (warm or cold).
@@ -486,7 +487,7 @@
 - **Scenario Updates**: Learn to interpret and act on analysis reports for effective data management.
 
 
-##  2.3. Amazon QuickSight
+### 9. 2.3. Amazon QuickSight
 
 - **Amazon QuickSight Overview**: Cloud-scale business intelligence (BI) service for data visualization and insights.
 - **Integration with Amazon S3**: Uses Amazon S3 analytics data to understand data usage and growth patterns.
@@ -506,7 +507,7 @@
 - **Pricing Information**: Details on QuickSight pricing can be found through the provided Amazon link.
 
 
-##  2.4. S3 Lifecycle policies
+### 9. 2.4. S3 Lifecycle policies
 
 - **Purpose**: S3 Lifecycle policies manage object storage cost-effectively throughout their lifecycle by automatically transitioning objects to different storage classes or deleting them based on their age.
   
@@ -557,7 +558,7 @@
   - Videos and tutorials are available to demonstrate the configuration of lifecycle policies.
 
 
-##  2.5. Archiving for Cost Savings
+### 9. 2.5. Archiving for Cost Savings
 
 1. **Purpose of Archiving**:
    - Archiving is designed for long-term data preservation and retention, helping to lower storage costs and manage data effectively.
@@ -628,7 +629,7 @@
     - AWS Training Dashboard offers additional resources to deepen knowledge of S3 Glacier storage classes.
 
 
-##  2.6. Amazon S3 Storage Lens
+### 9. 2.6. Amazon S3 Storage Lens
 
 1. **Centralized Visibility**: Provides a single view of object storage usage and activity across multiple AWS accounts within an organization.
 2. **Granular Metrics**: Offers metrics pre-aggregated by up to six levels, including account, Region, storage class, bucket, prefix, and AWS Organization.
@@ -647,7 +648,7 @@
 15. **Data Export**: Metrics can be exported in CSV or Parquet format for detailed analysis.
 16. **No Root Access**: Dashboards cannot be accessed using root user credentials; IAM permissions are required for access.
 
-##  2.7. Amazon S3 Storage Lens and Amazon CloudWatch
+### 9. 2.7. Amazon S3 Storage Lens and Amazon CloudWatch
 
 - **Amazon CloudWatch Overview**:
   - Amazon CloudWatch is a monitoring and observability service that provides actionable insights into cloud infrastructure.
@@ -675,55 +676,55 @@
   - A graphic shows the process of CloudWatch collecting, monitoring, acting on, and analyzing metrics.
 
 
-##  2.8. Viewing, budgeting, and forecasting your Amazon S3 costs
+### 9. 2.8. Viewing, budgeting, and forecasting your Amazon S3 costs
 
 
-### Introduction to AWS Budgets
+#### 9.Introduction to AWS Budgets
 - **AWS Budgets**: Allows you to track and take action on AWS cost and usage.
 - **Custom Budgets**: Set and manage custom budgets for costs, usage, reservation utilization, or coverage.
 - **Alerts**: Get notifications when costs or usage exceed budget thresholds or are forecasted to exceed.
 - **Metrics**: Track monthly fixed targets, variable targets, fixed usage amounts, and daily utilization.
 
-### Best Practices for Setting Budgets
+#### 9.Best Practices for Setting Budgets
 1. **Custom Budgets**: Set budgets based on costs, usage, and reservation metrics.
 2. **Recurring Budgets**: Establish budgets on a recurring basis to ensure continuous monitoring.
 3. **Alert Recipients**: Budget alerts can be sent to up to 10 email addresses and one Amazon SNS topic.
 4. **Forecast Alerts**: Forecast-based alerts might be sent multiple times within a budget period if forecasted values fluctuate.
 5. **Historical Data**: AWS needs approximately five weeks of usage data to generate accurate budget forecasts.
 
-### AWS Budgets Tutorial
+#### 9.AWS Budgets Tutorial
 - **Tutorial Access**: Learn more about managing AWS costs through the provided tutorial.
 
-### Cost and Usage Reports
+#### 9.Cost and Usage Reports
 - **AWS Cost and Usage Reports (CUR)**: Provides detailed information on individual costs and usage, useful at an enterprise scale.
 - **Report Access**: Download from Amazon S3 console, query with Amazon Athena, or upload into Amazon Redshift/QuickSight.
 
-### Billing Reports
+#### 9.Billing Reports
 - **Types**: Monthly report, cost allocation report, and detailed billing report.
 - **Billing Responsibility**: The S3 bucket owner is billed for S3 fees unless the bucket is a Requester Pays bucket.
 
-### Cost Allocation Tags
+#### 9.Cost Allocation Tags
 - **Purpose**: Assign metadata to resources to help categorize and track costs.
 - **Types**:
   - **AWS Generated Tags**: Automatically applied for cost allocation, but may have gaps.
   - **User-Defined Tags**: Created and applied by users, activated via Billing and Cost Management console.
 
-### Usage Reports
+#### 9.Usage Reports
 - **Dynamic Reports**: Allow selection of usage type, operation, and time period.
 - **Formats**: Downloadable as XML or CSV files.
 
-### Downloading Reports
+#### 9.Downloading Reports
 - **Report Size**: CUR reports can be large and may be split into multiple files if they exceed application capacity.
 - **Access Methods**: Download from Amazon S3 console, query with Athena, or upload to Redshift/QuickSight.
 
-### Final Note
+#### 9.Final Note
 - **Engagement Complete**: With these tools and practices, you should now have a better understanding of managing and forecasting your storage utilization costs on AWS.
 
 
-# 3. Deep Dive: Amazon Elastic Block Store (Amazon EBS) Cost Optimization
+## 9.3. Deep Dive: Amazon Elastic Block Store (Amazon EBS) Cost Optimization
 
 
-##  3.1. AWS Well-Architected Cost Optimization Pillar
+### 9. 3.1. AWS Well-Architected Cost Optimization Pillar
 
 1. **Cost-Optimized Workloads**:
    - Achieve outcomes at the lowest possible price while meeting functional requirements.
@@ -767,7 +768,7 @@
 For more detailed information, refer to the [AWS Well-Architected Framework documentation](https://aws.amazon.com/well-architected/).
 
 
-##  3.2. Common Amazon EBS Cost Optimization Opportunities
+### 9. 3.2. Common Amazon EBS Cost Optimization Opportunities
 
 1. **Delete Inactive or Unattached EBS Volumes**:
    - Regularly monitor and remove unused EBS volumes.
@@ -827,7 +828,7 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
     - Keep informed about AWS innovations and new EBS volume types to take advantage of the latest cost-saving options.
 
 
-##  3.3. AWS Pricing Considerations for Amazon EBS
+### 9. 3.3. AWS Pricing Considerations for Amazon EBS
 
 1. **Pay-as-You-Go**: With AWS, you pay only for what you use. For Amazon EBS, this means you pay based on provisioned volume size and performance metrics (IOPS and throughput).
 
@@ -871,7 +872,7 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
 16. **Review and Adapt**: Regularly review your EBS volume types and configurations to ensure cost-efficiency as new volume types become available.
 
 
-##  3.4. Amazon EBS Pricing
+### 9. 3.4. Amazon EBS Pricing
 
 1. **Cost Structure**:
    - Pricing is based on provisioned volume size, IOPS, and throughput.
@@ -934,10 +935,10 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
     - For SSD-backed volumes, performance scales with volume size; HDD-backed volumes scale similarly without separate IOPS or throughput options.
 
 
-##  3.5. AWS EBS Volume Type Pricing Comparisons
+### 9. 3.5. AWS EBS Volume Type Pricing Comparisons
 
 
-### General Pricing and Sizing Requirements
+#### 9.General Pricing and Sizing Requirements
 1. **gp2 Volumes**
    - Increase sustained IOPS and throughput by increasing volume capacity.
    - 3 IOPS per GB of storage (e.g., 900 sustained IOPS requires 300 GB).
@@ -961,7 +962,7 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
    - Costs include provisioned volume capacity and IOPS.
    - Tiered IOPS pricing: Tier 1 (up to 32,000 IOPS), Tier 2 (32,001 to 64,000 IOPS), Tier 3 (over 64,000 IOPS).
 
-### Pricing Comparison Scenarios
+#### 9.Pricing Comparison Scenarios
 
 1. **Scenario 1: 3,000 Sustained IOPS**
    - **gp2**: 1,000 GB volume, $100.00/month.
@@ -981,10 +982,10 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
    - **io1**: 240 GB volume, 12,000 IOPS, $810.00/month.
    - **io2**: 25 GB volume, 12,000 IOPS, $783.13/month.
 
-### Conclusion
+#### 9.Conclusion
 - **gp3** offers the best overall value for workloads under 16,000 IOPS and 1,000 MB/s, providing significant cost savings compared to gp2 and high IOPS io1/io2 volumes.
 
-### Additional Comparison for io1 vs io2
+#### 9.Additional Comparison for io1 vs io2
 
 1. **16,000 IOPS**
    - **io1**: Requires 320 GB, **io2**: Requires 150 GB.
@@ -1002,7 +1003,7 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
 **Summary**: io2 volumes offer a lower-cost alternative due to a higher IOPS per GB ratio and a tiered IOPS pricing structure compared to io1.
 
 
-##  3.6. EBS Snapshot Billing Review
+### 9. 3.6. EBS Snapshot Billing Review
 
 1. **Cost Basis**: EBS Snapshot pricing is based on the actual storage capacity used, not on the provisioned size of EBS volumes.
 
@@ -1056,7 +1057,7 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
 16. **EBS Snapshot Vault**: The storage cost is based on the total data stored in the snapshot vault, not the provisioned EBS volume size.
 
 
-##  3.7. Using AWS Compute Optimizer for EBS Volumes
+### 9. 3.7. Using AWS Compute Optimizer for EBS Volumes
 
 1. **EBS Volume Configuration:** Choosing the correct EBS volume type can be complex, but AWS allows you to change volume types and performance characteristics as needed.
 
@@ -1087,7 +1088,7 @@ For more detailed information, refer to the [AWS Well-Architected Framework docu
 14. **Resource Management:** The service assists in managing resources by suggesting changes to improve their cost-effectiveness and performance.
 
 
-##  3.8. AWS Compute Optimizer Demonstration
+### 9. 3.8. AWS Compute Optimizer Demonstration
 
 - **Accessing AWS Compute Optimizer**: Sign in to the AWS Management Console with admin-level permissions and navigate to AWS Compute Optimizer under the Management and Governance section.
 

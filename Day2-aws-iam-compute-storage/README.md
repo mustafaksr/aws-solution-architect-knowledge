@@ -1,8 +1,8 @@
-## 1. Day 2 - AWS Compute Services Overview
+## 2. Day 2 - AWS Compute Services Overview
 
-### 1.1. AWS Compute Options
+### 2.1. AWS Compute Options
 
-#### 1.1.1. AWS Compute Options
+#### 2.1.1. AWS Compute Options
 
 - **Compute**: Refers to the resources like CPU, memory, and GPUs required to run applications. AWS offers different compute options to match various workloads.
 - **Cloud Computing**: Provides access to vast resources over the internet, allowing for scalability (elasticity) and cost efficiency. You only pay for what you use and can scale up or down as needed.
@@ -28,7 +28,7 @@ Services in the Image:
    - **7**: Represents AWS Lambda - A serverless compute service that automatically runs code in response to events.
 
 
-#### 1.1.2. Defining Serverless Computing
+#### 2.1.2. Defining Serverless Computing
 
 - **Serverless Abstraction**: Serverless computing abstracts not just the physical infrastructure but also instances and operating systems, allowing developers to focus solely on writing and deploying code without worrying about managing servers.
 - **AWS Serverless**: In AWS, serverless computing means your code runs on servers managed by AWS, freeing you from maintaining hardware or infrastructure. AWS automatically handles scaling, load balancing, and server maintenance.
@@ -38,9 +38,9 @@ Services in the Image:
 
 
 
-#### 1.1.3 Selecting Right Compute
+#### 2.1.3 Selecting Right Compute
 
-##### 1.2.3.1. Compute Types and Features
+##### 2.2.3.1. Compute Types and Features
 
 - **Amazon EC2**: Offers granular control with customizable virtual servers, providing over 500 instance types. It's ideal for long-running applications, and you can scale resources as needed with high availability and various pricing options.
   
@@ -51,7 +51,7 @@ Services in the Image:
 - **Compute Selection**: Choosing the right compute type (EC2, containers, or serverless) depends on your application’s needs for control, scalability, cost efficiency, and deployment speed.
 
 
-##### 1.2.3.2. Choosing a Compute Option for your Workload
+##### 2.2.3.2. Choosing a Compute Option for your Workload
 
 - **Assess Workload Needs**: Understand your application's performance characteristics and workload requirements to choose the optimal compute option.
 - **Amazon EC2**: Ideal for applications requiring full control over the OS, complex networking, or specific instance types. Suited for compute-intensive, stateful, and long-running applications.
@@ -61,7 +61,7 @@ Services in the Image:
 - **Container Challenges**: Avoid containers for applications needing complex networking or persistent storage, as these can increase complexity and reduce portability.
 
 
-##### 1.2.3.3. Additional Compute Options
+##### 2.2.3.3. Additional Compute Options
 
 
 - **Amazon EC2**: The foundational building block for many AWS services, providing the underlying compute power for diverse applications and workloads.
@@ -75,9 +75,9 @@ Services in the Image:
 
 
 
-### 1.2. STORAGE - Indroduction 
+### 2.2. STORAGE - Indroduction 
 
-#### 1.2.1 On-Premises Storage versus AWS Cloud Storage
+#### 2.2.1 On-Premises Storage versus AWS Cloud Storage
 
 - **Agility and Flexibility**:
   - **On-Premises Storage**: Changes are slow and resource-intensive; often requires lengthy approval and installation processes. Limited flexibility in reallocating storage capacity.
@@ -109,7 +109,7 @@ Services in the Image:
   - **Object Storage**: Stores data as objects with metadata; known for high availability and scalable management.
 
 
-#### 1.2.2 Introduction to the AWS Storage Portfolio
+#### 2.2.2 Introduction to the AWS Storage Portfolio
 
 - **Core Storage Services**:
   - **Block Storage**: Amazon Elastic Block Store (Amazon EBS) provides low-latency storage for applications requiring high performance, like databases.
@@ -135,7 +135,7 @@ Services in the Image:
 
 ![storage](images/storage.png)
 
-#### 1.2.3 Identifying the Right Storage Solution in the Cloud 
+#### 2.2.3 Identifying the Right Storage Solution in the Cloud 
 
 - **Storage Types and Access Methods**: 
   - Choose based on access method: block, file, or object.
@@ -175,10 +175,10 @@ Services in the Image:
 
 ![right-storage](images/right_storage.png)
 
-### 1.2. STORAGE - Core AWS Storage Services  
+### 2.2. STORAGE - Core AWS Storage Services  
 
 
-#### 1.2.1 Block Storage: Amazon EBS
+#### 2.2.1 Block Storage: Amazon EBS
 
 
 - **Amazon EBS Overview**:
@@ -209,7 +209,7 @@ Services in the Image:
   - Performance metrics such as bandwidth and latency are monitored through Amazon CloudWatch to ensure optimal performance and resource utilization.
 
 
-#### 1.2.1 File Storage Overview
+#### 2.2.2 File Storage Overview
 
 - **AWS Managed File Storage Services**: AWS offers various managed file storage options, including Amazon EFS, Amazon FSx for Lustre, Amazon FSx for NetApp ONTAP, Amazon FSx for OpenZFS, and Amazon FSx for Windows File Server.
 
@@ -228,7 +228,7 @@ Services in the Image:
 - **Custom File Systems**: AWS allows you to build high-performance network file systems tailored to specific workload protocols using EC2 and EBS.
 
 
-#### 1.2.1 File Storage: Amazon EFS
+#### 1.2.3 File Storage: Amazon EFS
 
 - **Elastic and Scalable Storage**: Amazon EFS provides a serverless, elastic file system that automatically scales up to petabytes, growing and shrinking as needed without disrupting applications.
 - **Fully Managed Service**: It offers a simple web interface for creation and configuration, with no need to manage underlying infrastructure or perform complex maintenance tasks.
@@ -240,7 +240,7 @@ Services in the Image:
 - **Security and Compliance**: Provides encryption for data at rest and in transit, along with network and application access control through VPC security groups, IAM policies, and EFS access points.
 
 
-#### 1.2.1  File storage: Amazon FSx for Lustre
+#### 2.2.4  File storage: Amazon FSx for Lustre
 
 
 - **Managed High-Performance Storage**: Amazon FSx for Lustre is a managed service based on the high-performance Lustre file system, designed for workloads requiring high throughput and IOPS, such as machine learning and HPC.
@@ -259,7 +259,7 @@ Services in the Image:
 
 - **Security and Compliance**: It ensures data security and compliance with standards like PCI DSS, ISO, and HIPAA, and supports encryption of data both in transit and at rest.
 
-#### 1.2.1 File storage: Amazon FSx for Windows File Server
+#### 2.2.5 File storage: Amazon FSx for Windows File Server
 
 
 - **Fully Managed Windows File Server**: Provides a fully managed, reliable, and scalable Windows file server with native Windows file system support and integration with Microsoft Active Directory.
@@ -280,7 +280,7 @@ Services in the Image:
 
 input
 
-#### 1.2.1 File storage: Amazon FSx for NetApp ONTAP
+#### 2.2.6 File storage: Amazon FSx for NetApp ONTAP
 
 - **Fully Managed File Storage**: Amazon FSx for NetApp ONTAP offers a fully managed file storage service with the features, performance, and APIs of NetApp ONTAP, combining agility and scalability with a managed AWS service.
   
@@ -297,7 +297,7 @@ input
 - **Integration and Management**: Seamlessly integrates with AWS services like IAM, WorkSpaces, and CloudTrail. Allows management via AWS Management Console, CLI, SDKs, and NetApp's own tools.
 
 
-#### 1.2.1 File storage: Amazon FSx for OpenZFS
+#### 2.2.7 File storage: Amazon FSx for OpenZFS
 
 - **Fully Managed Service**: Amazon FSx for OpenZFS provides a fully managed file storage solution that simplifies launching, running, and scaling file systems on AWS. It replaces on-premises file servers, removing the need for server setup, provisioning, and maintenance tasks.
 
@@ -314,7 +314,7 @@ input
 - **Use Cases**: Ideal for migrating ZFS or Linux-based file servers to AWS, supporting high-performance analytics, content management, and development/testing environments with its high IOPS and low latency characteristics.
 
 
-#### 1.2.1 Object Storage: Amazon S3
+#### 2.2.8 Object Storage: Amazon S3
 
 
 - **Scalability and Durability**: Amazon S3 provides 11 9s of durability and scales seamlessly to accommodate any amount of data across various use cases, including data lakes, web hosting, and big data analytics.
@@ -327,7 +327,7 @@ input
 
 
 
-### 1.3 Edge and Hybrid Cloud Solutions Overview
+### 2.3 Edge and Hybrid Cloud Solutions Overview
 
 
 #### 1.3.1 Edge and Hybrid Cloud Solutions Overview
@@ -395,8 +395,8 @@ input
   - Data protection and disaster recovery through snapshot backups.
 
 
-### 1.4 Data Transfer and Migration Services
-#### 1.4.1  Data Transfer and Migration Services Introduction
+### 2.4 Data Transfer and Migration Services
+#### 2.4.1  Data Transfer and Migration Services Introduction
 
 
 - **AWS Transfer Family**: Replaces on-premises file transfer systems, facilitating workflows for file transfers.
@@ -404,7 +404,7 @@ input
 - **AWS Snow Family**: Provides offline data transfer using physical devices like Snowcone, Snowball, and Snowmobile.
 - **AWS Application Migration Service (AWS MGN)**: Previously CloudEndure Migration, assists in migrating servers and applications to AWS.
 
-#### 1.4.1 AWS Transfer Family
+#### 2.4.2 AWS Transfer Family
 
 - **Managed File Transfer Service**: AWS Transfer Family provides a fully managed service for file transfers using SFTP, FTPS, and FTP directly to Amazon S3 or Amazon EFS, eliminating the need to manage infrastructure.
 
@@ -425,7 +425,7 @@ input
 
 
 
-#### 1.4.1 AWS DataSync
+#### 2.4.3 AWS DataSync
 
 
 - **Simplified Data Transfer**: AWS DataSync facilitates easy, automated, and fast data transfers between on-premises storage systems and AWS Storage services, as well as between AWS Storage services.
@@ -443,7 +443,7 @@ input
 - **Efficient Data Processing**: Ideal for large-scale data migration, data protection, cold data archiving, and processing data for edge and hybrid workloads.
 
 
-#### 1.4.1 AWS Snow Family
+#### 2.4.4 AWS Snow Family
 
 - **AWS Snow Family Overview**: Comprises AWS Snowcone, AWS Snowball, and AWS Snowmobile, designed for physical data transfer and edge computing. Devices help move up to exabytes of data to and from AWS.
 
@@ -479,7 +479,7 @@ input
   - **Case Study**: DigitalGlobe used Snowmobile to deliver petabytes of data quickly and cost-effectively, improving data delivery timelines.
 
 
-#### 1.4.1 AWS Application Migration Service (CloudEndure Migration)
+#### 2.4.5 AWS Application Migration Service (CloudEndure Migration)
 
 - **AWS Application Migration Service (AWS MGN)**: Facilitates the lift-and-shift migration of applications to AWS with minimal downtime and without the need for changes.
 - **Automatic Conversion**: Converts source servers from physical, virtual, or cloud infrastructure to AWS-native instances, minimizing manual processes.
@@ -492,10 +492,10 @@ input
 
 
 
-#### 1.5 Protecting Your Data in the AWS Cloud
+#### 2.5 Protecting Your Data in the AWS Cloud
 
 
-#### 1.5.1 Protecting Data in the Cloud Introduction
+#### 2.5.1 Protecting Data in the Cloud Introduction
 
 - **Exponential Data Growth:** The increasing volume of data globally complicates data protection, making traditional methods like tape libraries and secondary sites insufficient.
 - **Cloud Backup Advantages:** Cloud solutions offer improved scalability but require careful planning regarding existing IT investments, recovery objectives, and resources.
@@ -506,7 +506,7 @@ input
 - **Disaster Recovery:** AWS CloudEndure Disaster Recovery provides failover solutions, allowing quick recovery from natural disasters, data center failures, or hardware issues by maintaining updated copies of application servers.
 
 
-#### 1.5.1 AWS Backup
+#### 2.5.2 AWS Backup
 
 - **Centralized Backup Management**: AWS Backup provides a unified console, APIs, and CLI to manage backups across various AWS services, including EC2, EBS, RDS, DynamoDB, and more.
 
@@ -525,7 +525,7 @@ input
 - **Secure Data**: Define access policies for backup vaults to control access to backups, ensuring compliance with security requirements.
 
 
-#### 1.5.1 Native Service Snapshots
+#### 2.5.3 Native Service Snapshots
 
 - **Snapshots Overview**:
   - Snapshots provide point-in-time backups of data within a storage or database service.
@@ -553,7 +553,7 @@ input
   - FSx for Lustre backups contain all data needed for restoring a file system to a point-in-time state.
   - Persistent file systems linked to Amazon S3 are not eligible for FSx for Lustre backups.
 
-#### 1.5.1 CloudEndure Disaster Recovery
+#### 2.5.4 CloudEndure Disaster Recovery
 
 
 - **Continuous Replication**: Provides asynchronous, block-level replication of your source machines to a low-cost staging area, achieving near-zero Recovery Point Objectives (RPOs) by keeping applications up-to-date.
@@ -570,7 +570,7 @@ input
 
 - **Managed Failback**: After disaster recovery, CloudEndure updates and restores on-premises systems to their operational state and manages the failback process.
 
-#### 1.5.1 AWS Storage Portfolio
+#### 2.5.5 AWS Storage Portfolio
 
 ![aws-storage-protfolio](images/aws-storage-portf.png)
 
@@ -620,11 +620,11 @@ input
     - **CloudEndure Disaster Recovery**: Provides real-time replication and failover solutions for disaster recovery.
 
 
-#### 1.5.1 Making Your AWS Storage Decision
+#### 2.5.6 Making Your AWS Storage Decision
 
 ![decision-storage](images/decision-storage.png)
 
-### AWS Storage Decision Making Summary
+### 3.AWS Storage Decision Making Summary
 
 1. **Understand Requirements:**
    - Define application, workflow, or use case requirements to select appropriate AWS Storage services.

@@ -1,6 +1,7 @@
-# 1. Architecting Serverless Applications
+# 8. Day8-Architecting-Scaling-Serverless
+## 8.1. Architecting Serverless Applications
 
-## 1.1. Migrating to Serverless
+### 8.1.1. Migrating to Serverless
 
 - **Think in Patterns:** When migrating to serverless, focus on patterns and applications rather than individual functions or resources.
 - **Migration Paradigms:** Two key shifts to consider: implementing computing infrastructure and approaching application development and deployment.
@@ -22,9 +23,9 @@
 - **Cost Comparison:** Consider the steady vs. spiky traffic patterns when choosing between ALB (hourly charge) and API Gateway (per-request charge).
 
 
-## 1.2. Choosing Compute Services and Data Stores
+### 8.1.2. Choosing Compute Services and Data Stores
 
-### Compute Services
+#### 8.Compute Services
 - **AWS Lambda**:
   - Serverless compute ideal for short-running tasks (<15 mins).
   - Best for spiky, unpredictable workloads.
@@ -42,7 +43,7 @@
   - **Fargate**: Better for lift-and-shift migrations, longer-running tasks, and consistent workloads.
   - A combination of both may be optimal for certain applications, e.g., orchestrating Docker images in Fargate using AWS Step Functions.
 
-### Data Stores
+#### 8.Data Stores
 - **Amazon S3**:
   - Versatile storage solution; ideal for data lakes and state storage with low throughput requirements.
   - Supports claim-check pattern and can filter data retrieved by Lambda using S3 Select.
@@ -64,14 +65,14 @@
 - **Amazon RDS**:
   - Managed relational database service that supports familiar database engines with reduced administrative overhead.
 
-### Key Considerations
+#### 8.Key Considerations
 - **Optimized Compute**: Match compute services (Lambda, Fargate) to workload requirements for the best performance and efficiency.
 - **Data Store Selection**: Use the CQRS pattern to differentiate between transactional and query needs, optimizing data store choices accordingly.
 - **Handling Multiple Data Stores**: Implement strategies like the saga pattern with AWS Step Functions to manage business transactions across microservices.
 - **ETL and Data Processing**: Choose ETL methods based on needs—real-time (Kinesis, DynamoDB Streams) or batch processing (AWS Glue, Redshift Spectrum).
 
 
-## 1.3. Application Architecture Patterns
+### 8.1.3. Application Architecture Patterns
 
 - **Serverless IT Automation**:
   - **Lambda as a Cron Job Replacement**: Replace traditional cron jobs with scheduled AWS Lambda functions triggered by Amazon CloudWatch Events or Amazon EventBridge.
@@ -99,9 +100,9 @@
   - **Service Quota Awareness**: Monitor and manage AWS service limits using the AWS Service Quotas console.
 
 
-# 2. Scaling Serverless Architectures
+## 8.2. Scaling Serverless Architectures
 
-## 2.1. Thinking Serverless at Scale
+### 8.2.1. Thinking Serverless at Scale
 - **Scalability**: The ability of a system to adapt to increasing demand, crucial for successful, growing systems.
 - **Build Today with Tomorrow in Mind**: Design scalable architectures considering future needs; modularity helps in breaking complex components into smaller, manageable parts.
 - **Microservices Architecture**: Utilize microservices for modern application development, reducing complexity at the component level but introducing new complexities at scale.
@@ -123,7 +124,7 @@
 - **Service Evolution**: Stay updated with AWS services and third-party tools to leverage new options and optimize workloads.
 
 
-## 2.1. Scaling Considerations for Serverless Services
+### 8.2.1. Scaling Considerations for Serverless Services
 
 1. **Service Limits and Capabilities**: Understand the limits and capabilities of AWS services when integrating them to scale serverless architectures.
 2. **Timeouts**: Consider service and function timeouts, as these can impact the ability to scale.
@@ -143,7 +144,7 @@
 16. **Dead-Letter Queues**: Use dead-letter queues with a well-defined redrive policy to manage failed messages and maintain queue efficiency.
 
 
-## 2.1. Testing for Peak Load
+### 8.2.1. Testing for Peak Load
 
 - **Serverless Scalability:** Individual services in a serverless architecture can scale independently, allowing you to optimize specific components without affecting others.
   

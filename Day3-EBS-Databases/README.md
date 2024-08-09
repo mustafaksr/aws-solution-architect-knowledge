@@ -1,7 +1,7 @@
-## 1. Day 3 - AWS S3-EBS-Databases
-### 1.1. Getting Started with Amazon Simple Storage Service (Amazon S3)
+# 3. Day 3 - AWS S3-EBS-Databases
+## 3.1. Getting Started with Amazon Simple Storage Service (Amazon S3)
 
-#### 1.1.1. Storage Fundamentals
+### 3.1.1. Storage Fundamentals
 
 - **Amazon S3** is an object storage service that allows storing and retrieving any amount of data from anywhere on the web.
 - **Block Storage** divides files into blocks, each assigned a unique identifier, allowing individual blocks to be modified separately. It's ideal for databases where specific pieces of data need to be accessed or modified without retrieving the entire file.
@@ -9,7 +9,7 @@
 - **Object Storage** in Amazon S3 is a flat structure where data, called objects, are stored in buckets. It can visually mimic a hierarchy using key name prefixes and delimiters, although the storage remains flat.
 
 
-#### 1.1.2. Amazon S3 Fundamentals
+#### 3.1.2. Amazon S3 Fundamentals
 
 - **Amazon S3 Overview**: A highly scalable, secure, and performant object storage service designed for simplicity and robustness, providing the same infrastructure used by Amazon globally.
 
@@ -34,7 +34,7 @@
 - **Naming Constraints**: Bucket names are unique across S3, DNS-compliant, between 3-63 characters, starting with a lowercase letter or number, and cannot resemble an IP address. Bucket names are vital for correct functionality, especially in static website hosting.
 
 
-#### 1.1.3. Interfacing with Amazon S3
+#### 3.1.3. Interfacing with Amazon S3
 
 - **AWS Management Console:** 
   - Provides a simple web interface to interact with Amazon S3.
@@ -70,7 +70,7 @@
   - Ensures that requests are eventually routed to the correct location.
 
 
-#### 1.1.4. Amazon S3 Data Management
+#### 3.1.4. Amazon S3 Data Management
 
 
 
@@ -121,7 +121,7 @@
   - **Versioning-Enabled Buckets:** Deletes create a delete marker or can remove specific versions. Deleted objects can be recovered by removing the delete marker.
 
 
-#### 1.1.5. AWS Cloud Data Migration Services
+#### 3.1.5. AWS Cloud Data Migration Services
 
 
 - **AWS DataSync**: Facilitates fast, secure, and efficient transfer of large volumes of data between on-premises storage and Amazon S3, handling tasks such as encryption, network optimization, and data integrity validation. Can transfer hundreds of terabytes and millions of files at speeds up to 10 times faster than open-source tools. [Learn more](https://aws.amazon.com/datasync/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)
@@ -166,7 +166,7 @@ These services cover a range of needs from high-speed transfers, real-time data 
   - Features high security with GPS tracking, video surveillance, and 256-bit encryption.
   - [More Info](https://aws.amazon.com/snowmobile/)
 
-### Hybrid Cloud Storage Services
+##### Hybrid Cloud Storage Services
 - **AWS Direct Connect**
   - Provides a dedicated network connection from your on-premises data center to AWS.
   - Ensures higher throughput and secure data transfer without using the internet.
@@ -189,7 +189,7 @@ These services cover a range of needs from high-speed transfers, real-time data 
 
 These services and tools provide a range of options depending on data volume, transfer speed, and connectivity needs.
 
-#### 1.1.6. Securing Data Access in AWS S3
+#### 3.1.6. Securing Data Access in AWS S3
 
 - **Default Privacy**: By default, all Amazon S3 resources are private. Access is restricted to the resource owner or account administrator.
 
@@ -231,7 +231,7 @@ These services and tools provide a range of options depending on data volume, tr
   - Review and update ACLs and policies regularly to ensure proper access control.
 
 
-#### 1.1.7. Encrypting Data in AWS
+#### 3.1.7. Encrypting Data in AWS
 
 1. **Data Protection Overview**
    - Protects data in-transit (traveling to/from Amazon S3) and at-rest (stored on disks in Amazon S3 data centers).
@@ -263,7 +263,7 @@ These services and tools provide a range of options depending on data volume, tr
    - **Application-Managed Key:** Provide a master key stored within your application to encrypt data encryption keys generated randomly.
 
 
-#### 1.1.8. Amazon S3 Service Integration
+#### 3.1.8. Amazon S3 Service Integration
 
 - **Data Storage Challenges**: Traditional on-premises data storage and management solutions struggle to keep pace with growing data volumes, leading to inefficient data consolidation and limited analytics capabilities.
 - **Amazon S3 for Data Lakes**: Amazon S3 is an ideal foundation for data lakes due to its virtually unlimited scalability and high durability (99.999999999%). It supports centralized data storage, making it easier to perform comprehensive analytics and machine learning.
@@ -277,9 +277,9 @@ These services and tools provide a range of options depending on data volume, tr
 - **Amazon Redshift Spectrum**: Allows running SQL queries on data in S3 using Redshift, optimizing for large datasets and complex queries, and supports a wide range of data formats.
 - **Amazon FSx for Lustre Integration**: Amazon FSx for Lustre can link with S3 buckets, providing high-performance file system capabilities for compute-intensive workloads and enabling efficient data processing with sub-millisecond latencies.
 
-#### 1.2. EBS
+## 3.2. EBS
 
-#### 1.2.1. What is Block Storage?
+### 3.2.1. What is Block Storage?
 
 - **Primary Storage Types**: There are three main types of storage: block, file, and object. Each has unique features and implementations.
   
@@ -306,7 +306,7 @@ These services and tools provide a range of options depending on data volume, tr
 - **Performance**: Block storage offers high performance with low latency, high IOPS, and throughput. SSDs provide fast operations, while HDDs are better for sequential read/write tasks.
 
 
-#### 1.2.2. Amazon EBS Overview
+### 3.2.2. Amazon EBS Overview
 
 - **Amazon EBS Overview**:
   - Amazon EBS (Elastic Block Store) is a high-performance, block storage service used with Amazon EC2 instances.
@@ -326,7 +326,7 @@ These services and tools provide a range of options depending on data volume, tr
 
 
 
-#### 1.2.3. Amazon EBS Features and Benefits
+### 3.2.3. Amazon EBS Features and Benefits
 
 1. **Persistent Storage**
    - EBS volumes are durable and persist independently of EC2 instances. Data remains even if an instance is terminated or stopped.
@@ -365,7 +365,7 @@ These services and tools provide a range of options depending on data volume, tr
    - Supports policy-based management and compliance with regulatory requirements, integrating with AWS Organizations for centralized backup management.
 
 
-#### 1.2.4. EBS Use Cases
+### 3.2.4. EBS Use Cases
 
 - **Enterprise Applications**: 
   - Amazon EBS offers high availability, durability, and performance for critical applications like Oracle, SAP, Microsoft Exchange, and VMware on AWS.
@@ -401,7 +401,7 @@ These services and tools provide a range of options depending on data volume, tr
   - **Zendesk**: Achieved over 60% cost savings by managing their logging solution with multiple EBS volume types.
 
 
-#### 1.2.5. Amazon EBS Volume Types
+### 3.2.5. Amazon EBS Volume Types
 
 - **Amazon EBS Availability and Durability**: EBS volumes are highly available and reliable, with automatic replication within the same Availability Zone to prevent data loss from hardware failures.
 
@@ -424,7 +424,7 @@ These services and tools provide a range of options depending on data volume, tr
 - **Performance Metrics**: Amazon CloudWatch provides metrics to monitor EBS volume performance, including IOPS, throughput, latency, and queue length.
 
 
-#### 1.2.6. Amazon EBS Volume Types
+### 3.2.6. Amazon EBS Volume Types
 
 - **Amazon EBS Volume Types**: EBS offers five volume types—General Purpose SSD (gp2, gp3), Provisioned IOPS SSD (io1, io2), Throughput Optimized HDD (st1), Cold HDD (sc1), and Magnetic.
 - **General Purpose SSD (gp2)**: Provides a balance of price and performance with scalable IOPS based on volume size, ranging from 100 to 16,000 IOPS. It uses I/O credits for burst performance, ideal for a broad range of workloads.
@@ -440,7 +440,7 @@ These services and tools provide a range of options depending on data volume, tr
 - **Use Cases**: Choose the appropriate EBS volume type based on workload requirements, balancing cost, performance, and durability.
 
 
-#### 1.2.7. Choosing the Correct Amazon EBS Volume Type
+### 3.2.7. Choosing the Correct Amazon EBS Volume Type
 
 - **Understand Workload Characteristics**:
   - Evaluate your workload's characteristics (IOPS-intensive, throughput-intensive, latency sensitivity) to select the appropriate EBS volume type.
@@ -474,7 +474,7 @@ These services and tools provide a range of options depending on data volume, tr
 
 
 
-#### 1.2.8.
+### 3.2.8. EBS Snapshots
 
 - **Amazon EBS Snapshots**: Create backup copies of your EBS volumes, stored in Amazon S3 with eleven 9's of durability, ensuring Regional access and availability.
 
@@ -500,7 +500,7 @@ These services and tools provide a range of options depending on data volume, tr
 
 
 
-#### 1.2.9. Amazon EBS Pricing
+### 3.2.9. Amazon EBS Pricing
 
 - **Pay-As-You-Use**: Amazon EBS charges based on provisioned volume size, IOPS, and throughput. Pricing varies by volume type and Availability Zone.
 
@@ -526,7 +526,7 @@ These services and tools provide a range of options depending on data volume, tr
 
 
 
-#### 1.2.10. Pricing exercise
+### 3.2.10. Pricing exercise
 
 You need to provide budgeting for a new application. For this application, you have determined that you need one General Purpose SSD gp3 volume and one Throughput Optimized HDD st1 volume. The application is intended for long-term use.
 
@@ -600,17 +600,12 @@ What is the total cost estimate for the new application?
 
 
 
-#### 1.2.11. Basic Amazon EBS Architecture
 
 
 
 
-#### 1.2.12. Amazon EBS integrations
 
-
-
-
-##### 1.2.12.1 Data Security
+##### 3.2.12.1 Data Security
 
 
 1. **Amazon EBS Integration**:
@@ -644,7 +639,7 @@ What is the total cost estimate for the new application?
 
 
 
-##### 1.2.12.2 AWS Backup
+##### 3.2.12.2 AWS Backup
 
 - **Centralized Data Protection**: AWS Backup allows you to centralize and automate data protection across various AWS services, simplifying backup management and meeting business continuity goals.
 
@@ -674,7 +669,7 @@ What is the total cost estimate for the new application?
 
 
 
-##### 1.2.12.3 CloudEndure Disaster Recovery and AWS Application Migration Service
+#### 3.2.12.3 CloudEndure Disaster Recovery and AWS Application Migration Service
 
 input
 
@@ -698,7 +693,7 @@ input
 
 
 
-##### 1.2.12.4 Amazon CloudWatch
+#### 3.2.12.4 Amazon CloudWatch
 
 1. **CloudWatch Metrics Overview**:
    - CloudWatch metrics provide statistical data for analyzing and setting alarms on the operational behavior of EBS volumes.
@@ -751,10 +746,10 @@ input
     - For detailed information, refer to the Amazon CloudWatch metrics for Amazon EBS section in the Amazon Elastic Compute Cloud User Guide for Linux Instances.
 
 
-### 1.2. AWS Database Offerings
+## 3.2. AWS Database Offerings
 
 
-### 1.2.1. Relational Databases
+### 3.2.1. Relational Databases
 
 - **Relational Databases Overview**: Relational databases are ideal for structured data, relying on tables to store data in rows and columns, with relationships established through primary and foreign keys.
   
@@ -789,7 +784,7 @@ input
 
 
 
-#### 1.2.2. Non-Relational Databases
+### 3.2.2. Non-Relational Databases
 
 - **Non-Relational Databases**: Often called NoSQL databases, they store semistructured and unstructured data. The term "NoSQL" should be understood as "not only SQL," meaning these databases can still be queried with SQL.
 - **Database Comparison**:
@@ -815,7 +810,7 @@ input
 
 
 
-#### 1.2.3. Database Migration
+### 3.2.3. Database Migration
 
 
 - **Migration Benefits**: Migrating databases to AWS offers fully managed, high-performance, and cost-effective database services, reducing the complexity, time, and cost associated with managing on-premises or cloud-based databases.
@@ -846,7 +841,7 @@ input
 
 
 
-#### 1.2.4. AWS Server-Based Architecture
+### 3.2.4. AWS Server-Based Architecture
 
 1. **Server-Based Database Deployment**: AWS provides two main approaches for server-based database deployment: 
    - **Amazon Relational Database Service (Amazon RDS)** 
@@ -899,7 +894,7 @@ input
 
 
 
-#### 1.2.5 AWS Serverless Architecture Summary
+### 3.2.5 AWS Serverless Architecture Summary
 
 1. **Serverless Database Services**: AWS offers distributed, fault-tolerant, highly available storage systems that scale automatically with demand.
 
@@ -944,7 +939,7 @@ input
 12. **Security and Compliance**: Both DynamoDB and Aurora Serverless offer robust security features, including encryption and integration with AWS IAM for access management.
 
 
-#### 1.2.6 AWS Purpose-Built Databases Overview
+### 3.2.6 AWS Purpose-Built Databases Overview
 
 1. **General Concept of Purpose-Built Databases**
    - Purpose-built databases are optimized for specific use cases, offering better performance, scalability, and cost-efficiency compared to general-purpose databases.
@@ -983,7 +978,7 @@ input
    - **Outcome**: Avoid one-size-fits-all solutions by leveraging databases tailored to your application's needs.
 
 
-#### 1.3. Amazon Neptune
+## 3.3. Amazon Neptune
 
 - **Amazon Neptune Overview:**
   - Amazon Neptune is optimized for managing highly connected data and performing graph queries.
@@ -1021,7 +1016,7 @@ input
   - **RSS Keyword Capture:** Utilizes Amazon Comprehend to extract information and store it in Neptune.
 
 
-#### 1.4. Redshift
+## 3.4. Redshift
 
 1. **Data Warehouse Service**: Amazon Redshift is a fully managed, petabyte-scale data warehouse service in the cloud.
 
@@ -1057,7 +1052,7 @@ input
 
 
 
-#### 1.3. DocumentDB
+## 3.3. DocumentDB
 
 - **Amazon DocumentDB Overview**: A fully managed, fast, and reliable database service compatible with MongoDB, designed to handle mission-critical workloads with performance, scalability, and availability.
 

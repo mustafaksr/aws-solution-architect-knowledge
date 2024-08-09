@@ -1,4 +1,5 @@
-## 1.1. AWS ElastiCache
+# 4. Day4-Dynamodb-ElastiCache
+## 4.1. AWS ElastiCache
 
 1. **Managed In-Memory Caching Service**: Amazon ElastiCache provides fully managed Redis and Memcached distributed memory caches, facilitating easy deployment, operation, and scaling of in-memory data stores.
 
@@ -32,12 +33,12 @@
 For more information, visit the [AWS ElastiCache website](https://aws.amazon.com/elasticache/).
 
 
-#### 1.2. DynamoDB
+## 4.2. DynamoDB
 
 
-##### 1.2.1. Introduction
+### 4.2.1. Introduction
 
-###### What is DynamoDB?
+#### What is DynamoDB?
 
 - **NoSQL Database**: DynamoDB is a NoSQL database that supports key-value and document data models.
 - **Scalable and Serverless**: It enables the creation of modern, serverless applications that can scale globally from small to petabytes of data and millions of requests per second.
@@ -45,14 +46,14 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 - **Fully Managed**: DynamoDB is a fully managed service, offloading administrative tasks related to database operations and scaling.
 - **Data Protection**: It offers encryption at rest to help secure sensitive data and eliminate operational tasks related to data protection.
 
-###### Benefits of DynamoDB
+#### Benefits of DynamoDB
 
 - **Millisecond Performance**: Provides millisecond response times and supports automatic multi-region replication.
 - **Data Encryption and Backup**: Ensures data encryption at rest with automatic backup and restore capabilities.
 - **Serverless Database**: Operates as a fully managed, serverless database.
 - **AWS Integration**: Integrates with other AWS services for analytics, performance monitoring, and traffic management.
 
-###### Important Concepts and Terminology
+#### Important Concepts and Terminology
 
 - **Tables**: Data is organized into tables, each containing items. For example, a `People` table might store contact information, and a `Locations` table might store building details.
 - **Items**: Each table contains items, which are groups of attributes that uniquely identify data. Items in DynamoDB are similar to rows or records in traditional databases.
@@ -73,7 +74,7 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 
 
 
-##### 1.2.2. Gathering Information with the AWS Management Console
+### 4.2.2. Gathering Information with the AWS Management Console
 
 
 **Best Practice: Use an Architectural Diagram:**
@@ -107,7 +108,7 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 
 
 
-##### 1.2.3. Using the AWS CLI to Gather Information about DynamoDB
+### 4.2.3. Using the AWS CLI to Gather Information about DynamoDB
 
 1. **List Tables**: Use `aws dynamodb list-tables` to retrieve a list of all tables in your AWS Region. This helps in identifying which tables are available for further operations.
 
@@ -135,7 +136,7 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 
 
 
-##### 1.2.4. Monitoring DynamoDB
+### 4.2.4. Monitoring DynamoDB
 
 **Importance of Monitoring for Troubleshooting**
 - **Purpose**: Collect monitoring data to troubleshoot multipoint failures in AWS solutions.

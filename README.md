@@ -137,7 +137,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
   - Created a simple, scalable serverless API solution.
 
 
-  ---
+---
 
 
 ## Day 9 - Database Migration, S3 Cost Optimization, and EBS Management

@@ -1,4 +1,5 @@
-# 1. AWS API Gateway
+# 6. Day6-API-NetworkConnectivity-SecurityGroups
+## 6.1. AWS API Gateway
 
 AWS API Gateway is a fully managed service provided by Amazon Web Services that allows developers to create, publish, maintain, monitor, and secure APIs at any scale. It acts as a gateway for managing requests and responses between clients and backend services. Here’s a breakdown of its key features:
 
@@ -34,9 +35,9 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
    - **Multiple Versions**: Manage and deploy different versions of your API to handle updates and backward compatibility.
 
 
-# 2. AWS Network Connectivity Options
+## 6.2. AWS Network Connectivity Options
 
-## 2.1. General Concepts
+### 6.2.1. General Concepts
 
 - **Software-Defined Networking**: Cloud networks use software-defined networking rather than physical hardware, shifting network management from physical equipment to virtualized, software-based configurations.
 
@@ -72,7 +73,7 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
 
 
 
-## 2.2 Connectivity Concept Benefits
+### 6.2.2 Connectivity Concept Benefits
 
 1. **Multi-Tier Architecture**
    - Provides extra layers of defense against threats.
@@ -128,7 +129,7 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
     - Includes considerations for memory resources, traffic patterns, and efficient protocol use.
 
 
-## 2.3 VPC Endpoints and AWS PrivateLink
+### 6.2.3 VPC Endpoints and AWS PrivateLink
 
 
 1. **Private Connectivity**: VPC endpoints enable private connections between your VPC and supported AWS services without using public IP addresses. Traffic remains within the AWS network.
@@ -162,7 +163,7 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
 8. **Compliance**: VPC endpoints are useful for meeting compliance requirements by ensuring traffic does not leave the AWS network.
 
 
-## 2.4.  AWS VPC Peering
+### 6.2.4.  AWS VPC Peering
 
 
 1. **Definition**: VPC peering is a networking connection between two Virtual Private Clouds (VPCs) allowing private traffic routing between them.
@@ -188,7 +189,7 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
 
 
 
-## 2.5.  AWS Direct Connect
+### 6.2.5.  AWS Direct Connect
 
 1. **Private and Reliable Connection**:
    - Provides a private, reliable connection to AWS from a physical facility like a data center or office.
@@ -238,11 +239,11 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
     - Physical components and network requirements must be met before setting up the connection.
 
 
-## 2.6. AWS Site-to-Site VPN and AWS Client VPN
+### 6.2.6. AWS Site-to-Site VPN and AWS Client VPN
 
 
 
-### AWS Site-to-Site VPN
+#### 6.AWS Site-to-Site VPN
 - **Purpose**: Connects on-premises networks to AWS VPCs securely using IPsec technology.
 - **Components**:
   - **Customer Gateway**: Represents your on-premise gateway device with routing information.
@@ -259,7 +260,7 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
 - **Monitoring**: Metrics available through Amazon CloudWatch, recorded for 15 months.
 - **Pricing**: Charges include hourly rates for connections, data transfer out, and additional fees for accelerated connections and Global Accelerators.
 
-### AWS Client VPN
+#### 6.AWS Client VPN
 - **Purpose**: Provides secure access to AWS resources and on-premises networks using OpenVPN technology.
 - **Components**:
   - **Client VPN Endpoint**: Configured by administrators to control access to networks and resources.
@@ -275,7 +276,7 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
 - **Pricing**: Based on active client connections per hour and number of associated subnets; partial hour usage is prorated.
 
 
-## 2.7. AWS Transit Gateway
+### 6.2.7. AWS Transit Gateway
 
 1. **High Availability and Scalability**
    - AWS Transit Gateway provides scalable interconnectivity between VPCs and on-premises networks.
@@ -319,36 +320,36 @@ AWS API Gateway is a fully managed service provided by Amazon Web Services that 
     - For detailed pricing, refer to the AWS Transit Gateway pricing page.
 
 
-## 2.8. Design Patterns 
+### 6.2.8. Design Patterns 
 
 
 
-### 2.8.1. Simplifying Multi-VPC Routing
+#### 6.2.8.1. Simplifying Multi-VPC Routing
 
-#### Scenario Overview
+##### 6.Scenario Overview
 - **Context:** Post-merger AWS environment with multiple VPCs from two companies.
 - **Initial Setup:** VPCs were peered to facilitate the merger, creating a complex network of VPC peering and site-to-site VPNs.
 - **Issue:** Increased service interruptions due to configuration conflicts and lack of centralized traffic management.
 
-#### Identified Problems
+##### 6.Identified Problems
 - **Configuration Conflicts:** Frequent service interruptions were caused by configuration conflicts during new system implementations or modifications.
 - **Complex Routing:** The existing mesh pattern of VPN and VPC peering connections led to complex routing configurations.
 
-#### Proposed Solution
+##### 6.Proposed Solution
 - **Design Pattern:** Transition to a hub-and-spoke model using AWS Transit Gateway.
 - **Plan:** Replace existing VPC peering connections with a central transit gateway to streamline network management.
 
-#### Benefits of the Hub-and-Spoke Model
+##### 6.Benefits of the Hub-and-Spoke Model
 1. **Centralized Management:** The transit gateway centralizes all routing tables, simplifying network management.
 2. **Reduced VPC Peering:** One transit gateway replaces all five VPC peering connections.
 3. **Streamlined VPN Connections:** The number of site-to-site VPN connections is reduced to one, maintaining satellite office access.
 4. **Optimized Direct Connect:** Direct Connect terminates on the transit gateway, reducing the number of Direct Connect gateways to one without affecting access from the main office.
 
-#### Summary
+##### 6.Summary
 - **Outcome:** The transition to a hub-and-spoke design with AWS Transit Gateway reduces complexity, operational overhead, and configuration conflicts, providing a more manageable and efficient network setup.
 
 
-### 2.8.2. Highly Available Hybrid Network Connections
+#### 6.2.8.2. Highly Available Hybrid Network Connections
 
 How to design hybrid networks with high availability by using AWS Direct Connect and other methods.
 
@@ -389,7 +390,7 @@ How to design hybrid networks with high availability by using AWS Direct Connect
 - Understanding and implementing resilient network designs are crucial for maintaining high availability and minimizing disruptions in hybrid network setups.
 
 
-### 2.8.3. AWS Regional High Availability: Cross-Regional VPC Peering
+#### 6.2.8.3. AWS Regional High Availability: Cross-Regional VPC Peering
 
 
 1. **Cross-Regional Application Deployment:**
@@ -423,7 +424,7 @@ How to design hybrid networks with high availability by using AWS Direct Connect
    - For detailed information, refer to [Cross-Region DNS-Based Load Balancing and Failover](#) and [VPC Peering Basics](#).
 
 
-### 2.8.4. AWS Transit Gateway Peering Overview
+#### 6.2.8.4. AWS Transit Gateway Peering Overview
 
 - **Centralized Traffic Management**: AWS Transit Gateway enables routing between VPCs within an AWS Region, facilitating centralized traffic management across resources, services, and accounts.
 
@@ -442,7 +443,7 @@ How to design hybrid networks with high availability by using AWS Direct Connect
 - **Design Considerations**: When designing a multi-Region environment with transit gateways, consider the quotas and limits for your transit gateways to ensure optimal performance and capacity.
 
 
-# 3. Differences Between Security Groups and NACLs
+## 6.3. Differences Between Security Groups and NACLs
 
 1. **Scope**:
    - **Security Groups**: Operate at the instance level (associated with EC2 instances).
