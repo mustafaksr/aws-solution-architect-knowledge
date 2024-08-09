@@ -1,4 +1,4 @@
-Certainly! Let's walk through a use case and then write the Terraform code for it.
+
 
 ### Use Case: Optimizing EBS Costs for a Web Application
 
