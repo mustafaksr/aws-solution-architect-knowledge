@@ -1,4 +1,4 @@
-## 2. Day 2 - AWS Compute Services Overview
+# 2. Day 2 - AWS Compute Services Overview
 
 ### 2.1. AWS Compute Options
 
@@ -75,7 +75,7 @@ Services in the Image:
 
 
 
-### 2.2. STORAGE - Indroduction 
+### 2.2. STORAGE - Introduction 
 
 #### 2.2.1 On-Premises Storage versus AWS Cloud Storage
 
@@ -624,7 +624,7 @@ input
 
 ![decision-storage](images/decision-storage.png)
 
-### 3.AWS Storage Decision Making Summary
+## 2.6.AWS Storage Decision Making Summary
 
 1. **Understand Requirements:**
    - Define application, workflow, or use case requirements to select appropriate AWS Storage services.

@@ -20,15 +20,15 @@
 9. **Caching Approaches**: ElastiCache supports lazy loading (data is cached upon first request) and write-through (data is cached simultaneously with database write operations).
 
 10. **Real-World Use Cases**:
-    - **Real-Time Bidding**: Reduces database queries by up to 95%, saving costs for high-frequency data access scenarios.
-    - **Data Collection Systems**: Frees users from managing cache infrastructure and scales efficiently.
-    - **Web Servers**: Improves performance by caching frequently accessed content and session data.
+      - **Real-Time Bidding**: Reduces database queries by up to 95%, saving costs for high-frequency data access scenarios.
+      - **Data Collection Systems**: Frees users from managing cache infrastructure and scales efficiently.
+      - **Web Servers**: Improves performance by caching frequently accessed content and session data.
 
 11. **Scalability**: ElastiCache can scale up or down based on demand, providing a centralized cache that can handle varying loads independently of application and database scaling.
 
 12. **Examples of Usage**:
-    - **Dream11**: Handles peak demands and scales efficiently to support millions of requests per minute.
-    - **KeptMe**: Provides offline functionality by caching frequently accessed data and integrates with Amazon S3 for media storage.
+      - **Dream11**: Handles peak demands and scales efficiently to support millions of requests per minute.
+      - **KeptMe**: Provides offline functionality by caching frequently accessed data and integrates with Amazon S3 for media storage.
 
 For more information, visit the [AWS ElastiCache website](https://aws.amazon.com/elasticache/).
 
@@ -40,37 +40,37 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 
 #### What is DynamoDB?
 
-- **NoSQL Database**: DynamoDB is a NoSQL database that supports key-value and document data models.
-- **Scalable and Serverless**: It enables the creation of modern, serverless applications that can scale globally from small to petabytes of data and millions of requests per second.
-- **High-Performance**: Designed to handle high-performance, internet-scale applications that might overwhelm traditional relational databases.
-- **Fully Managed**: DynamoDB is a fully managed service, offloading administrative tasks related to database operations and scaling.
-- **Data Protection**: It offers encryption at rest to help secure sensitive data and eliminate operational tasks related to data protection.
+  - **NoSQL Database**: DynamoDB is a NoSQL database that supports key-value and document data models.
+  - **Scalable and Serverless**: It enables the creation of modern, serverless applications that can scale globally from small to petabytes of data and millions of requests per second.
+  - **High-Performance**: Designed to handle high-performance, internet-scale applications that might overwhelm traditional relational databases.
+  - **Fully Managed**: DynamoDB is a fully managed service, offloading administrative tasks related to database operations and scaling.
+  - **Data Protection**: It offers encryption at rest to help secure sensitive data and eliminate operational tasks related to data protection.
 
 #### Benefits of DynamoDB
 
-- **Millisecond Performance**: Provides millisecond response times and supports automatic multi-region replication.
-- **Data Encryption and Backup**: Ensures data encryption at rest with automatic backup and restore capabilities.
-- **Serverless Database**: Operates as a fully managed, serverless database.
-- **AWS Integration**: Integrates with other AWS services for analytics, performance monitoring, and traffic management.
+  - **Millisecond Performance**: Provides millisecond response times and supports automatic multi-region replication.
+  - **Data Encryption and Backup**: Ensures data encryption at rest with automatic backup and restore capabilities.
+  - **Serverless Database**: Operates as a fully managed, serverless database.
+  - **AWS Integration**: Integrates with other AWS services for analytics, performance monitoring, and traffic management.
 
 #### Important Concepts and Terminology
 
-- **Tables**: Data is organized into tables, each containing items. For example, a `People` table might store contact information, and a `Locations` table might store building details.
-- **Items**: Each table contains items, which are groups of attributes that uniquely identify data. Items in DynamoDB are similar to rows or records in traditional databases.
-- **Attributes**: Fundamental data elements within items, akin to fields or columns in other databases.
-- **Primary Key**: Uniquely identifies each item in a table. DynamoDB supports two types of primary keys:
-  - **Partition Key**: A simple primary key with one attribute.
-  - **Partition Key and Sort Key**: A composite primary key with two attributes.
-- **Secondary Indexes**: Allow querying data using alternative keys. Types include:
-  - **Global Secondary Index**: Has a partition key and sort key different from those on the table.
-  - **Local Secondary Index**: Shares the same partition key as the table but with a different sort key.
-- **DynamoDB Streams**: Captures data modification events in near real-time. Records include images of added, updated, or deleted items.
-- **Read Capacity Units (RCUs)**: Measure the number of reads per second. One RCU supports one strongly consistent read or two eventually consistent reads for items up to 4 KB.
-- **Write Capacity Units (WCUs)**: Measure the number of writes per second. One WCU supports one write for items up to 1 KB.
-- **Throttling**: Limits the number of requests to prevent overuse of capacity. Throttled requests result in an HTTP 400 error and a ProvisionedThroughputExceededException.
-- **Read/Write Capacity Mode**: DynamoDB offers two modes:
-  - **On-Demand**: Scales automatically with demand.
-  - **Provisioned**: Users specify the read/write throughput capacity.
+  - **Tables**: Data is organized into tables, each containing items. For example, a `People` table might store contact information, and a `Locations` table might store building details.
+  - **Items**: Each table contains items, which are groups of attributes that uniquely identify data. Items in DynamoDB are similar to rows or records in traditional databases.
+  - **Attributes**: Fundamental data elements within items, akin to fields or columns in other databases.
+  - **Primary Key**: Uniquely identifies each item in a table. DynamoDB supports two types of primary keys:
+    - **Partition Key**: A simple primary key with one attribute.
+    - **Partition Key and Sort Key**: A composite primary key with two attributes.
+  - **Secondary Indexes**: Allow querying data using alternative keys. Types include:
+    - **Global Secondary Index**: Has a partition key and sort key different from those on the table.
+    - **Local Secondary Index**: Shares the same partition key as the table but with a different sort key.
+  - **DynamoDB Streams**: Captures data modification events in near real-time. Records include images of added, updated, or deleted items.
+  - **Read Capacity Units (RCUs)**: Measure the number of reads per second. One RCU supports one strongly consistent read or two eventually consistent reads for items up to 4 KB.
+  - **Write Capacity Units (WCUs)**: Measure the number of writes per second. One WCU supports one write for items up to 1 KB.
+  - **Throttling**: Limits the number of requests to prevent overuse of capacity. Throttled requests result in an HTTP 400 error and a ProvisionedThroughputExceededException.
+  - **Read/Write Capacity Mode**: DynamoDB offers two modes:
+    - **On-Demand**: Scales automatically with demand.
+    - **Provisioned**: Users specify the read/write throughput capacity.
 
 
 
@@ -79,32 +79,32 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 
 **Best Practice: Use an Architectural Diagram:**
 
-- **Purpose**: Provides a quick overview of your DynamoDB deployment.
-- **Components**: Helps understand major components such as load balancers, VPCs, subnets, frontend, and backend services.
-- **Visualization**: Assists in visualizing request flow for troubleshooting.
-- **Details**: Add names and IDs to quickly identify each component.
+  - **Purpose**: Provides a quick overview of your DynamoDB deployment.
+  - **Components**: Helps understand major components such as load balancers, VPCs, subnets, frontend, and backend services.
+  - **Visualization**: Assists in visualizing request flow for troubleshooting.
+  - **Details**: Add names and IDs to quickly identify each component.
 
 **How to Obtain Information About DynamoDB Resources**
-- **Components**: Includes tables, items, attributes, primary keys, and read/write capacity mode.
+  - **Components**: Includes tables, items, attributes, primary keys, and read/write capacity mode.
 
 **Using the DynamoDB Console**
-- **Navigate**: Go to the DynamoDB console and select "Tables" from the left navigation pane.
-- **Table Information**: Lists table names, status, partition key, sort key, indexes, read/write capacity mode, size, and class.
+  - **Navigate**: Go to the DynamoDB console and select "Tables" from the left navigation pane.
+  - **Table Information**: Lists table names, status, partition key, sort key, indexes, read/write capacity mode, size, and class.
 
 **Detailed Table Information**
-- **Select Table**: Clicking on a table name shows detailed information.
-- **Tabs Available**:
-  - **Overview**: Includes general and additional information about the table.
-  - **Indexes, Monitored Metrics, Global Tables, Backups, Exports and Streams**: Tabs for more detailed settings.
+  - **Select Table**: Clicking on a table name shows detailed information.
+  - **Tabs Available**:
+    - **Overview**: Includes general and additional information about the table.
+    - **Indexes, Monitored Metrics, Global Tables, Backups, Exports and Streams**: Tabs for more detailed settings.
 
 **Monitoring Actions on a Table**
-- **Metrics**: Use the Monitor tab to view CloudWatch metrics such as Read usage, Write usage, and Read/Write throttled requests.
+  - **Metrics**: Use the Monitor tab to view CloudWatch metrics such as Read usage, Write usage, and Read/Write throttled requests.
 
 **Exploring Individual Table Items**
-- **View Items**: Click "Explore table items" to see a list of items returned from the table.
-  - **List View**: Scroll to see all items.
-  - **Edit Item**: Choose the partition key to access and edit the item in form or JSON format.
-  - **JSON Editing**: Click the JSON button to edit the item in JSON format.
+  - **View Items**: Click "Explore table items" to see a list of items returned from the table.
+    - **List View**: Scroll to see all items.
+    - **Edit Item**: Choose the partition key to access and edit the item in form or JSON format.
+    - **JSON Editing**: Click the JSON button to edit the item in JSON format.
 
 
 
@@ -139,8 +139,8 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
 ### 4.2.4. Monitoring DynamoDB
 
 **Importance of Monitoring for Troubleshooting**
-- **Purpose**: Collect monitoring data to troubleshoot multipoint failures in AWS solutions.
-- **Monitoring Plan**: Before monitoring Amazon ECS, define:
+  - **Purpose**: Collect monitoring data to troubleshoot multipoint failures in AWS solutions.
+  - **Monitoring Plan**: Before monitoring Amazon ECS, define:
   - Monitoring goals
   - Resources to monitor
   - Frequency of monitoring
@@ -149,26 +149,26 @@ For more information, visit the [AWS ElastiCache website](https://aws.amazon.com
   - Notification procedures for issues
 
 **How to Monitor DynamoDB**
-- **Tool**: Use CloudWatch to monitor DynamoDB resources.
-- **Functionality**: CloudWatch collects and processes raw data from DynamoDB into metrics, providing near real-time and historical performance insights.
-- **Automatic Metrics**: CloudWatch automatically receives DynamoDB metric data.
+  - **Tool**: Use CloudWatch to monitor DynamoDB resources.
+  - **Functionality**: CloudWatch collects and processes raw data from DynamoDB into metrics, providing near real-time and historical performance insights.
+  - **Automatic Metrics**: CloudWatch automatically receives DynamoDB metric data.
 
 **Types of Monitoring Metrics**
 
 1. **Account Metrics**
-   - **AccountMaxReads / AccountMaxWrites**: Max number of read/write capacity units used by an account (Unit: Count).
-   - **AccountMaxTableLevelReads / AccountMaxTableLevelWrites**: Max read/write capacity units for tables or global secondary indexes (Unit: Count).
-   - **AccountProvisionedReadCapacityUtilization / AccountProvisionedWriteCapacityUtilization**: Percentage of provisioned read/write capacity units used by an account (Unit: Percent).
-   - **MaxProvisionedTableReadCapacityUtilization / MaxProvisionedTableWriteCapacityUtilization**: Percentage of provisioned read capacity used by the highest provisioned table or index (Unit: Percent).
-   - **UserErrors**: Number of requests generating HTTP 400 errors (Unit: Count).
+     - **AccountMaxReads / AccountMaxWrites**: Max number of read/write capacity units used by an account (Unit: Count).
+     - **AccountMaxTableLevelReads / AccountMaxTableLevelWrites**: Max read/write capacity units for tables or global secondary indexes (Unit: Count).
+     - **AccountProvisionedReadCapacityUtilization / AccountProvisionedWriteCapacityUtilization**: Percentage of provisioned read/write capacity units used by an account (Unit: Percent).
+     - **MaxProvisionedTableReadCapacityUtilization / MaxProvisionedTableWriteCapacityUtilization**: Percentage of provisioned read capacity used by the highest provisioned table or index (Unit: Percent).
+     - **UserErrors**: Number of requests generating HTTP 400 errors (Unit: Count).
 
 2. **Table Metrics**
-   - **ConsumedReadCapacityUnits**: Number of read capacity units consumed (Unit: Count).
-   - **ConsumedWriteCapacityUnits**: Number of write capacity units consumed (Unit: Count).
-   - **ProvisionedReadCapacityUnits**: Number of provisioned read capacity units for a table or index (Unit: Count).
-   - **ProvisionedWriteCapacityUnits**: Number of provisioned write capacity units for a table or index (Unit: Count).
+     - **ConsumedReadCapacityUnits**: Number of read capacity units consumed (Unit: Count).
+     - **ConsumedWriteCapacityUnits**: Number of write capacity units consumed (Unit: Count).
+     - **ProvisionedReadCapacityUnits**: Number of provisioned read capacity units for a table or index (Unit: Count).
+     - **ProvisionedWriteCapacityUnits**: Number of provisioned write capacity units for a table or index (Unit: Count).
 
 3. **Table Operation Metrics**
-   - **ReturnedItemCount**: Number of items returned by Query, Scan, or ExecuteStatement operations (Unit: Count).
-   - **SuccessfulRequestLatency**: Elapsed time for successful requests (Unit: Milliseconds).
+     - **ReturnedItemCount**: Number of items returned by Query, Scan, or ExecuteStatement operations (Unit: Count).
+     - **SuccessfulRequestLatency**: Elapsed time for successful requests (Unit: Milliseconds).
 

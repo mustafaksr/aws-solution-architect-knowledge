@@ -4,29 +4,29 @@
 ### 5.1.1 AWS Networking Services
 
 1. **AWS Network Foundations:**
-   - **Amazon VPC**: Provides isolated cloud resources in a virtual network.
-   - **AWS Transit Gateway**: Central hub for connecting VPCs and on-premises networks.
-   - **AWS PrivateLink**: Secures private connectivity between VPCs and AWS services.
+     - **Amazon VPC**: Provides isolated cloud resources in a virtual network.
+     - **AWS Transit Gateway**: Central hub for connecting VPCs and on-premises networks.
+     - **AWS PrivateLink**: Secures private connectivity between VPCs and AWS services.
 
 2. **Hybrid Connectivity Solutions:**
-   - **AWS Direct Connect**: Dedicated network connection from on-premises to AWS.
-   - **AWS Site-to-Site VPN**: Secures connections between on-premises and AWS over the internet.
-   - **AWS Cloud WAN**: Simplifies global network management and operation.
+     - **AWS Direct Connect**: Dedicated network connection from on-premises to AWS.
+     - **AWS Site-to-Site VPN**: Secures connections between on-premises and AWS over the internet.
+     - **AWS Cloud WAN**: Simplifies global network management and operation.
 
 3. **Edge Networking Services:**
-   - **Amazon Route 53**: Scalable DNS web service.
-   - **AWS Global Accelerator**: Improves global application availability and performance.
+     - **Amazon Route 53**: Scalable DNS web service.
+     - **AWS Global Accelerator**: Improves global application availability and performance.
 
 4. **Application Networking:**
-   - **AWS App Mesh**: Microservices communication management.
-   - **Amazon API Gateway**: Build, deploy, and manage APIs.
-   - **AWS Cloud Map**: Service discovery and application resource mapping.
+     - **AWS App Mesh**: Microservices communication management.
+     - **Amazon API Gateway**: Build, deploy, and manage APIs.
+     - **AWS Cloud Map**: Service discovery and application resource mapping.
 
 5. **Networking Security:**
-   - **AWS Shield**: DDoS protection service.
-   - **AWS WAF**: Web application firewall to protect web applications.
-   - **AWS Network Firewall**: Centralized network traffic filtering.
-   - **AWS Firewall Manager**: Central security management for multiple accounts and resources.
+     - **AWS Shield**: DDoS protection service.
+     - **AWS WAF**: Web application firewall to protect web applications.
+     - **AWS Network Firewall**: Centralized network traffic filtering.
+     - **AWS Firewall Manager**: Central security management for multiple accounts and resources.
 
 6. **AWS Networking Principles:**
    - Networking on AWS is virtualized and supports various designs, including regional, public, private, mesh, and hub-and-spoke architectures.
@@ -413,33 +413,33 @@ VPC
 1. **Definition**: An Amazon VPC is a virtual network in the AWS Cloud, akin to a virtual data center. It allows users to define a network boundary around AWS resources and services.
 
 2. **Types of VPCs**:
-   - **Default Amazon VPC**: Automatically created in each AWS Region when you create an AWS account. It includes:
+     - **Default Amazon VPC**: Automatically created in each AWS Region when you create an AWS account. It includes:
      - A public subnet in each Availability Zone of the region.
      - Default route configurations allowing all inbound and outbound traffic to the internet.
      - A single default VPC per region with a pre-defined CIDR range (`172.31.0.0/16`).
      - Automatic subnet distribution across Availability Zones for resiliency.
 
-   - **Custom Amazon VPC**: A user-defined virtual network that requires explicit configuration for:
+     - **Custom Amazon VPC**: A user-defined virtual network that requires explicit configuration for:
      - IP address ranges (CIDR blocks) and subnets.
      - Traffic flow management, routing, and network gateways.
      - IPv4 and IPv6 support, which cannot be modified later.
 
 3. **Default VPC Features**:
-   - **Subnets**: Each subnet within a default VPC is unique and non-overlapping in its IP address range.
-   - **CIDR Range**: The default IPv4 CIDR range is `172.31.0.0/16`, with a /64 IPv6 CIDR for subnets.
-   - **Internet Access**: All default subnets are configured with routes to the internet, allowing both public and private IP addresses for instances.
+     - **Subnets**: Each subnet within a default VPC is unique and non-overlapping in its IP address range.
+     - **CIDR Range**: The default IPv4 CIDR range is `172.31.0.0/16`, with a /64 IPv6 CIDR for subnets.
+     - **Internet Access**: All default subnets are configured with routes to the internet, allowing both public and private IP addresses for instances.
 
 4. **Custom VPC Features**:
-   - **Isolation**: Provides a logically isolated network with complete control over IP address ranges, subnets, and traffic flow.
-   - **Custom Configuration**: Requires manual setup for all aspects, including subnets, routing, and security configurations.
+     - **Isolation**: Provides a logically isolated network with complete control over IP address ranges, subnets, and traffic flow.
+     - **Custom Configuration**: Requires manual setup for all aspects, including subnets, routing, and security configurations.
 
 5. **Security and Connectivity**:
-   - **Security Groups and Network ACLs**: Used to manage inbound and outbound traffic to resources within the VPC.
-   - **Network Connectivity Options**: Includes AWS Direct Connect, Site-to-Site VPN, and Client VPN for extending your VPC to on-premises networks.
+     - **Security Groups and Network ACLs**: Used to manage inbound and outbound traffic to resources within the VPC.
+     - **Network Connectivity Options**: Includes AWS Direct Connect, Site-to-Site VPN, and Client VPN for extending your VPC to on-premises networks.
 
 6. **Public vs Private Subnets**:
-   - **Public Subnet**: Configured to allow internet access, typically used for web servers and applications.
-   - **Private Subnet**: Does not have direct internet access, used for securing databases or backend systems.
+     - **Public Subnet**: Configured to allow internet access, typically used for web servers and applications.
+     - **Private Subnet**: Does not have direct internet access, used for securing databases or backend systems.
 
 7. **Hybrid Cloud Configurations**: AWS supports connecting an Amazon VPC with on-premises locations via hybrid cloud setups.
 
@@ -491,35 +491,35 @@ VPC
 ### 5.3.3 AWS Security Features
 
 #### Network ACLs (Access Control Lists)
-- **Definition**: Network ACLs act as firewalls for controlling traffic entering or leaving a subnet in a VPC.
-- **Scope**: Operate at the subnet level, affecting all traffic crossing the subnet boundary.
-- **Default Behavior**: By default, a network ACL allows all traffic in and out. It can be customized or replaced.
-- **Stateless**: Traffic rules are applied independently for inbound and outbound traffic. Both must be explicitly allowed.
-- **Use Case**: Ideal for restricting broad IP address ranges or blocking public traffic to private resources.
+  - **Definition**: Network ACLs act as firewalls for controlling traffic entering or leaving a subnet in a VPC.
+  - **Scope**: Operate at the subnet level, affecting all traffic crossing the subnet boundary.
+  - **Default Behavior**: By default, a network ACL allows all traffic in and out. It can be customized or replaced.
+  - **Stateless**: Traffic rules are applied independently for inbound and outbound traffic. Both must be explicitly allowed.
+  - **Use Case**: Ideal for restricting broad IP address ranges or blocking public traffic to private resources.
 
 #### Security Groups
-- **Definition**: Security groups act as firewalls for individual AWS resources, specifically Elastic Network Interfaces (ENIs).
-- **Scope**: Attach to specific AWS resources (e.g., EC2 instances), filtering traffic based on instance-level rules.
-- **Stateful**: If traffic is allowed in, the corresponding outbound response is automatically allowed.
-- **Behavior**: Rules specify allowed traffic; all other traffic is implicitly denied. 
-- **Resource Recognition**: Can reference other security groups or the same group, offering more granular control.
+  - **Definition**: Security groups act as firewalls for individual AWS resources, specifically Elastic Network Interfaces (ENIs).
+  - **Scope**: Attach to specific AWS resources (e.g., EC2 instances), filtering traffic based on instance-level rules.
+  - **Stateful**: If traffic is allowed in, the corresponding outbound response is automatically allowed.
+  - **Behavior**: Rules specify allowed traffic; all other traffic is implicitly denied. 
+  - **Resource Recognition**: Can reference other security groups or the same group, offering more granular control.
 
 #### Comparison: Network ACLs vs. Security Groups
-- **Network ACLs**:
+  - **Network ACLs**:
   - Stateless: Separate rules needed for inbound and outbound traffic.
   - Operate at the subnet boundary.
   - Explicitly block traffic based on rules.
 
-- **Security Groups**:
+  - **Security Groups**:
   - Stateful: Automatically allows responses to allowed inbound traffic.
   - Operate at the instance level.
   - Implicit deny for any traffic not explicitly allowed.
 
 #### Additional Best Practices
-- **Multi-AZ Deployments**: Enhance availability and reduce attack surface by deploying across multiple Availability Zones.
-- **Amazon CloudWatch**: Monitor VPC components for unusual activity, capacity spikes, and potential security issues.
-- **VPC Flow Logs**: Capture and analyze traffic data to identify network issues or security breaches; stored in Amazon S3 for review.
-- **Chaining Security Groups**: Layer security by creating hierarchical access controls between web, application, and database tiers.
+  - **Multi-AZ Deployments**: Enhance availability and reduce attack surface by deploying across multiple Availability Zones.
+  - **Amazon CloudWatch**: Monitor VPC components for unusual activity, capacity spikes, and potential security issues.
+  - **VPC Flow Logs**: Capture and analyze traffic data to identify network issues or security breaches; stored in Amazon S3 for review.
+  - **Chaining Security Groups**: Layer security by creating hierarchical access controls between web, application, and database tiers.
 
 
 | **Feature/Action**                                        | **Description**                                                                                                                                                      |
@@ -539,17 +539,17 @@ VPC
 2. **Elastic Load Balancing (ELB)**: Distributes incoming traffic across multiple targets (EC2 instances, containers, etc.), enhancing fault-tolerance and scalability.
 
 3. **Types of Load Balancers**:
-   - **Classic Load Balancer**: The original type with basic features; generally replaced by newer types.
-   - **Application Load Balancer (ALB)**: Layer 7 (application layer) load balancer that supports HTTP and HTTPS, with capabilities for routing based on paths, headers, and hosts.
-   - **Network Load Balancer (NLB)**: Layer 4 (transport layer) load balancer that handles millions of requests per second with static IP addresses and supports containerized applications.
-   - **Gateway Load Balancer**: Manages and scales virtual appliances (e.g., firewalls), operates at layer 3 (network layer), and uses the GENEVE protocol.
+     - **Classic Load Balancer**: The original type with basic features; generally replaced by newer types.
+     - **Application Load Balancer (ALB)**: Layer 7 (application layer) load balancer that supports HTTP and HTTPS, with capabilities for routing based on paths, headers, and hosts.
+     - **Network Load Balancer (NLB)**: Layer 4 (transport layer) load balancer that handles millions of requests per second with static IP addresses and supports containerized applications.
+     - **Gateway Load Balancer**: Manages and scales virtual appliances (e.g., firewalls), operates at layer 3 (network layer), and uses the GENEVE protocol.
 
 4. **Expanding Amazon VPC**:
-   - **Add a Second Subnet**: Create a second subnet in a different Availability Zone for high availability and to handle traffic if the primary subnet fails.
-   - **Load Balancer for Traffic Management**: Use ALB to manage and distribute traffic between multiple subnets and endpoints, supporting features like A/B testing and blue/green deployments.
-   - **Multi-AZ Approach**: Place subnets in different Availability Zones to reduce risk and enhance fault-tolerance.
-   - **Route Tables**: Use the same route table for multiple subnets to streamline routing. A subnet can only be associated with one route table.
-   - **Health Checks and Failover**: ELB provides health checks to automatically redirect traffic from unhealthy resources to healthy ones.
+     - **Add a Second Subnet**: Create a second subnet in a different Availability Zone for high availability and to handle traffic if the primary subnet fails.
+     - **Load Balancer for Traffic Management**: Use ALB to manage and distribute traffic between multiple subnets and endpoints, supporting features like A/B testing and blue/green deployments.
+     - **Multi-AZ Approach**: Place subnets in different Availability Zones to reduce risk and enhance fault-tolerance.
+     - **Route Tables**: Use the same route table for multiple subnets to streamline routing. A subnet can only be associated with one route table.
+     - **Health Checks and Failover**: ELB provides health checks to automatically redirect traffic from unhealthy resources to healthy ones.
 
 5. **Auto Scaling**: Automate launching new resources in a second subnet if the application becomes unavailable, ensuring minimal downtime.
 
@@ -569,15 +569,15 @@ By implementing these strategies, you can enhance the high availability, fault-t
    - Your infrastructure design encompasses the characteristics, requirements, constraints, and assumptions for the availability, manageability, performance, recoverability, and security of your systems.
 
 3. **AWS Cloud Adoption Framework (AWS CAF)**:
-   - **IAM**: Manage and audit user permissions across AWS services.
-   - **Detective Controls**: Enhance security posture and visibility to spot issues early.
-   - **Infrastructure Security**: Minimize the infrastructure surface area and enhance privacy and control.
-   - **Data Protection**: Use encrypted services to safeguard data in transit and at rest.
-   - **Incident Response**: Develop and execute responses to security incidents.
+     - **IAM**: Manage and audit user permissions across AWS services.
+     - **Detective Controls**: Enhance security posture and visibility to spot issues early.
+     - **Infrastructure Security**: Minimize the infrastructure surface area and enhance privacy and control.
+     - **Data Protection**: Use encrypted services to safeguard data in transit and at rest.
+     - **Incident Response**: Develop and execute responses to security incidents.
 
 4. **Single-Tier Architecture**:
-   - **Description**: All resources are in a single subnet, exposing them to potential attackers.
-   - **Use Cases**: Suitable for simple applications like personal blogs or websites without private data, or where extended downtimes are acceptable.
+     - **Description**: All resources are in a single subnet, exposing them to potential attackers.
+     - **Use Cases**: Suitable for simple applications like personal blogs or websites without private data, or where extended downtimes are acceptable.
 
       ```plaintext
       +--------------------------+
@@ -595,8 +595,8 @@ By implementing these strategies, you can enhance the high availability, fault-t
       ```
 
 5. **Multi-Tier Architecture**:
-   - **Description**: Introduces additional layers of defense by separating resources into different subnets or tiers, reducing exposure to attacks.
-   - **Design**: Place sensitive data at the end of the chain, using managed endpoints like load balancers or NAT options to avoid exposing parts of the application in the public subnet.
+     - **Description**: Introduces additional layers of defense by separating resources into different subnets or tiers, reducing exposure to attacks.
+     - **Design**: Place sensitive data at the end of the chain, using managed endpoints like load balancers or NAT options to avoid exposing parts of the application in the public subnet.
 
       ```plaintext
       +--------------------------+
@@ -620,19 +620,19 @@ By implementing these strategies, you can enhance the high availability, fault-t
       ```
 
 6. **N-Tier Architecture**:
-   - **Description**: Flexible design with more than three tiers, based on application complexity.
-   - **Best Practices**: Limit routing to necessary connections, use security groups and network ACLs for traffic control.
+     - **Description**: Flexible design with more than three tiers, based on application complexity.
+     - **Best Practices**: Limit routing to necessary connections, use security groups and network ACLs for traffic control.
 
 7. **Subnets and IP Management**:
-   - **Considerations**: Subnets and Amazon VPCs don’t incur costs but use IP addresses. Reserve IP addresses carefully and plan for the future as CIDR blocks cannot be resized.
+     - **Considerations**: Subnets and Amazon VPCs don’t incur costs but use IP addresses. Reserve IP addresses carefully and plan for the future as CIDR blocks cannot be resized.
 
 8. **Complex Design Considerations**:
-   - **VPC Peering**: Connect two VPCs without traversing the public internet.
-   - **VPN & Direct Connect**: Private connections between on-premises infrastructure and AWS resources.
-   - **VPC Endpoints**: Private connections to AWS services without internet access.
+     - **VPC Peering**: Connect two VPCs without traversing the public internet.
+     - **VPN & Direct Connect**: Private connections between on-premises infrastructure and AWS resources.
+     - **VPC Endpoints**: Private connections to AWS services without internet access.
 
 9. **Amazon VPC Configuration**:
-   - **CIDR Block Selection**: Choose a CIDR block with sufficient IP addresses and avoid conflicts with on-premises data center blocks.
+     - **CIDR Block Selection**: Choose a CIDR block with sufficient IP addresses and avoid conflicts with on-premises data center blocks.
 
 10. **Environment Isolation**:
-    - **Recommendation**: Use separate VPCs for development, production, and staging. If using a single VPC, ensure maximum isolation through network ACLs and subnets.
+      - **Recommendation**: Use separate VPCs for development, production, and staging. If using a single VPC, ensure maximum isolation through network ACLs and subnets.
