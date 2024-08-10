@@ -180,3 +180,10 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 
 ---
+
+## Day 11 - Deep Dive with Security: AWS Identity and Access Management (IAM)
+
+### Notes
+- [Deep Dive into AWS Identity and Access Management (IAM)](Day11-IAM-Deep-Dive/README.md)
+
+---
