@@ -187,3 +187,11 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 - [Deep Dive into AWS Identity and Access Management (IAM)](Day11-IAM-Deep-Dive/README.md)
 
 ---
+
+## Day 12 - Securing Data in Amazon S3 & Protecting Instances with Security Groups
+
+### Notes
+- [Securing and Protecting Your Data in Amazon S3](Day12-SecuringS3-ProtectingSG/README.md)
+
+
+---
