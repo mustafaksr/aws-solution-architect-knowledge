@@ -642,7 +642,7 @@ AWS Storage Gateway integrates on-premises environments with AWS Cloud storage, 
 For further details, explore the [AWS Storage Gateway documentation](https://aws.amazon.com/storagegateway).
 
 
-###  10.2.1. Amazon S3 File Gatewa
+###  10.2.1. Amazon S3 File Gateway
 
 
 

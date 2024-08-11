@@ -619,7 +619,7 @@ Session tags are attributes passed when you assume an IAM role or federate a use
      - **Transitivity**: Tags from an initial role session can be made transitive, passing to subsequent sessions in a role chain.
      - **Example**: Assuming Role 1, then Role 2, and finally Role 3, with each role tagged in IAM. Session tags from Role 1 can persist through Roles 2 and 3 if set as transitive.
 
-**Summary Table**
+
 
 | Feature           | Description |
 |-------------------|-------------|
@@ -652,7 +652,7 @@ Identity federation in AWS allows users to access AWS resources using an identit
       - **Service:** AWS Cognito
       - **Use Case:** Manages user sign-up, sign-in, and access for web and mobile applications.
 
-**Summary Table**
+
 
 | **Use Case**                       | **AWS Service**        | **Description**                                                                                   |
 |------------------------------------|------------------------|---------------------------------------------------------------------------------------------------|
@@ -975,7 +975,7 @@ To configure and use IAM Access Analyzer effectively, ensure the account has the
 }
 ```
 
-Summary Table
+
 
 | **Feature**                  | **Details**                                                                                     |
 |------------------------------|-------------------------------------------------------------------------------------------------|

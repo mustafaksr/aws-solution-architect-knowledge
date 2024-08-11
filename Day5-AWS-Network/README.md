@@ -48,7 +48,7 @@
     - The shared responsibility model ensures that while your network is agile, security measures are enforced to protect data as it traverses your network.
 
 
-### 5.1.2 AWS Networkk Deep Dive
+### 5.1.2 AWS Network Deep Dive
 
 ![network-services](images/network-services.png)
 
