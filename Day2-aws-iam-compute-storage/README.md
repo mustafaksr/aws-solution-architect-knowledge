@@ -278,7 +278,7 @@ Services in the Image:
 
 - **Migration and Integration**: Facilitates migration using AWS DataSync and integrates seamlessly with existing Windows applications and workloads. Ideal for use cases like home directories, business applications, media workflows, and data analytics.
 
-input
+
 
 #### 2.2.6 File storage: Amazon FSx for NetApp ONTAP
 

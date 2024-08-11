@@ -751,7 +751,7 @@ For more details, refer to resources on web identity federation API operations a
 
 ## 11.17 AWS IAM Identity Center for User Federation
 
-AWS IAM Identity Center (formerly AWS Single Sign-On) simplifies federated access management across AWS accounts and business applications. Here’s a summary of what you’ve learned:
+AWS IAM Identity Center (formerly AWS Single Sign-On) simplifies federated access management across AWS accounts and business applications.
 
 AWS IAM Identity Center Benefits:
    - **Built-in Integrations:** Seamlessly integrates with cloud applications like Salesforce, Box, GitHub, and Office 365.
@@ -1085,7 +1085,7 @@ AWS CloudTrail records actions taken by IAM users or roles, capturing all AWS se
 
 ## 11.22 AWS Well-Architected Tool
 
-The AWS Well-Architected Tool is a self-service utility designed to assist users in evaluating their AWS workloads according to best practices. It offers a consistent process for reviewing workload architectures, identifying potential risks, and recommending improvements. Here’s a summary of what you’ve learned:
+The AWS Well-Architected Tool is a self-service utility designed to assist users in evaluating their AWS workloads according to best practices. It offers a consistent process for reviewing workload architectures, identifying potential risks, and recommending improvements.
 
    - **Purpose**: Helps review AWS workloads without needing an AWS solutions architect.
    - **Functionality**:

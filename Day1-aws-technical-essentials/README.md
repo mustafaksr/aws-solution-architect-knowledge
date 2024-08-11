@@ -134,7 +134,7 @@
 - **Historical Context**: Container technology evolved from UNIX kernel features in the 1970s, initially requiring manual configuration, and has since been streamlined by open-source advancements to address reliability issues across different computing environments.
 
 
-#### 1.1.2.5. 
+#### 1.1.2.5. Serverless Services
 
 - **Reduction of Heavy Lifting**: Traditional EC2 requires you to manage both physical hardware and logical controls like operating systems and scaling, while container services like Amazon ECS and EKS still involve managing underlying EC2 instances.
 
