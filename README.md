@@ -195,3 +195,9 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 
 ---
+
+## AWS BADGE
+- [AWS Knowledge: Architecting Badge Link](https://www.credly.com/badges/e38c0c38-73fb-4fe6-98c1-11defacbd56a/public_url)
+- ![AWS Knowledge: Architecting  Badge Link](Gained-AWS-Badge/images/aws-knowledge-architecting.png) 
+
+---
