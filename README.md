@@ -201,3 +201,30 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 - ![AWS Knowledge: Architecting  Badge Link](Gained-AWS-Badge/images/aws-knowledge-architecting.png) 
 
 ---
+
+## AWS COST
+
+### Daily Costs of Learning Journey with Implementations
+
+API Operations:
+
+![API Operations](Costs/images/api_operations.png)
+
+Services:
+
+![Services](Costs/images/service.png)
+
+Usage Type:
+
+![Usage Type](Costs/images/usage_type.png)
+
+Free Tiers Usage:
+
+![Free Tiers Usage 0](Costs/images/free_tier0.png)
+
+![Free Tiers Usage 1](Costs/images/free_tier1.png)
+
+
+### Capstone Project Cost
+
+continues...
