@@ -207,6 +207,7 @@ resource "aws_ssm_parameter" "invoke_url" {
   name  = "/myapp/invoke_url"
   type  = "String"
   value = aws_api_gateway_deployment.api_deployment.invoke_url
+  depends_on = [ aws_api_gateway_deployment.api_deployment ]
 }
 
 # Create IAM role for Lambda
@@ -355,14 +356,14 @@ resource "aws_api_gateway_resource" "delete_resource" {
 }
 
 
-# # Define GET method for the GET resource
-# resource "aws_api_gateway_method" "get_method" {
-#   rest_api_id   = aws_api_gateway_rest_api.api_gateway.id
-#   resource_id   = aws_api_gateway_resource.get_resource.id
-#   http_method   = "GET"
-#   authorization = "NONE"
+# Define GET method for the GET resource
+resource "aws_api_gateway_method" "get_method" {
+  rest_api_id   = aws_api_gateway_rest_api.api_gateway.id
+  resource_id   = aws_api_gateway_resource.get_resource.id
+  http_method   = "GET"
+  authorization = "NONE"
 
-# }
+}
 
 # # Define POST method for the POST resource
 # resource "aws_api_gateway_method" "post_method" {
@@ -395,16 +396,16 @@ resource "aws_api_gateway_resource" "delete_resource" {
 # }
 # }
 
-# # Integration for GET Lambda
-# resource "aws_api_gateway_integration" "get_integration" {
-#   rest_api_id             = aws_api_gateway_rest_api.api_gateway.id
-#   resource_id             = aws_api_gateway_resource.get_resource.id
-#   http_method             = aws_api_gateway_method.get_method.http_method
-#   integration_http_method = "GET"
-#   type                    = "AWS"
-#   uri                     = aws_lambda_function.get_api_lambda.invoke_arn
+# Integration for GET Lambda
+resource "aws_api_gateway_integration" "get_integration" {
+  rest_api_id             = aws_api_gateway_rest_api.api_gateway.id
+  resource_id             = aws_api_gateway_resource.get_resource.id
+  http_method             = aws_api_gateway_method.get_method.http_method
+  integration_http_method = "GET"
+  type                    = "AWS"
+  uri                     = aws_lambda_function.get_api_lambda.invoke_arn
   
-# }
+}
 
 
 
@@ -464,7 +465,7 @@ resource "aws_instance" "rds_app_instance" {
   iam_instance_profile   = aws_iam_instance_profile.instance_role_profile.name
   key_name               = aws_key_pair.my_key_pair.key_name
 
-  depends_on = [aws_db_instance.app_db]
+  depends_on = [aws_db_instance.app_db, aws_ssm_parameter.invoke_url, aws_ssm_parameter.db_password,aws_ssm_parameter.db_host, aws_ssm_parameter.output_bucket]
   tags = {
     Name = "Streamlit APP" # This is the display name
   }

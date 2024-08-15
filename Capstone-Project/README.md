@@ -39,7 +39,13 @@
     terraform apply
     ```
 
-3. Create 3 Methods from console for routes: GET, POST, DELETE like pdf file:
+3. Create 3 Methods from console for routes: GET, POST, DELETE like pdf file, after delete existing method and integration for GET:
+
+    Delete get method created by terraform.
+
+    ![delete get method ](images/delete_get_created_by_terraform.png)
+
+    Create 3 methods for  GET, POST, DELETE like in pdf:
 
     [API Gateway - Create method.pdf](API%20Gateway%20-%20Create%20method.pdf)
 
@@ -62,7 +68,6 @@
     export DATABASE_PASSWORD=$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region "us-east-2" --output text)
     export DATABASE_USER=admin
     export OUTPUT_BUCKET_NAME=$(aws ssm get-parameter --name "/myapp/output_bucket" --query "Parameter.Value" --region "us-east-2" --output text)
-
     export API_BASE_URL=$(aws ssm get-parameter --name "/myapp/invoke_url" --query "Parameter.Value" --region "us-east-2" --output text)
 
     # Create example database and table, and insert sample data
