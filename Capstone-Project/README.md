@@ -17,6 +17,20 @@
     ```
 2. Start terraform and deploy Infrastructure.
 
+    key creation exaple for EC2:
+
+    ```bash
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/my-aws-key
+    ```
+    - Press Enter when prompted for a passphrase, or enter one if you want to secure your private key with a passphrase.
+
+    - Ensure the files are created in the specified directory:
+        ```bash
+        ls ~/.ssh/my-aws-key*
+        ```
+
+
+
     ```bash
     cd ../.. # cd Capstone-Project
     terraform init
@@ -28,6 +42,15 @@
 3. Create 3 Methods from console for routes: GET, POST, DELETE like pdf file:
 
     [API Gateway - Create method.pdf](API%20Gateway%20-%20Create%20method.pdf)
+
+    After created methods, it looks like below image.
+
+    ![methods](images/created_methods.png)
+
+    And deploy api to prod stage, like in below.
+
+    ![deploy api to prod stage](images/deploy_api.png)
+
 
 4. (Optional - If there is error.)
 
@@ -84,6 +107,16 @@
 
     ```
 
+5. Visit app.
+    Visit app from terraform output app_url. It looks like:
+    ```bash
+    Outputs:
+
+    api_url = "https://7l4fnc3ikl.execute-api.us-east-2.amazonaws.com/prod"
+    app_url = "http://3.138.181.253:8501"
+    host_db = "terraform-20240815112553658500000005.chkueg6coej3.us-east-2.rds.amazonaws.com"
+    ```
+
 5. Example curl commands
 
     ```bash
@@ -111,3 +144,7 @@
     cd Capstone-Project
     terraform destroy
     ```
+
+
+7. Infrastructure Graph:
+    ![Graph](graph.png)
