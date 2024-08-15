@@ -237,19 +237,19 @@ resource "aws_iam_role_policy" "lambda_policy" {
     Statement = [
       {
         Action = [
-          
-        "rds:DescribeDBInstances",
-        "rds:Connect",
-        "s3:GetObject",
-        "execute-api:Invoke"
-      
+          "rds:DescribeDBInstances",
+          "rds:Connect",
+          "s3:GetObject",
+          "execute-api:Invoke",
         ],
         Effect = "Allow",
+        
         Resource = "*"
       }
     ]
   })
 }
+
 
 # Create Lambda function with reserved concurrency for autoscaling
 resource "aws_lambda_function" "get_api_lambda" {
@@ -379,18 +379,6 @@ resource "aws_api_gateway_method" "get_method" {
 #   authorization = "NONE"
 # }
 
-# Integration for GET Lambda
-resource "aws_api_gateway_integration" "get_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.api_gateway.id
-  resource_id             = aws_api_gateway_resource.get_resource.id
-  http_method             = aws_api_gateway_method.get_method.http_method
-  integration_http_method = "GET"
-  type                    = "AWS"
-  uri                     = aws_lambda_function.get_api_lambda.invoke_arn
-
-  
-
-}
 
 resource "aws_api_gateway_method_response" "get_method_response" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
@@ -398,7 +386,6 @@ resource "aws_api_gateway_method_response" "get_method_response" {
   http_method = aws_api_gateway_method.get_method.http_method
   status_code = "200"  # The status code you expect
 
- 
 
   response_models = {
     "application/json" = "Empty"
@@ -407,15 +394,28 @@ resource "aws_api_gateway_method_response" "get_method_response" {
 }
 }
 
+# Integration for GET Lambda
+resource "aws_api_gateway_integration" "get_integration" {
+  rest_api_id             = aws_api_gateway_rest_api.api_gateway.id
+  resource_id             = aws_api_gateway_resource.get_resource.id
+  http_method             = aws_api_gateway_method.get_method.http_method
+  integration_http_method = "POST"
+  type                    = "AWS"
+  uri                     = aws_lambda_function.get_api_lambda.invoke_arn
+  
+}
+
+
+
 resource "aws_api_gateway_integration_response" "get_integration_response" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   resource_id = aws_api_gateway_resource.get_resource.id
   http_method = aws_api_gateway_method.get_method.http_method
   status_code = "200"
 
-  response_templates = {
-    "application/json" = ""
-  }
+  # response_templates = {
+  #   "application/json" = "Empty"
+  # }
 
   # No response_templates block, so the response body will be empty
 }
@@ -556,7 +556,7 @@ export API_BASE_URL=$(aws ssm get-parameter --name "/myapp/invoke_url" --query "
 
 # Create example database and table, and insert sample data
 mysql -h $(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region ${var.aws_region} --output text) -u admin -p$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region ${var.aws_region} --output text) -e "
-CREATE DATABASE IF NOT EXISTS example_db;
+CREATE DATABASE IF NOT EXISTS employees;
 USE example_db;
 
 CREATE TABLE IF NOT EXISTS employees (
