@@ -138,7 +138,7 @@
     -d '{"body": "{\"id\": 1 }"}'
 
 
-    curl -X DELETE https://7l4fnc3ikl.execute-api.us-east-2.amazonaws.com/prod/delete \
+    curl -X DELETE <api_url>/prod/delete \
     -H "Content-Type: application/json" \
     -d '{"body": "{\"id\": 1 }"}'
 
