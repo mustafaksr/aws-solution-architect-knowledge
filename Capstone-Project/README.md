@@ -1,4 +1,18 @@
 # Capstone Project - 
+1. Prepare aws cli:
+    ```bash
+        #install aws cli 
+        sudo apt install python3-pip -y
+        pip3 install awscli --upgrade --user
+
+        #To configure first create credentials for test_user(create test_user also) from IAM.
+        #Then use Access key and Secret access key for configration aws cli.
+        #configure aws cli.
+        aws configure
+
+        #test configuration
+        aws ls 
+    ```
 
 1. Prepare env for functions
     ```bash
