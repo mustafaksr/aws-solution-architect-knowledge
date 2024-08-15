@@ -145,6 +145,7 @@ resource "aws_s3_bucket" "output_bucket" {
   versioning { #ignore Argument is deprecated warning.
     enabled = true
   }
+  force_destroy = true
 }
 
 
