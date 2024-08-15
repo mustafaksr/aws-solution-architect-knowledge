@@ -8,7 +8,6 @@ import boto3
 from io import StringIO
 import json
 
-
 # Fetching environment variables
 api_base_url = os.getenv('API_BASE_URL')  # API Gateway base URL
 s3_bucket_name = os.getenv('OUTPUT_BUCKET_NAME')
@@ -24,9 +23,29 @@ def fetch_data(query):
 
 # Function to make POST request to API Gateway
 def insert_data(name, age, email):
-    response = requests.post(f"{api_base_url}/post", json={"name": name, "age": age, "email": email})
+    payload = {
+        "body": json.dumps({
+            "name": name,
+            "age": age,
+            "email": email
+        })
+    }
+    response = requests.post(f"{api_base_url}/post", json=payload)
     if response.status_code == 200:
         st.success("Data inserted successfully!")
+    else:
+        st.error(f"Error: {response.status_code}, {response.text}")
+
+# Function to make DELETE request to API Gateway
+def delete_data(employee_id):
+    payload = {
+        "body": json.dumps({
+            "id": employee_id
+        })
+    }
+    response = requests.delete(f"{api_base_url}/delete", json=payload)
+    if response.status_code == 200:
+        st.success("Data deleted successfully!")
     else:
         st.error(f"Error: {response.status_code}, {response.text}")
 
@@ -42,7 +61,8 @@ def save_to_s3(df, filename, bucket_name):
 st.title("MySQL Data Viewer and Inserter via API Gateway")
 
 # Query section
-query = "SELECT * FROM employees" #st.text_area("Enter SQL Query:", "SELECT * FROM employees")
+query = "SELECT * FROM employees"  # You can uncomment the following line to let users input custom queries
+# query = st.text_area("Enter SQL Query:", "SELECT * FROM employees")
 
 if st.button("Run Query"):
     data = fetch_data(query)
@@ -59,3 +79,10 @@ email = st.text_input("Email")
 
 if st.button("Insert Data"):
     insert_data(name, age, email)
+
+# Delete data section
+st.header("Delete Data")
+employee_id = st.number_input("Employee ID to delete", min_value=1)
+
+if st.button("Delete Data"):
+    delete_data(employee_id)

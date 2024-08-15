@@ -342,26 +342,27 @@ resource "aws_api_gateway_resource" "get_resource" {
   path_part   = "get"
 }
 
-# resource "aws_api_gateway_resource" "post_resource" {
-#   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
-#   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-#   path_part   = "post"
-# }
-
-# resource "aws_api_gateway_resource" "delete_resource" {
-#   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
-#   parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
-#   path_part   = "delete"
-# }
-
-
-# Define GET method for the GET resource
-resource "aws_api_gateway_method" "get_method" {
-  rest_api_id   = aws_api_gateway_rest_api.api_gateway.id
-  resource_id   = aws_api_gateway_resource.get_resource.id
-  http_method   = "GET"
-  authorization = "NONE"
+resource "aws_api_gateway_resource" "post_resource" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
+  path_part   = "post"
 }
+
+resource "aws_api_gateway_resource" "delete_resource" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  parent_id   = aws_api_gateway_rest_api.api_gateway.root_resource_id
+  path_part   = "delete"
+}
+
+
+# # Define GET method for the GET resource
+# resource "aws_api_gateway_method" "get_method" {
+#   rest_api_id   = aws_api_gateway_rest_api.api_gateway.id
+#   resource_id   = aws_api_gateway_resource.get_resource.id
+#   http_method   = "GET"
+#   authorization = "NONE"
+
+# }
 
 # # Define POST method for the POST resource
 # resource "aws_api_gateway_method" "post_method" {
@@ -380,45 +381,45 @@ resource "aws_api_gateway_method" "get_method" {
 # }
 
 
-resource "aws_api_gateway_method_response" "get_method_response" {
-  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
-  resource_id = aws_api_gateway_resource.get_resource.id
-  http_method = aws_api_gateway_method.get_method.http_method
-  status_code = "200"  # The status code you expect
+# resource "aws_api_gateway_method_response" "get_method_response" {
+#   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+#   resource_id = aws_api_gateway_resource.get_resource.id
+#   http_method = aws_api_gateway_method.get_method.http_method
+#   status_code = "200"  # The status code you expect
 
 
-  response_models = {
-    "application/json" = "Empty"
+#   response_models = {
+#     "application/json" = "Empty"
 
 
-}
-}
+# }
+# }
 
-# Integration for GET Lambda
-resource "aws_api_gateway_integration" "get_integration" {
-  rest_api_id             = aws_api_gateway_rest_api.api_gateway.id
-  resource_id             = aws_api_gateway_resource.get_resource.id
-  http_method             = aws_api_gateway_method.get_method.http_method
-  integration_http_method = "POST"
-  type                    = "AWS"
-  uri                     = aws_lambda_function.get_api_lambda.invoke_arn
+# # Integration for GET Lambda
+# resource "aws_api_gateway_integration" "get_integration" {
+#   rest_api_id             = aws_api_gateway_rest_api.api_gateway.id
+#   resource_id             = aws_api_gateway_resource.get_resource.id
+#   http_method             = aws_api_gateway_method.get_method.http_method
+#   integration_http_method = "GET"
+#   type                    = "AWS"
+#   uri                     = aws_lambda_function.get_api_lambda.invoke_arn
   
-}
+# }
 
 
 
-resource "aws_api_gateway_integration_response" "get_integration_response" {
-  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
-  resource_id = aws_api_gateway_resource.get_resource.id
-  http_method = aws_api_gateway_method.get_method.http_method
-  status_code = "200"
+# resource "aws_api_gateway_integration_response" "get_integration_response" {
+#   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+#   resource_id = aws_api_gateway_resource.get_resource.id
+#   http_method = aws_api_gateway_method.get_method.http_method
+#   status_code = "200"
 
-  # response_templates = {
-  #   "application/json" = "Empty"
-  # }
+#   # response_templates = {
+#   #   "application/json" = "Empty"
+#   # }
 
-  # No response_templates block, so the response body will be empty
-}
+#   # No response_templates block, so the response body will be empty
+# }
 
 
 # # Integration for POST Lambda
@@ -477,74 +478,9 @@ sudo apt-get install -y python3-pip python3-dev nginx awscli  mariadb-client
 # Install Streamlit and MySQL connector
 pip3 install streamlit mysql-connector-python boto3
 
-# Create Streamlit app
-cat <<'EOL' > /home/ubuntu/app.py
-
-#TODO: UPDATE Streamlit app to use API GATEWAY routes instead of using mysql.connector
-#test
-import streamlit as st
-import requests
-import os
-import pandas as pd
-import boto3
-from io import StringIO
-import json
-
-
-# Fetching environment variables
-api_base_url = os.getenv('API_BASE_URL')  # API Gateway base URL
-s3_bucket_name = os.getenv('OUTPUT_BUCKET_NAME')
-
-# Function to make GET request to API Gateway
-def fetch_data(query):
-    response = requests.get(f"{api_base_url}/get", params={"query": query})
-    if response.status_code == 200:
-        return pd.DataFrame(json.loads(response.json()["body"]))
-    else:
-        st.error(f"Error: {response.status_code}, {response.text}")
-        return pd.DataFrame()
-
-# Function to make POST request to API Gateway
-def insert_data(name, age, email):
-    response = requests.post(f"{api_base_url}/post", json={"name": name, "age": age, "email": email})
-    if response.status_code == 200:
-        st.success("Data inserted successfully!")
-    else:
-        st.error(f"Error: {response.status_code}, {response.text}")
-
-# Function to save DataFrame to S3 as CSV
-def save_to_s3(df, filename, bucket_name):
-    csv_buffer = StringIO()
-    df.to_csv(csv_buffer, index=False)
-    s3_resource = boto3.resource('s3')
-    s3_resource.Object(bucket_name, filename).put(Body=csv_buffer.getvalue())
-    st.success(f"File '{filename}' saved to S3 bucket '{bucket_name}'")
-
-# Streamlit app
-st.title("MySQL Data Viewer and Inserter via API Gateway")
-
-# Query section
-query = st.text_area("Enter SQL Query:", "SELECT * FROM example_table")
-
-if st.button("Run Query"):
-    data = fetch_data(query)
-    if not data.empty:
-        st.dataframe(data)
-        if st.button("Save to S3"):
-            save_to_s3(data, "query_results.csv", s3_bucket_name)
-
-# Insert data section
-st.header("Insert New Data")
-name = st.text_input("Name")
-age = st.number_input("Age", min_value=0)
-email = st.text_input("Email")
-
-if st.button("Insert Data"):
-    insert_data(name, age, email)
-
-
-
-EOL
+# Download Streamlit app
+wget https://github.com/mustafaksr/aws-solution-architect-knowledge/raw/524a306f4912fd05adc82b2eaa0ad44e8d9a4c25/Capstone-Project/app/app.py
+mv app.py /home/ubuntu/app.py
 
 # Fetch parameters from AWS Systems Manager Parameter Store
 export DATABASE_HOST=$(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region ${var.aws_region} --output text)
@@ -557,7 +493,7 @@ export API_BASE_URL=$(aws ssm get-parameter --name "/myapp/invoke_url" --query "
 # Create example database and table, and insert sample data
 mysql -h $(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region ${var.aws_region} --output text) -u admin -p$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region ${var.aws_region} --output text) -e "
 CREATE DATABASE IF NOT EXISTS employees;
-USE example_db;
+USE employees;
 
 CREATE TABLE IF NOT EXISTS employees (
     id INT AUTO_INCREMENT PRIMARY KEY,
