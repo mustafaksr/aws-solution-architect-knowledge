@@ -138,7 +138,7 @@
     -d '{"body": "{\"id\": 1 }"}'
 
 
-    curl -X DELETE <api_url>/prod/delete \
+    curl -X DELETE <api_url>/delete \
     -H "Content-Type: application/json" \
     -d '{"body": "{\"id\": 1 }"}'
 
