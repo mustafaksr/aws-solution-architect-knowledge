@@ -32,20 +32,33 @@ export API_BASE_URL=$(aws ssm get-parameter --name "/myapp/invoke_url" --query "
 
 # Create example database and table, and insert sample data
 mysql -h $(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region "us-east-2" --output text) -u admin -p$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region "us-east-2" --output text) -e "
-CREATE DATABASE IF NOT EXISTS example_db;
+CREATE DATABASE IF NOT EXISTS employees;
 USE example_db;
 
-CREATE TABLE IF NOT EXISTS example_table (
+CREATE TABLE IF NOT EXISTS employees (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     age INT,
     email VARCHAR(100)
 );
 
-INSERT INTO example_table (name, age, email) VALUES 
+INSERT INTO employees (name, age, email) VALUES 
 ('Alice Johnson', 30, 'alice.johnson@example.com'),
 ('Bob Smith', 25, 'bob.smith@example.com'),
 ('Carol Brown', 40, 'carol.brown@example.com');
 "
 
+```
+```
+terraform init
+terraform plan
+terraform graph | dot -Tpng > graph.png
+terraform apply
+terraform destroy
+```
+
+```
+#ssh for vm, log init script
+sudo tail -f /var/log/cloud-init-output.log # follow log
+sudo cat /var/log/cloud-init-output.log # all log
 ```
