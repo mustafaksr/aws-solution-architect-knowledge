@@ -19,15 +19,17 @@
     python3 -m venv myenv
     source myenv/bin/activate
 
-
+    mdkir package
     pip install mysql-connector-python -t ./package
+
+    cp *.py ./package
 
     cd functions/package
     zip -r9 ../lambda_function.zip .
 
-    # cd ../.. && aws s3 cp functions/lambda_function.zip s3://output-bucket-streamlit-fs57ef/
+    # cd ../.. && aws s3 cp functions/lambda_function.zip s3://<your-bucket>/
 
-    # s3://output-bucket-streamlit-fs57ef/lambda_function.zip
+    # s3://<your-bucket>/lambda_function.zip
     ```
 2. Start terraform and deploy Infrastructure.
 

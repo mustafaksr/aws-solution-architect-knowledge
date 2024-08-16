@@ -110,9 +110,9 @@ resource "aws_security_group" "internal_sg" {
 
   # Allow internal communication within the VPC
   ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
     # cidr_blocks = [data.aws_vpc.default.cidr_block]
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -205,10 +205,10 @@ resource "aws_ssm_parameter" "db_password" {
 
 
 resource "aws_ssm_parameter" "invoke_url" {
-  name  = "/myapp/invoke_url"
-  type  = "String"
-  value = aws_api_gateway_deployment.api_deployment.invoke_url
-  depends_on = [ aws_api_gateway_deployment.api_deployment ]
+  name       = "/myapp/invoke_url"
+  type       = "String"
+  value      = aws_api_gateway_deployment.api_deployment.invoke_url
+  depends_on = [aws_api_gateway_deployment.api_deployment]
 }
 
 # Create IAM role for Lambda
@@ -245,7 +245,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
           "execute-api:Invoke",
         ],
         Effect = "Allow",
-        
+
         Resource = "*"
       }
     ]
@@ -335,7 +335,7 @@ resource "aws_api_gateway_rest_api" "api_gateway" {
   endpoint_configuration {
     types = ["REGIONAL"]
   }
-  
+
 }
 
 resource "aws_api_gateway_resource" "get_resource" {
@@ -405,7 +405,7 @@ resource "aws_api_gateway_integration" "get_integration" {
   integration_http_method = "GET"
   type                    = "AWS"
   uri                     = aws_lambda_function.get_api_lambda.invoke_arn
-  
+
 }
 
 
@@ -451,7 +451,7 @@ resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   stage_name  = "prod"
   # depends_on = [ aws_api_gateway_integration.get_integration,aws_api_gateway_integration.post_integration,aws_api_gateway_integration.delete_integration ]
- 
+
 }
 
 
@@ -466,7 +466,7 @@ resource "aws_instance" "rds_app_instance" {
   iam_instance_profile   = aws_iam_instance_profile.instance_role_profile.name
   key_name               = aws_key_pair.my_key_pair.key_name
 
-  depends_on = [aws_db_instance.app_db, aws_ssm_parameter.invoke_url, aws_ssm_parameter.db_password,aws_ssm_parameter.db_host, aws_ssm_parameter.output_bucket]
+  depends_on = [aws_db_instance.app_db, aws_ssm_parameter.invoke_url, aws_ssm_parameter.db_password, aws_ssm_parameter.db_host, aws_ssm_parameter.output_bucket]
   tags = {
     Name = "Streamlit APP" # This is the display name
   }
