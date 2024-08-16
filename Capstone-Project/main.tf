@@ -8,6 +8,10 @@ data "aws_vpc" "default" {
   default = true
 }
 
+data "http" "my_ip" {
+  url = "http://checkip.amazonaws.com"
+}
+
 #key pair
 #ssh-keygen -t rsa -b 4096 -f ~/.ssh/my-aws-key
 resource "aws_key_pair" "my_key_pair" {
@@ -80,11 +84,22 @@ resource "aws_security_group" "web_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Allow your ip to connect EC2s
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.my_ip.body)}/32"]
+  }
+
+  # Allow SSH access from AWS EC2 Instance Connect IP ranges
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [
+      "3.16.146.0/29",  # Example AWS IP ranges, check the latest IP ranges from AWS
+    ]
   }
 
   egress {
@@ -113,8 +128,7 @@ resource "aws_security_group" "internal_sg" {
     from_port = 0
     to_port   = 0
     protocol  = "-1"
-    # cidr_blocks = [data.aws_vpc.default.cidr_block]
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [data.aws_vpc.default.cidr_block, "${chomp(data.http.my_ip.body)}/32"]
   }
 
   egress {
@@ -389,7 +403,7 @@ resource "aws_api_gateway_integration_response" "get_integration_response" {
 resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
   stage_name  = "prod"
-  # depends_on = [ aws_api_gateway_integration.get_integration,aws_api_gateway_integration.post_integration,aws_api_gateway_integration.delete_integration ]
+  depends_on = [ aws_api_gateway_integration.get_integration]
 
 }
 
