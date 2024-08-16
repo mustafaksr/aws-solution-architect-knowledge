@@ -15,3 +15,5 @@ package-lock.json
 Day13-/
 myenv
 package
+main.tf.lb
+lambda-docker/
