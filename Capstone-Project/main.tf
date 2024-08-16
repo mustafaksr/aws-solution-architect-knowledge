@@ -492,6 +492,14 @@ export OUTPUT_BUCKET_NAME=$(aws ssm get-parameter --name "/myapp/output_bucket" 
 
 export API_BASE_URL=$(aws ssm get-parameter --name "/myapp/invoke_url" --query "Parameter.Value" --region ${var.aws_region} --output text)
 
+# append variables to bashrc to make available for new clis.
+echo "DATABASE_HOST=$(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region ${var.aws_region} --output text)" >> ~/.bashrc
+echo "DATABASE_PASSWORD=$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region ${var.aws_region} --output text)" >> ~/.bashrc
+DATABASE_USER=admin
+echo "OUTPUT_BUCKET_NAME=$(aws ssm get-parameter --name "/myapp/output_bucket" --query "Parameter.Value" --region ${var.aws_region} --output text)" >> ~/.bashrc
+echo "API_BASE_URL=$(aws ssm get-parameter --name "/myapp/invoke_url" --query "Parameter.Value" --region ${var.aws_region} --output text)" >> ~/.bashrc
+source ~/.bashrc
+
 # Create example database and table, and insert sample data
 mysql -h $(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region ${var.aws_region} --output text) -u admin -p$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region ${var.aws_region} --output text) -e "
 CREATE DATABASE IF NOT EXISTS employees;

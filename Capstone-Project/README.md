@@ -29,7 +29,7 @@
 
     # cd ../.. && aws s3 cp functions/lambda_function.zip s3://<your-bucket>/
 
-    # s3://<your-bucket>/lambda_function.zip
+    # aws s3 ls s3://<your-bucket>/lambda_function.zip
     ```
 2. Start terraform and deploy Infrastructure.
 
