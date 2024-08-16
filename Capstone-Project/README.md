@@ -129,14 +129,26 @@
     ```
 
 5. Visit app.
-    Visit app from terraform output app_url. It looks like:
+    Visit app from terraform output alb_url. It looks like:
     ```bash
     Outputs:
 
+    alb_url = "http://app-load-balancer-824820823.us-east-2.elb.amazonaws.com"
     api_url = "https://7l4fnc3ikl.execute-api.us-east-2.amazonaws.com/prod"
-    app_url = "http://3.138.181.253:8501"
     host_db = "terraform-20240815112553658500000005.chkueg6coej3.us-east-2.rds.amazonaws.com"
     ```
+
+6. Test with script.sh:
+
+    You can test application load balancer with test.sh script:
+
+    ```bash
+    chmod +x test/test.sh
+    ./test/test.sh
+    # check requested ip addresses, application load balancer distribute traffics to two ec2s. 
+    ```
+
+
 
 5. Example curl commands
 
