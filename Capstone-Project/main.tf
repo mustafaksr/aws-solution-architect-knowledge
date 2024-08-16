@@ -557,6 +557,10 @@ EOF
 
 # }
 
+output "instructions" {
+  value = "visit Capstone-Project/README.md to deploy api manually from aws api gateway console."
+}
+
 output "host_db" {
 
   value = aws_db_instance.app_db.address
@@ -570,3 +574,4 @@ output "api_url" {
 output "app_url" {
   value = "http://${aws_instance.rds_app_instance.public_ip}:8501"
 }
+
