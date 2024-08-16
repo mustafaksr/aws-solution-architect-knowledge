@@ -410,18 +410,18 @@ resource "aws_api_gateway_integration" "get_integration" {
 
 
 
-# resource "aws_api_gateway_integration_response" "get_integration_response" {
-#   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
-#   resource_id = aws_api_gateway_resource.get_resource.id
-#   http_method = aws_api_gateway_method.get_method.http_method
-#   status_code = "200"
+resource "aws_api_gateway_integration_response" "get_integration_response" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+  resource_id = aws_api_gateway_resource.get_resource.id
+  http_method = aws_api_gateway_method.get_method.http_method
+  status_code = "200"
 
-#   # response_templates = {
-#   #   "application/json" = "Empty"
-#   # }
+  # response_templates = {
+  #   "application/json" = "Empty"
+  # }
 
-#   # No response_templates block, so the response body will be empty
-# }
+  # No response_templates block, so the response body will be empty
+}
 
 
 # # Integration for POST Lambda
