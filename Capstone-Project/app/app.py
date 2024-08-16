@@ -1,5 +1,3 @@
-#TODO: UPDATE Streamlit app to use API GATEWAY routes instead of using mysql.connector
-#test
 import streamlit as st
 import requests
 import os
@@ -38,12 +36,7 @@ def insert_data(name, age, email):
 
 # Function to make DELETE request to API Gateway
 def delete_data(employee_id):
-    payload = {
-        "body": json.dumps({
-            "id": employee_id
-        })
-    }
-    response = requests.delete(f"{api_base_url}/delete", json=payload)
+    response = requests.delete(f"{api_base_url}/delete", json={"body": json.dumps({"id": employee_id})})
     if response.status_code == 200:
         st.success("Data deleted successfully!")
     else:
