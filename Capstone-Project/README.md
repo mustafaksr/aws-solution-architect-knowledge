@@ -93,7 +93,25 @@
 
     This setup provides a scalable and manageable infrastructure for deploying a Streamlit-based application integrated with AWS services.
 
+    ### Deployed App Images
 
+    post:
+
+    ![app-post](images/app-post.png)
+
+
+    get:
+    
+    ![app-get](images/app-get.png)
+
+    delete:
+
+    ![app-delete](images/app-delete.png)
+    
+
+    get2:
+
+    ![app-get](images/app-get2.png)
 
 
 1. ## Detailed Instructions:
