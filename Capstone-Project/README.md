@@ -93,6 +93,11 @@
 
     This setup provides a scalable and manageable infrastructure for deploying a Streamlit-based application integrated with AWS services.
 
+    ### Infrastructure Graph:
+
+    ![Graph](graph.png)
+
+
     ### Deployed App Images
 
     post:
@@ -291,5 +296,3 @@
         ```
 
 
-    7. Infrastructure Graph:
-        ![Graph](graph.png)
