@@ -225,6 +225,22 @@ Free Tiers Usage:
 ![Free Tiers Usage 1](Costs/images/free_tier1.png)
 
 
+## Capstone Project
+
+This Terraform configuration sets up a comprehensive AWS infrastructure for deploying a web application using Streamlit, along with a MySQL RDS instance, an API Gateway, and Lambda functions for managing database interactions. The setup includes essential AWS components such as security groups, IAM roles, and an Application Load Balancer.
+
+For details:
+
+- [Capstone Project - 3 Tier Web App Infrastructure Readme](Capstone-Project/README.md)
+- [Access Capstone Project - 3 Tier Web App Infrastructure](Capstone-Project/)
+
+
 ### Capstone Project Cost
 
-continues...
+API Operations:
+
+![API Operations](Costs/images/project_cost_api_operations.png)
+
+Services:
+
+![Services](Costs/images/project_cost_service.png)
