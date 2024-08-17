@@ -153,6 +153,31 @@ resource "aws_db_instance" "app_db" {
   publicly_accessible    = true
 }
 
+resource "null_resource" "run_sql" {
+  depends_on = [aws_db_instance.app_db]
+
+  provisioner "local-exec" {
+    command = <<EOT
+      mysql -h ${aws_db_instance.app_db.address} -u admin -p${var.db_instance_master_password} -e "
+        CREATE DATABASE IF NOT EXISTS employees;
+        USE employees;
+
+        CREATE TABLE IF NOT EXISTS employees (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(100),
+            age INT,
+            email VARCHAR(100)
+        );
+
+        INSERT INTO employees (name, age, email) VALUES 
+        ('Alice Johnson', 30, 'alice.johnson@example.com'),
+        ('Bob Smith', 25, 'bob.smith@example.com'),
+        ('Carol Brown', 40, 'carol.brown@example.com');
+      "
+    EOT
+  }
+}
+
 resource "aws_s3_bucket" "output_bucket" {
   bucket = var.output_bucket_name # New S3 bucket
 
@@ -394,11 +419,6 @@ resource "aws_api_gateway_integration_response" "get_integration_response" {
   # No response_templates block, so the response body will be empty
 }
 
-
-
-
-
-
 # Deploy the API
 resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway.id
@@ -406,10 +426,6 @@ resource "aws_api_gateway_deployment" "api_deployment" {
   depends_on = [ aws_api_gateway_integration.get_integration]
 
 }
-
-
-
-
 
 # ADD Load Balancer
 ###################
@@ -476,7 +492,6 @@ resource "aws_alb_listener_rule" "default" {
   }
 }
 
-
 resource "aws_launch_configuration" "app_lc" {
   name          = "app-launch-configuration3"
   image_id       = "ami-003932de22c285676"  # Use your AMI ID
@@ -484,6 +499,7 @@ resource "aws_launch_configuration" "app_lc" {
   key_name       = aws_key_pair.my_key_pair.key_name
   security_groups = [aws_security_group.web_security_group.id]
   iam_instance_profile   = aws_iam_instance_profile.instance_role_profile.name
+  depends_on = [ aws_ssm_parameter.db_host,aws_ssm_parameter.db_password,aws_ssm_parameter.output_bucket,aws_ssm_parameter.invoke_url ]
   lifecycle {
     create_before_destroy = true
   }
@@ -503,40 +519,13 @@ wget https://raw.githubusercontent.com/mustafaksr/aws-solution-architect-knowled
 mv app.py /home/ubuntu/app.py
 
 # Fetch parameters from AWS Systems Manager Parameter Store
-export DATABASE_HOST="$(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region "${var.aws_region}" --output text)"
-export DATABASE_PASSWORD="$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region "${var.aws_region}" --output text)"
-export DATABASE_USER="admin"
-export OUTPUT_BUCKET_NAME="$(aws ssm get-parameter --name "/myapp/output_bucket" --query "Parameter.Value" --region "${var.aws_region}" --output text)"
-
 export API_BASE_URL="$(aws ssm get-parameter --name "/myapp/invoke_url" --query "Parameter.Value" --region "${var.aws_region}" --output text)"
 
 # Append variables to bashrc to make them available for new CLI sessions
-echo "export DATABASE_HOST=\"$(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region "${var.aws_region}" --output text)\"" >> ~/.bashrc
-echo "export DATABASE_PASSWORD=\"$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region "${var.aws_region}" --output text)\"" >> ~/.bashrc
-echo "export DATABASE_USER=\"admin\"" >> ~/.bashrc
-echo "export OUTPUT_BUCKET_NAME=\"$(aws ssm get-parameter --name "/myapp/output_bucket" --query "Parameter.Value" --region "${var.aws_region}" --output text)\"" >> ~/.bashrc
 echo "export API_BASE_URL=\"$(aws ssm get-parameter --name "/myapp/invoke_url" --query "Parameter.Value" --region "${var.aws_region}" --output text)\"" >> ~/.bashrc
 
 # Reload the bashrc to apply the changes
 source ~/.bashrc
-
-# Create example database and table, and insert sample data
-mysql -h $(aws ssm get-parameter --name "/myapp/db_host" --query "Parameter.Value" --region ${var.aws_region} --output text) -u admin -p$(aws ssm get-parameter --name "/myapp/db_password" --with-decryption --query "Parameter.Value" --region ${var.aws_region} --output text) -e "
-CREATE DATABASE IF NOT EXISTS employees;
-USE employees;
-
-CREATE TABLE IF NOT EXISTS employees (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    age INT,
-    email VARCHAR(100)
-);
-
-INSERT INTO employees (name, age, email) VALUES 
-('Alice Johnson', 30, 'alice.johnson@example.com'),
-('Bob Smith', 25, 'bob.smith@example.com'),
-('Carol Brown', 40, 'carol.brown@example.com');
-"
 
 # Configure Nginx
 echo 'server {
