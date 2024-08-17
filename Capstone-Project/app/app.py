@@ -5,10 +5,27 @@ import pandas as pd
 import boto3
 from io import StringIO
 import json
+from botocore.exceptions import ClientError
 
-# Fetching environment variables
-api_base_url = os.getenv('API_BASE_URL')  # API Gateway base URL
-s3_bucket_name = os.getenv('OUTPUT_BUCKET_NAME')
+def get_ssm_parameter(parameter_name, region='us-east-2', with_decryption=False):
+    # Initialize a session using Amazon SSM
+    ssm_client = boto3.client('ssm', region_name=region)
+    
+    try:
+        # Fetch the parameter
+        response = ssm_client.get_parameter(
+            Name=parameter_name,
+            WithDecryption=with_decryption
+        )
+        # Extract the parameter value from the response
+        parameter_value = response['Parameter']['Value']
+        return parameter_value
+    except ClientError as e:
+        print(f"Error fetching parameter '{parameter_name}': {e}")
+        return None
+
+# Fetch parameters from AWS Systems Manager Parameter Store
+api_base_url = get_ssm_parameter('/myapp/invoke_url')
 
 # Function to make GET request to API Gateway
 def fetch_data(query):
@@ -56,14 +73,14 @@ st.title("MySQL Data Viewer and Inserter via API Gateway")
 # Query section
 query = "SELECT * FROM employees"  # You can uncomment the following line to let users input custom queries
 # query = st.text_area("Enter SQL Query:", "SELECT * FROM employees")
-
+st.divider()
 if st.button("Run Query"):
     data = fetch_data(query)
     if not data.empty:
         st.dataframe(data)
-        if st.button("Save to S3"):
-            save_to_s3(data, "query_results.csv", s3_bucket_name)
 
+
+st.divider()
 # Insert data section
 st.header("Insert New Data")
 name = st.text_input("Name")
@@ -73,9 +90,16 @@ email = st.text_input("Email")
 if st.button("Insert Data"):
     insert_data(name, age, email)
 
+st.divider()
 # Delete data section
 st.header("Delete Data")
 employee_id = st.number_input("Employee ID to delete", min_value=1)
 
 if st.button("Delete Data"):
     delete_data(employee_id)
+
+st.divider()
+if st.button("Save to S3"):
+    data = fetch_data(query)
+    s3_bucket_name = get_ssm_parameter('/myapp/output_bucket')
+    save_to_s3(data, "query_results.csv", s3_bucket_name)

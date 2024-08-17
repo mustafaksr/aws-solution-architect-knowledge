@@ -16,3 +16,10 @@ variable "aws_region" {
   type        = string
   default     = "us-east-2"
 }
+
+
+variable "rds_backup" {
+  description = "AWS RDS backup decision. Enter true if Backup, else enter false."
+  type        = bool
+  
+}

@@ -128,7 +128,8 @@ resource "aws_security_group" "internal_sg" {
     from_port = 0
     to_port   = 0
     protocol  = "-1"
-    cidr_blocks = [data.aws_vpc.default.cidr_block, "${chomp(data.http.my_ip.body)}/32"]
+    # cidr_blocks = [data.aws_vpc.default.cidr_block, "${chomp(data.http.my_ip.body)}/32"] # Lambda VPC Config Needs.
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -151,7 +152,16 @@ resource "aws_db_instance" "app_db" {
   vpc_security_group_ids = [aws_security_group.internal_sg.id]
   skip_final_snapshot    = true
   publicly_accessible    = true
+
+  ### Backup RDS
+  # Conditionally set the backup_retention_period based on var.rds_backup
+  backup_retention_period = var.rds_backup ? 7 : 0
+  # Conditionally set the backup_window only if backups are enabled
+  backup_window = var.rds_backup ? "07:00-09:00" : null
+
 }
+
+
 
 resource "null_resource" "run_sql" {
   depends_on = [aws_db_instance.app_db]
@@ -310,6 +320,10 @@ resource "aws_lambda_function" "get_api_lambda" {
       db_password = var.db_instance_master_password
     }
   }
+  #  vpc_config {
+  #   subnet_ids = [ data.aws_subnet.default_subnet_a.id,data.aws_subnet.default_subnet_a.id ]
+  #   security_group_ids = [ aws_security_group.internal_sg.id ]
+  # }
 }
 
 # Create Lambda function with reserved concurrency for autoscaling
@@ -329,6 +343,11 @@ resource "aws_lambda_function" "post_api_lambda" {
       db_password = var.db_instance_master_password
     }
   }
+  # vpc_config {
+  #   subnet_ids = [ data.aws_subnet.default_subnet_a.id,data.aws_subnet.default_subnet_a.id ]
+  #   security_group_ids = [ aws_security_group.internal_sg.id ]
+
+  # }
 }
 
 # Create Lambda function with reserved concurrency for autoscaling
@@ -349,6 +368,10 @@ resource "aws_lambda_function" "delete_api_lambda" {
       db_password = var.db_instance_master_password
     }
   }
+  #  vpc_config {
+  #   subnet_ids = [ data.aws_subnet.default_subnet_a.id,data.aws_subnet.default_subnet_a.id ]
+  #   security_group_ids = [ aws_security_group.internal_sg.id ]
+  # }
 }
 
 # Create API Gateway
@@ -512,7 +535,7 @@ sudo apt-get update
 sudo apt-get install -y python3-pip python3-dev nginx awscli  mariadb-client
 
 # Install Streamlit and MySQL connector
-pip3 install streamlit mysql-connector-python boto3
+pip3 install streamlit mysql-connector-python boto3 botocore
 
 # Download Streamlit app
 wget https://raw.githubusercontent.com/mustafaksr/aws-solution-architect-knowledge/main/Capstone-Project/app/app.py
@@ -563,10 +586,8 @@ resource "aws_autoscaling_group" "app_asg" {
   health_check_grace_period = 300
   
   // Use target_group_arns for ALBs
-  target_group_arns = [aws_alb_target_group.app_target_group.arn]
+  target_group_arns = [aws_alb_target_group.app_target_group.arn]  
   
-
-
   tag {
     key                 = "Name"
     value               = "bstreamlit-app-instancear"
@@ -632,11 +653,13 @@ output "api_url" {
   value = aws_api_gateway_deployment.api_deployment.invoke_url
 }
 
-# output "app_url" {
-#   value = "http://${aws_instance.rds_app_instance.public_ip}:8501"
-# }
 
 output "alb_url" {
   value = "http://${aws_alb.app_lb.dns_name}"
   description = "The URL of the ALB"
+}
+
+output "local_ip" {
+  description = "Local PC External IP"
+  value = "${chomp(data.http.my_ip.body)}"
 }
