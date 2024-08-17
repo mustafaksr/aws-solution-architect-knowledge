@@ -1,3 +1,21 @@
+terraform {
+  required_version = "1.9.4"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.63.0"
+    }
+    http = {
+      source  = "hashicorp/http"
+      version = "3.4.4"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.2"
+    }
+  }
+}
 
 provider "aws" {
   region = var.aws_region
