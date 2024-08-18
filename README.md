@@ -29,6 +29,7 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
   - [Daily Costs of Learning Journey with Implementations](#daily-costs-of-learning-journey-with-implementations)
 - [Capstone Project](#capstone-project)
   - [Capstone Project Cost](#capstone-project-cost)
+- [Install Terraform](#install-terraform)
 
 
 ## Day 1 - AWS Technical Essentials
@@ -263,3 +264,14 @@ API Operations:
 Services:
 
 ![Services](Costs/images/project_cost_service.png)
+
+## Install Terraform
+
+```bash
+# Download binary from https://developer.hashicorp.com/terraform/install
+echo $PATH
+
+mv ~/Downloads/terraform /usr/local/bin/
+
+```
+  [How to install terraform cli](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
