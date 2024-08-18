@@ -11,6 +11,25 @@ The AWS Knowledge Badge Readiness Path helps individuals build comprehensive kno
 
 [View the AWS Solution Architect Knowledge Badge Readiness Path on Notion](https://helix-minnow-e03.notion.site/9e06c208efcc4f59aaf5549210ae52c7?v=0633597eaccf46fea83dbdc762aa9b9d)
 
+## Table of Contents
+- [Day 1 - AWS Technical Essentials](#day-1---aws-technical-essentials)
+- [Day 2 - AWS Compute Services Overview](#day-2---aws-compute-services-overview)
+- [Day 3 - AWS S3, EBS, and Databases](#day-3---aws-s3-ebs-and-databases)
+- [Day 4 - Dynamodb-ElastiCache](#day-4---dynamodb-elasticache)
+- [Day 5 - AWS Networking Basics](#day-5---aws-networking-basics)
+- [Day 6 - AWS API & Network Connectivity](#day-6---aws-api--network-connectivity)
+- [Day 7 - AWS Networking & Lambda Implementations](#day-7---aws-networking--lambda-implementations)
+- [Day 8 - Scaling and Architecting Serverless Applications on AWS](#day-8---scaling-and-architecting-serverless-applications-on-aws)
+- [Day 9 - Database Migration, S3 Cost Optimization, and EBS Management](#day-9---database-migration-s3-cost-optimization-and-ebs-management)
+- [Day 10 - Deep into AWS Storage Gateway, Step Functions, and AWS Backup](#day-10---deep-into-aws-storage-gateway-step-functions-and-aws-backup)
+- [Day 11 - Deep Dive with Security: AWS Identity and Access Management (IAM)](#day-11---deep-dive-with-security-aws-identity-and-access-management-iam)
+- [Day 12 - Securing Data in Amazon S3 & Protecting Instances with Security Groups](#day-12---securing-data-in-amazon-s3--protecting-instances-with-security-groups)
+- [AWS BADGE](#aws-badge)
+- [AWS COST](#aws-cost)
+  - [Daily Costs of Learning Journey with Implementations](#daily-costs-of-learning-journey-with-implementations)
+- [Capstone Project](#capstone-project)
+  - [Capstone Project Cost](#capstone-project-cost)
+
 
 ## Day 1 - AWS Technical Essentials
 
