@@ -1,0 +1,3 @@
+boto3==1.34.146
+pandas==2.2.2
+python-dotenv==1.0.1
